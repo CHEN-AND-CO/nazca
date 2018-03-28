@@ -38,7 +38,6 @@ AVERTISSEMENT : Respectez ces regles sous peine de goulag immediat.
 120.1 - Dans ce cas, partez
 120.2 - Sinon restez. Mais soyez communiste. Sinon, regle 7.
 200 - Ok.
-
 201 - Ca passe.
 211 - Dont forget to unbind. Rule 4584
 295 - PHP tue
