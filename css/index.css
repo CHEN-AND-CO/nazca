@@ -2,3 +2,26 @@
     border-radius: 100%;
     width: 4em;
 }
+
+table {
+    width: 100%;
+}
+
+table, td
+{
+    border-collapse: collapse;
+
+    border: solid 1px rgb(41, 41, 41);
+}
+
+td
+{
+    padding: 0.2em 1em;
+    text-align: center;
+}
+
+thead
+{
+    font-weight: bold;
+    background-color: rgb(231, 185, 185);
+}
