@@ -4,7 +4,9 @@ Not used in ICBMs
 AVERTISSEMENT : Respectez ces regles sous peine de goulag immediat.
 
 | 1 - Ne fais rien |
+| ---------------- |
 | 2 - Ne fais rien de plus que precise en 1. |
+|----------------------------------------------|
 | 2.1 - Ne fais surtout rien qui ne soit pas quelquechose |
 | 2.2.2.1 - Ne reflechis pas a la definition de "rien" |
 | 3 - Ne te poses pas de question |
