@@ -13,7 +13,7 @@ AVERTISSEMENT : Respectez ces regles sous peine de goulag immediat.
 4.1.1 - Si vous posez des questions, vous irez au goulag
 5 - Les reponses sont les memes
 6 - Appliques deux fois 3. Deux vaut mieux qu'un
-7 - Le Goulag est le goualg
+**7 - Le Goulag est le goualg**
 7.5 - On peut entrer au goualg
 7.5.42 - C'est tres facile
 7.77- On ne peut pas en sortir
