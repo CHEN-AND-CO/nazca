@@ -13,8 +13,8 @@ AVERTISSEMENT : Respectez ces regles sous peine de goulag immediat.
 * 4.1.1 - Si vous posez des questions, vous irez au goulag 
 * 5 - Les reponses sont les memes 
 * 6 - Appliques deux fois 3. Deux vaut mieux qu'un 
-* **7 - Le Goulag est le goualg** 
-* 7.5 - On peut entrer au goualg 
+* **7 - Le Goulag est le goulag** 
+* 7.5 - On peut entrer au goulag 
 * 7.5.42 - C'est tres facile 
 * 7.77- On ne peut pas en sortir 
 * 8 - Le Regime est le Regime 
@@ -41,14 +41,14 @@ AVERTISSEMENT : Respectez ces regles sous peine de goulag immediat.
 * 201 - Ca passe.
 * 211 - Dont forget to unbind. Rule 4584
 * 295 - PHP tue
-* 296 - NodeJS.
+* 296 - NodeJS. Pas d'exceptions.
 * 345 - Le communisme est autorise
 * 346 - Le nationalisme aussi.
 * 34* - Tout es permis, voire regle 359.
 * 359 - Restez toujours dans les extremes. Sinon, regle 7.
 * 360 - Elle ne tourne pas. Ne l'oubliez pas.
 * 360.1 - Non il ne s'agit pas d'une partie de votre anatomie.
-* 360.42 - Elle est plate. Comem une assiette.
+* 360.42 - Elle est plate. Comme une assiette.
 * 361 - Respectez la regle 360. Sinon, regle 7.
 * 362 - D'ailleurs tant qu'on y est, respectez toutes les regles. Sinon...
 * 362.2 - Si vous n'aviez pas compris , c'est la regle 7.
@@ -58,7 +58,8 @@ AVERTISSEMENT : Respectez ces regles sous peine de goulag immediat.
 * 420.1 - this isn't a christian minecraft server
 * 500 - Coup d'etat.
 * 500.1 - Donc regle 7.
-* 666 - Ce n'est pas bien.
+* 666 - Ce n'est pas bien. Pas d'exception
+* 777 - Vous avez mal appliqué la régle 21. Régle 7.
 * 4242 - Les illuminatis c'est surcote
 * 4243 - Si tu est un illuminati, regle 7.
 * 4243.2 - Si tu est de la NSA, idem
