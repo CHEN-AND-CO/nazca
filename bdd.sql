@@ -41,6 +41,7 @@ engine = innodb;
     f DECIMAL,
     yintra DECIMAL,
     yextra DECIMAL,
+    id_param INT,
     lgx DECIMAL,
     primary key
         (id),
