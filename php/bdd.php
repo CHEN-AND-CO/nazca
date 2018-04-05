@@ -39,21 +39,41 @@ function dbAddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points
         error_log('Connection error: ' . $exception->getMessage());
         return false;
     }
+}
 
-    function dbRequestParam($db, $id) {
-        try {
-            $request = 'select * from parametre where id=:id';
-            $statement = $db->prepare($request);
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
-            $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $exception) {
-            error_log('Request error: ' . $exception->getMessage());
-            return false;
-        }
-        return $result;
+function dbRequestParam($db, $id) {
+    try {
+        $request = 'select * from parametre where id=:id';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Request error: ' . $exception->getMessage());
+        return false;
     }
+    return $result;
+}
 
+function dbAddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
+    try {
+        $request = 'insert into cambrure(x, t, f, yintra, yextra, id_param, lgx)
+        values(:x, :t, :f, :yintra, :yextra, :id_param, :lgx)';
+
+        $statement = $db->prepare($request);
+        $statement->bindParam(':x', strval($x), PDO::PARAM_STR, 128);
+        $statement->bindParam(':t', strval($t), PDO::PARAM_STR, 128);
+        $statement->bindParam(':f', strval($f), PDO::PARAM_STR, 128);
+        $statement->bindParam(':yintra', strval($yintra), PDO::PARAM_STR, 128);
+        $statement->bindParam(':yextra', strval($yextra), PDO::PARAM_STR, 128);
+        $statement->bindParam(':id_param', $id_param, PDO::PARAM_INT);
+        $statement->bindParam(':lgx', strval($lgx), PDO::PARAM_STR, 128);
+
+        $statement->execute();
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
 }
 
 ?>
