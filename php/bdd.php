@@ -39,6 +39,21 @@ function dbAddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points
         error_log('Connection error: ' . $exception->getMessage());
         return false;
     }
+
+    function dbRequestParam($db, $id) {
+        try {
+            $request = 'select * from parametre where id=:id';
+            $statement = $db->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
 }
 
 ?>
