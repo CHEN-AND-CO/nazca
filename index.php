@@ -25,7 +25,6 @@
 
         $db = dbConnect();
         
-        
         ?>
 
         <footer class="footer">
