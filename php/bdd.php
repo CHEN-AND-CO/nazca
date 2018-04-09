@@ -17,7 +17,7 @@ function dbConnect() {
     return $db;
 }
 
-function dbAddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
+function dbAddParam($db,$libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
     try {
         $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, nb_points, date, fic_img, fic_csv)
         values(:libelle, :corde, :tmax_p, :fmax_p, :tmax, :fmax, :nb_points, :date, :fic_img, :fic_csv)';
@@ -55,7 +55,7 @@ function dbRequestParam($db, $id) {
     return $result;
 }
 
-function dbAddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
+function dbAddCambrure($db, $x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
     try {
         $request = 'insert into cambrure(x, t, f, yintra, yextra, id_param, lgx)
         values(:x, :t, :f, :yintra, :yextra, :id_param, :lgx)';
@@ -74,6 +74,10 @@ function dbAddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
     }
+}
+
+function dbRequestCambrure($db, $id){
+    
 }
 
 ?>
