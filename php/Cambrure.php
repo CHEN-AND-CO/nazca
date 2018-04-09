@@ -10,7 +10,7 @@ class Cambrure {
     private $id_param;
     private $lgx;
 
-    function init($_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_lgx) {
+    public function init($_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_lgx) {
         $this->x = $_x;
         $this->t = $_t;
         $this->f = $_f;
@@ -20,59 +20,59 @@ class Cambrure {
         $this->lgx = $_lgx;
     }
 
-    function setX($_x) {
+    public function setX($_x) {
         $this->x = $_x;
     }
 
-    function setT($_t) {
+    public function setT($_t) {
         $this->t = $_t;
     }
 
-    function setF($_f) {
+    public function setF($_f) {
         $this->f = $_f;
     }
 
-    function setYintra($_yintra) {
+    public function setYintra($_yintra) {
         $this->yintra = $_yintra;
     }
 
-    function setYextra($y_extra) {
+    public function setYextra($y_extra) {
         $this->yextra = $y_extra;
     }
 
-    function setId_param($_id_param) {
+    public function setId_param($_id_param) {
         $this->id_param = $_id_param;
     }
 
-    function setLgx($_lgx) {
+    public function setLgx($_lgx) {
         $this->lgx = $_lgx;
     }
 
-    function getX() {
+    public function getX() {
         return $this->x;
     }
 
-    function getT() {
+    public function getT() {
         return $this->t;
     }
 
-    function getF() {
+    public function getF() {
         return $this->f;
     }
 
-    function getYintra() {
+    public function getYintra() {
         return $this->yintra;
     }
 
-    function getYextra() {
+    public function getYextra() {
         return $this->yextra;
     }
 
-    function getId_param() {
+    public function getId_param() {
         return $this->id_param;
     }
 
-    function getLgx() {
+    public function getLgx() {
         return $this->lgx;
     }
 }

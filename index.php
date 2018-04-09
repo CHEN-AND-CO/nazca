@@ -19,9 +19,13 @@
         <div id="infos" class="container">
         </div>
         <h1> Bonjour </h1>
-        
+
         <?php
-            require_once('php/bdd.php');
+        require_once('php/bdd.php');
+
+        $db = dbConnect();
+        
+        
         ?>
 
         <footer class="footer">
