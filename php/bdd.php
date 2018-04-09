@@ -77,7 +77,17 @@ function dbAddCambrure($db, $x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
 }
 
 function dbRequestCambrure($db, $id){
-    
+    try {
+        $request = 'select * from cambrure where id=:id';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Request error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
 }
 
 ?>
