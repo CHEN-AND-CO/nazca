@@ -1,16 +1,32 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Parametre
- *
- * @author kev29
- */
 class Parametre {
-    //put your code here
+
+    private $id;
+    private $libelle;
+    private $corde;
+    private $tmax_p;
+    private $fmax_p;
+    private $tmax;
+    private $fmax;
+    private $nb_points;
+    private $fic_img;
+    private $fic_csv;
+
+    public function init($_id) {
+        $this->id = $_id;
+    }
+    
+    public function setId($_id){
+        $this->id = $_id;
+    }
+    
+    public function setLibelle($_libelle){
+        $this->libelle = $_libelle;
+    }
+    
+    public function setCorde($_corde){
+        $this->corde = $_corde;
+    }
+
 }

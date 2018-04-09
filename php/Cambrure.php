@@ -2,6 +2,7 @@
 
 class Cambrure {
 
+    private $id;
     private $x;
     private $t;
     private $f;
@@ -10,7 +11,8 @@ class Cambrure {
     private $id_param;
     private $lgx;
 
-    public function init($_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_lgx) {
+    public function init($_id, $_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_lgx) {
+        $this->id = $_id;
         $this->x = $_x;
         $this->t = $_t;
         $this->f = $_f;
@@ -20,6 +22,10 @@ class Cambrure {
         $this->lgx = $_lgx;
     }
 
+    public function setId($_id){
+        $this->id = $_id;
+    }
+    
     public function setX($_x) {
         $this->x = $_x;
     }
@@ -46,6 +52,10 @@ class Cambrure {
 
     public function setLgx($_lgx) {
         $this->lgx = $_lgx;
+    }
+    
+    public function getId(){
+        return $this->id;
     }
 
     public function getX() {
