@@ -45,7 +45,7 @@ header h1
     margin: 1em;
 }
 
-header #logo, header #logo img
+header #logo-pusher, header img#logo
 {
     display: inline-block;
     vertical-align: middle;

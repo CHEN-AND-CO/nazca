@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <title> NAZCA Project C&amp;C SSOS 2018</title>
 
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!--link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /-->
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
     </head>
 
