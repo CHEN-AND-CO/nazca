@@ -8,11 +8,9 @@
     </head>
 
     <body>
-        <div class="page-header container">
-            <img class="circle" src="res/chen.png" />
-            <big> Chen&amp;Co </big>
-            <medium> Homepage </medium>
-        </div>
+        <?php
+        include("res/header.html");
+        ?>
 
         <div id="errors" class="container">
         </div>
@@ -27,10 +25,8 @@
         
         ?>
 
-        <footer class="footer">
-            <div class="container">
-                <span>NAZCA v0.2.1 - Service Spécial des Opérations Spéciales, Chen&amp;Co ©</span>
-            </div>
-        </footer>
+        <?php
+        include("res/footer.html");
+        ?>
     </body>
 </html>
