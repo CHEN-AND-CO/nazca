@@ -12,27 +12,10 @@ body {
     color: rgb(95, 95, 95);
 }
 
-table {
-    width: 100%;
-}
-
-table, td
+table 
 {
-    border-collapse: collapse;
-
-    border: solid 1px rgb(41, 41, 41);
-}
-
-td
-{
-    padding: 0.2em 1em;
-    text-align: center;
-}
-
-thead
-{
-    font-weight: bold;
-    background-color: rgb(231, 185, 185);
+    width: 75%;
+    margin: auto;
 }
 
 header
@@ -111,4 +94,10 @@ header #main-title
 .hnav li a:hover
 {
     color: rgb(68, 68, 68);
+}
+
+.main-content
+{
+    width: 80%;
+    margin: auto;
 }

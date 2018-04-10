@@ -55,6 +55,20 @@ function dbRequestParam($db, $id) {
     return $result;
 }
 
+function dbListParam($db) {
+    try {
+        $request = 'select * from parametre';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Request error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
+}
+
 function dbAddCambrure($db, $x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
     try {
         $request = 'insert into cambrure(x, t, f, yintra, yextra, id_param, lgx)
