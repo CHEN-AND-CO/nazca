@@ -29,7 +29,7 @@
 
         <footer class="footer">
             <div class="container">
-                <span> Service Spécial des Opérations Spéciales, Chen&amp;Co ©</span>
+                <span>NAZCA v0.2.1 - Service Spécial des Opérations Spéciales, Chen&amp;Co ©</span>
             </div>
         </footer>
     </body>
