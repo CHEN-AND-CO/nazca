@@ -18,7 +18,7 @@
                 </div>
                 <div id="infos" class="container">
                 </div>
-                
+
                 <h1> Bonjour </h1>
 
                 <?php
@@ -26,7 +26,7 @@
 
                 $db = dbConnect();
                 
-                $params = dbListParam($db);
+                $params = dbListParams($db);
 
                 echo "<table><thead><td>#</td><td>Enregistrement</td></thead>";
                 foreach ($params as $param)
