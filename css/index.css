@@ -30,3 +30,25 @@ thead
     font-weight: bold;
     background-color: rgb(231, 185, 185);
 }
+
+header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+header h1
+{
+    font-size: 2em;
+
+    margin: 1em;
+}
+
+header #logo-pusher, header img#logo
+{
+    display: inline-block;
+    vertical-align: middle;
+
+    height: 100%;
+}
