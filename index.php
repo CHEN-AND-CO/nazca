@@ -19,7 +19,7 @@
                 <div id="infos" class="container">
                 </div>
 
-                <h1> Bonjour </h1>
+                <h2>Accueil > Liste des enregistrements</h2>
 
                 <?php
                 require_once('php/bdd.php');
@@ -28,12 +28,12 @@
                 
                 $params = dbListParams($db);
 
-                echo "<table><thead><td>#</td><td>Enregistrement</td></thead>";
+                echo '<table class="flat-table"><thead><td>#</td><td>Enregistrement</td></thead>';
                 foreach ($params as $param)
                 {
-                        echo "<tr><td>".$param['id']."</td><td>".$param['libelle']."</td></tr>";
+                        echo '<tr><td class="id">'.$param['id'].'</td><td class="param-item"><span>'.$param['libelle'].'</span><div><button class="edit-button" id="'.$param['id'].'">🖉</button><button class="delete-button" id="'.$param['id'].'">×</button></div></td></tr>';
                 }
-                echo "</table>";
+                echo '</table>';
                 //Faire des trucs
                 ?>
 

@@ -18,6 +18,11 @@ table
     margin: auto;
 }
 
+td.id
+{
+    width: 2em;
+}
+
 header
 {
     display: flex;
@@ -51,6 +56,12 @@ header #main-title
 {
     display: flex;
     align-items: center;
+}
+
+table tr button
+{
+    font-size: 1.2em;
+    padding: 0.3em;
 }
 
 .hnav
@@ -100,4 +111,30 @@ header #main-title
 {
     width: 80%;
     margin: auto;
+}
+
+.param-item
+{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    vertical-align: middle;
+    line-height: 2em;
+}
+
+.edit-button, .delete-button
+{
+    width: 1.8rem;
+    height: 1.8rem;
+
+    padding: 0;
+
+    vertical-align: middle;
+    
+}
+
+.delete-button
+{
+    font-size: 2em;
 }
