@@ -1,0 +1,98 @@
+form
+{
+    display: flex;
+    flex-direction: column;
+
+    max-width: 25vw;
+
+    margin: auto;
+}
+
+input
+{
+    padding: 0.5em;
+    margin-bottom: 1em;
+
+    border: solid 1px gray;
+    border-radius: 5px;
+}
+
+button
+{
+    padding: 0.5em;
+
+    text-transform: uppercase;
+    font-weight: bold;
+
+    color: white;
+    background-color: rgb(34, 95, 34);
+
+    border-radius: 8px;
+    border: none;
+
+    transform: scale(1);
+
+    transition: transform 0.3s;
+}
+
+button:hover
+{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+table, td
+{
+    border-collapse: collapse;
+
+    border: solid 1px rgb(48, 48, 48);
+}
+
+td
+{
+    padding: 0.5em 1em;
+    text-align: left;
+}
+
+tr:nth-child(even)
+{
+    background-color: rgb(245, 245, 245);
+}
+
+tr:nth-child(odd)
+{
+    background-color: rgb(211, 211, 211);
+}
+
+thead td
+{
+    font-weight: bold;
+    background-color: rgb(97, 131, 196) !important;
+}
+
+table.flat-table, table.flat-table td
+{
+    border: none;
+}
+
+table.flat-table tr
+{
+    border-bottom: solid 2px rgb(161, 161, 161);
+    /*padding: 0.5em;*/
+}
+
+table.flat-table tr:nth-child(even)
+{
+    background-color: rgb(241, 241, 241);
+}
+
+table.flat-table tr:nth-child(odd)
+{
+    background-color: rgb(230, 230, 230);
+}
+
+table.flat-table thead, table.flat-table thead *
+{
+    background-color: transparent !important;
+    border: none;
+}
