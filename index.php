@@ -26,7 +26,7 @@
 
                 $db = dbConnect();
                 
-                $params = dbListParams($db);
+                $params = dbRequestAllParams($db);
 
                 echo '<table class="flat-table"><thead><td>#</td><td>Enregistrement</td></thead>';
                 foreach ($params as $param)
