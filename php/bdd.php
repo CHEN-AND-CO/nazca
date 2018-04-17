@@ -55,7 +55,7 @@ function dbRequestParam($db, $id) {
     return $result;
 }
 
-function dbListParams($db) {
+function dbRequestAllParams($db) {
     try {
         $request = 'select * from parametre';
         $statement = $db->prepare($request);

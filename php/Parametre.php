@@ -56,4 +56,44 @@ class Parametre {
     public function setFic_csv($_fic_csv){
         $this->fic_csv = $_fic_csv;
     }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getLibelle(){
+        return $this->libelle;
+    }
+
+    public function getCorde(){
+        return $this->corde;
+    }
+
+    public function getTmax_p(){
+        return $this->tmax_p;
+    }
+
+    public function getFmax_p(){
+        return $this->fmax_p;
+    }
+
+    public function getTmax(){
+        return $this->tmax;
+    }
+
+    public function getFmax(){
+        return $this->fmax;
+    }
+
+    public function getNb_points(){
+        return $this->nb_points;
+    }
+
+    public function getFic_img(){
+        return $this->fic_img;
+    }
+
+    public function getFic_csv(){
+        return $this->fic_csv;
+    }
 }
