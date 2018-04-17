@@ -12,9 +12,28 @@ class Parametre {
     private $nb_points;
     private $fic_img;
     private $fic_csv;
+    private $xg,$yg;
 
     public function init($_id) {
         $this->id = $_id;
+    }
+
+    public function initXg($cambrures){
+        $this->xg = 0;
+
+        foreach($cambrures as $cambrure){
+            $this->xg += $cambrure->getPxg();
+        }
+        $this->xg /= $this->getS($cambrures);
+    }
+
+    public function initYg($cambrures){
+         $this->yg = 0;
+
+        foreach($cambrures as $cambrure){
+            $this->yg += $cambrure->getPyg();
+        }
+        $this->yg /= $this->getS($cambrures);
     }
     
     public function setId($_id){
@@ -95,5 +114,26 @@ class Parametre {
 
     public function getFic_csv(){
         return $this->fic_csv;
+    }
+
+    public function getDx(){
+        return ($this->corde/$this->nb_points);
+    }
+
+    public function getXg(){
+        return $this->xg;
+    }
+
+    public function getYg(){
+        return $this->yg;
+    }
+
+    public function getS($cambrures){
+        $s = 0;
+        for($i = 0; $i < $this->nb_points-1; $i++){
+            $s += $cambrures[i].getDsi($this, $cambrures[i+1]);
+        }
+
+        return $s;
     }
 }
