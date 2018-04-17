@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/generic-theme.css">
     </head>
 
-    <body>
+    <body id="#page-list">
         <?php
         include("res/header.html");
         ?>
