@@ -1,4 +1,5 @@
-.circle {
+.circle
+{
     border-radius: 100%;
     width: 4em;
 }
@@ -8,7 +9,10 @@ html
     /*background: url("/chenco_NAZCA_logo.png") center fixed no-repeat;*/
 }
 
-body {
+body
+{
+    min-height: 100vh;
+
     margin : 0px;
     padding: 0px;
 
@@ -144,6 +148,11 @@ footer .container
     line-height: 2em;
 }
 
+.param-item div *
+{
+    margin-left: 0.25em;
+}
+
 .edit-button, .delete-button
 {
     width: 1.8rem;
@@ -157,5 +166,5 @@ footer .container
 
 .delete-button
 {
-    font-size: 2em;
+    /*font-size: 2em;*/
 }
