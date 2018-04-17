@@ -14,8 +14,19 @@ class Parametre {
     private $fic_csv;
     private $xg,$yg;
 
-    public function init($_id) {
+    public function init($_id, $_libelle, $_corde, $_tmax_p, $_fmax_p, $_tmax, $_fmax, $_nb_points, $_fic_img, $_fic_csv) {
         $this->id = $_id;
+        $this->libelle = $_libelle;
+        $this->corde = $_corde;
+        $this->tmax_p = $_tmax_p;
+        $this->fmax_p = $_fmax_p;
+        $this->tmax = $_tmax;
+        $this->fmax = $_fmax;
+        $this->nb_points = $_nb_points;
+        $this->fic_img = $_fic_img;
+        $this->fic_csv = $_fic_csv;
+        $this->$xg = 0;
+        $this->$yg = 0;
     }
 
     public function initXg($cambrures){

@@ -9,7 +9,7 @@ class Cambrure {
     private $yintra;
     private $yextra;
     private $id_param;
-    private $lgx;
+    private $Igz;
     private $pxg,$pyg;
 
     public function create($param, $prev){
@@ -34,10 +34,10 @@ class Cambrure {
 
         $this->id_param = $param->getId();
 
-        $this->lgx = 0;
+        $this->Igz = 0;
     }
 
-    public function init($_id, $_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_lgx) {
+    public function init($_id, $_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_Igz) {
         $this->id = $_id;
         $this->x = $_x;
         $this->t = $_t;
@@ -45,15 +45,15 @@ class Cambrure {
         $this->yintra = $_yintra;
         $this->yextra = $_yextra;
         $this->id_param = $_id_param;
-        $this->lgx = $_lgx;
+        $this->Igz = $_Igz;
     }
 
-    public function initLgx($param, $next){
+    public function initIgz($param, $next){
         $tmoy = ($this->yextra+$next->getYextra())/2 - ($this->yintra+$next->getYintra())/2;
         $igzi = pow($param->getDx()*$tmoy, 3)/12;
         $ds = $param->getDx() * $tmoy;
 
-        $this->lgx = $igiz+pow($this->f-$param->getYg(), 2)* $ds;
+        $this->Igz = $igiz+pow($this->f-$param->getYg(), 2)* $ds;
     }
 
     public function initPg($param, $next){
@@ -93,8 +93,8 @@ class Cambrure {
         $this->id_param = $_id_param;
     }
 
-    public function setLgx($_lgx) {
-        $this->lgx = $_lgx;
+    public function setIgz($_Igz) {
+        $this->Igz = $_Igz;
     }
 
     public function setPxg($_pxg){
@@ -133,8 +133,8 @@ class Cambrure {
         return $this->id_param;
     }
 
-    public function getLgx() {
-        return $this->lgx;
+    public function getIgz() {
+        return $this->Igz;
     }
 
     public function getPxg(){
