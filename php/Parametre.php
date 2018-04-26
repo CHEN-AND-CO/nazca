@@ -44,7 +44,7 @@ class Parametre {
         foreach($cambrures as $cambrure){
             $this->yg += $cambrure->getPyg();
         }
-        $this->getYg /= $this->getS($cambrures);
+        $this->yg /= $this->getS($cambrures);
     }
     
     public function setId($_id){
