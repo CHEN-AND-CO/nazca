@@ -15,18 +15,18 @@ class Parametre {
     private $xg,$yg;
 
     public function init($_id, $_libelle, $_corde, $_tmax_p, $_fmax_p, $_tmax, $_fmax, $_nb_points, $_fic_img, $_fic_csv) {
-        $this->id = $_id;
-        $this->libelle = $_libelle;
-        $this->corde = $_corde;
-        $this->tmax_p = $_tmax_p;
-        $this->fmax_p = $_fmax_p;
-        $this->tmax = $_tmax;
-        $this->fmax = $_fmax;
-        $this->nb_points = $_nb_points;
-        $this->fic_img = $_fic_img;
-        $this->fic_csv = $_fic_csv;
-        $this->$xg = 0;
-        $this->$yg = 0;
+        $this->setId($_id);
+        $this->setLibelle($_libelle);
+        $this->setCorde($_corde);
+        $this->setTmax_p($_tmax_p);
+        $this->setFmax_p($_fmax_p);
+        $this->setTmax($_tmax);
+        $this->setFmax($_fmax);
+        $this->setNb_points($_nb_points);
+        $this->setFic_img($_fic_img);
+        $this->setFic_csv($_fic_csv);
+        $this->setXg(0);
+        $this->setYg(0);
     }
 
     public function initXg($cambrures){
@@ -44,7 +44,7 @@ class Parametre {
         foreach($cambrures as $cambrure){
             $this->yg += $cambrure->getPyg();
         }
-        $this->yg /= $this->getS($cambrures);
+        $this->getYg /= $this->getS($cambrures);
     }
     
     public function setId($_id){
@@ -56,23 +56,23 @@ class Parametre {
     }
     
     public function setCorde($_corde){
-        $this->corde = $_corde;
+        $this->corde = strval($_corde);
     }
     
     public function setTmax_p($_tmax_p){
-        $this->tmax_p = $_tmax_p;
+        $this->tmax_p = strval($_tmax_p);
     }
     
     public function setFmax_p($_fmax_p){
-        $this->fmax_p = $_fmax_p;
+        $this->fmax_p = strval($_fmax_p);
     }
     
     public function setTmax($_tmax){
-        $this->tmax = $_tmax;
+        $this->tmax = strval($_tmax);
     }
     
     public function setFmax($_fmax){
-        $this->fmax = $_fmax;
+        $this->fmax = strval($_fmax);
     }
     
     public function setNb_points($_nb_points){
@@ -87,6 +87,14 @@ class Parametre {
         $this->fic_csv = $_fic_csv;
     }
 
+    public function setXg($_xg){
+        $this->xg = $_xg;
+    }
+
+    public function setYg($_yg){
+        $this->yg = $_yg;
+    }
+
     public function getId(){
         return $this->id;
     }
@@ -96,23 +104,23 @@ class Parametre {
     }
 
     public function getCorde(){
-        return $this->corde;
+        return doubleval($this->corde);
     }
 
     public function getTmax_p(){
-        return $this->tmax_p;
+        return doubleval($this->tmax_p);
     }
 
     public function getFmax_p(){
-        return $this->fmax_p;
+        return doubleval($this->fmax_p);
     }
 
     public function getTmax(){
-        return $this->tmax;
+        return doubleval($this->tmax);
     }
 
     public function getFmax(){
-        return $this->fmax;
+        return doubleval($this->fmax);
     }
 
     public function getNb_points(){
@@ -128,7 +136,7 @@ class Parametre {
     }
 
     public function getDx(){
-        return ($this->corde/$this->nb_points);
+        return ($this->getCorde()/$this->getNb_points());
     }
 
     public function getXg(){
@@ -141,7 +149,7 @@ class Parametre {
 
     public function getS($cambrures){
         $s = 0;
-        for($i = 0; $i < $this->nb_points-1; $i++){
+        for($i = 0; $i < $this->getNb_points()-1; $i++){
             $s += $cambrures[i].getDsi($this, $cambrures[i+1]);
         }
 
