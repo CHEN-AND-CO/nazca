@@ -17,11 +17,11 @@ create table parametre
     auto_increment,
     libelle VARCHAR
     (40),
-    corde DECIMAL,
-    tmax_p DECIMAL,
-    fmax_p DECIMAL,
-    tmax DECIMAL,
-    fmax DECIMAL,
+    corde DOUBLE,
+    tmax_p DOUBLE,
+    fmax_p DOUBLE,
+    tmax DOUBLE,
+    fmax DOUBLE,
     nb_points INT,
     date DATE,
     fic_img VARCHAR
@@ -36,13 +36,13 @@ engine = innodb;
     (
         id int not null
         auto_increment,
-    x DECIMAL,
-    t DECIMAL,
-    f DECIMAL,
-    yintra DECIMAL,
-    yextra DECIMAL,
+    x DOUBLE,
+    t DOUBLE,
+    f DOUBLE,
+    yintra DOUBLE,
+    yextra DOUBLE,
     id_param INT,
-    lgx DECIMAL,
+    lgx DOUBLE,
     primary key
         (id),
     foreign key
