@@ -12,5 +12,25 @@
         
             return $out;
         }
+
+        function csvToArray($raw){
+            $out = array();
+
+            foreach($raw as $line){
+                array_push($out, explode(",", $line));
+            }
+
+            return $out;
+        }
+
+        function arrayToCsv($array){
+            $out = array();
+
+            foreach($array as $line){
+                array_push($out, implode(",", $line));
+            }
+
+            return $out;
+        }
     }
 ?>
