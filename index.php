@@ -23,9 +23,9 @@
                 <?php
                 require_once('php/bdd.php');
 
-                $db = dbConnect();
+                $db = BDDIO::dbConnect();
                 
-                $params = dbRequestAllParams($db);
+                $params = BDDIO::dbRequestAllParams($db);
 
                 echo '<table class="flat-table"><thead><td>#</td><td>Enregistrement</td></thead>';
                 foreach ($params as $param)

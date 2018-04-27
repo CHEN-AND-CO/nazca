@@ -1,4 +1,10 @@
 <?php
+/**
+ * @Author: Le Torc'h Kévin
+ * @Company: Chen & Co
+ * @Email: kev29lt@gmail.com
+ */
+
     require_once('Cambrure.php');
 
     class CSVIO {
