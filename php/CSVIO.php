@@ -37,11 +37,15 @@
 
         function arrayToCambrureArray($_array){
             $out = array();
+            $id = 0;
 
             foreach($_array as $element){
+                array_unshift($element, $id);
                 $tmp = new Cambrure;
+
                 $tmp->load($element);
                 array_push($out, $tmp);
+                $id++;
             }
 
             return $out;
