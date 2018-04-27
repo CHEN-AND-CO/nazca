@@ -3,7 +3,6 @@
         <meta charset="UTF-8" />
         <title> NAZCA Project C&amp;C SSOS 2018</title>
 
-        <!--link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /-->
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
         <link rel="stylesheet" href="css/generic-theme.css">
     </head>
@@ -31,7 +30,7 @@
                 echo '<table class="flat-table"><thead><td>#</td><td>Enregistrement</td></thead>';
                 foreach ($params as $param)
                 {
-                        echo '<tr><td class="id">'.$param['id'].'</td><td class="param-item"><span>'.$param['libelle'].'</span><div><button class="edit-button" id="'.$param['id'].'">🖉</button><button class="delete-button" id="'.$param['id'].'">×</button></div></td></tr>';
+                    echo '<tr><td class="id">'.$param->getId().'</td><td class="param-item"><span>'.$param->getLibelle().'</span><div><button class="edit-button" onclick="location.href=\'consultation.php?identifiant='.$param->getId().'\';" id="'.$param->getId().'">🖉</button><button class="delete-button" id="'.$param->getId().'">×</button></div></td></tr>';
                 }
                 echo '</table>';
                 //Faire des trucs

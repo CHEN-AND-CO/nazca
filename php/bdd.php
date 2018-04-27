@@ -6,6 +6,8 @@
  * @Email: kev29lt@gmail.com
  */
 require_once('constantes.php');
+require_once('Cambrure.php');
+require_once('Parametre.php');
 
 function dbConnect() {
     try {
@@ -47,7 +49,7 @@ function dbRequestParam($db, $id) {
         $statement = $db->prepare($request);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Parametre');
     } catch (PDOException $exception) {
         error_log('Request error: ' . $exception->getMessage());
         return false;
@@ -61,7 +63,7 @@ function dbRequestAllParams($db) {
         $statement = $db->prepare($request);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Parametre');
     } catch (PDOException $exception) {
         error_log('Request error: ' . $exception->getMessage());
         return false;
@@ -90,13 +92,27 @@ function dbAddCambrure($db, $x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
     }
 }
 
+function dbRequestAllCambruresFromParam($db, $id_param){
+     try {
+        $request = 'select * from cambrure where id_param=:id_param';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_param', $id_param, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Cambrure');
+    } catch (PDOException $exception) {
+        error_log('Request error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
+}
+
 function dbRequestCambrure($db, $id){
     try {
         $request = 'select * from cambrure where id=:id';
         $statement = $db->prepare($request);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Cambrure');
     } catch (PDOException $exception) {
         error_log('Request error: ' . $exception->getMessage());
         return false;
