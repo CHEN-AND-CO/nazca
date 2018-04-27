@@ -50,6 +50,17 @@ class Cambrure {
         $this->setIgz($_Igz);
     }
 
+    public function load($_array){
+        $this->setId($_array[0]);
+        $this->setX($_array[1]);
+        $this->setT($_array[2]);
+        $this->setF($_array[3]);
+        $this->setYintra($_array[4]);
+        $this->setYextra($_array[5]);
+        $this->setId_param($_array[6]);
+        $this->setIgz($_array[7]);
+    }
+
     public function initIgz($param, $next){
         $tmoy = ($this->getYextra()+$next->getYextra())/2 - ($this->getYintra()+$next->getYintra())/2;
         $igzi = pow($param->getDx()*$tmoy, 3)/12;

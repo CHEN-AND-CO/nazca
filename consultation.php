@@ -41,7 +41,28 @@
                     echo '</tr>';
                 }
                 echo '</table>';
-                
+
+
+                echo '<br></br><h2> test de chargement de CSV </h2>';
+
+                require_once('php/CSVIO.php');
+
+                $cambrures2 = CSVIO::getCSVFileAsCambrureArray('test.csv');
+
+                echo '<table class="flat-table"><thead><td>id</td><td>x</td><td>f</td><td>t</td><td>yintra</td><td>yextra</td><td>id_param</td><td>Igz</td></thead>';
+                foreach ($cambrures2 as $cambrure){
+                    echo '<tr>';
+                    echo '<td>'.$cambrure->getId().'</td>';
+                    echo '<td>'.$cambrure->getX().'</td>';
+                    echo '<td>'.$cambrure->getF().'</td>';
+                    echo '<td>'.$cambrure->getT().'</td>';
+                    echo '<td>'.$cambrure->getYintra().'</td>';
+                    echo '<td>'.$cambrure->getYextra().'</td>';
+                    echo '<td>'.$cambrure->getId_param().'</td>';
+                    echo '<td>'.$cambrure->getIgz().'</td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
                 ?>
 
         </div>
