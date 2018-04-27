@@ -23,9 +23,9 @@
                 <?php
                 require_once('php/bdd.php');
 
-                $db = BDDIO::dbConnect();
+                $db =new BDDIO;
                 
-                $cambrures = BDDIO::dbRequestAllCambruresFromParam($db, intval($_GET['identifiant']));
+                $cambrures = $db->RequestAllCambruresFromParam(intval($_GET['identifiant']));
                 
                 echo '<table class="flat-table"><thead><td>id</td><td>x</td><td>f</td><td>t</td><td>yintra</td><td>yextra</td><td>id_param</td><td>Igz</td></thead>';
                 foreach ($cambrures as $cambrure){
