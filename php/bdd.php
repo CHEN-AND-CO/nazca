@@ -52,8 +52,8 @@ class BDDIO {
 
     public function AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
         try {
-            $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, date, nb_points, date, fic_img, fic_csv)
-            values(:libelle, :corde, :tmax_p, :fmax_p, :tmax, :fmax, :date, :nb_points, :date, :fic_img, :fic_csv)';
+            $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, nb_points, date, fic_img, fic_csv)
+            values(:libelle, :corde, :tmax_p, :fmax_p, :tmax, :fmax, :nb_points, :date, :fic_img, :fic_csv)';
 
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':libelle', $libelle, PDO::PARAM_STR, 40);
@@ -66,13 +66,12 @@ class BDDIO {
             $statement->bindParam(':date', $date, PDO::PARAM_STR);
             $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
             $statement->bindParam(':fic_csv', $fic_csv, PDO::PARAM_STR, 256);
-
             $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
-        
+
         return true;
     }
 
@@ -138,7 +137,7 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
-        
+
         return true;
     }
 
@@ -165,7 +164,7 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
-        
+
         return true;
     }
 
@@ -220,7 +219,7 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
-        
+
         return true;
     }
 
