@@ -62,6 +62,10 @@ if (isset($action)) {
                 }
             }
         }
+    }else if($action === 'del_cambrure'){
+        
+    }else if($action === 'add_cambrure'){
+        
     }
 }
 ?>

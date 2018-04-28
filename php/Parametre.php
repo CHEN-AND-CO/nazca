@@ -128,6 +128,7 @@ class Parametre {
     public function getFmax() {
         return doubleval($this->fmax);
     }
+
     public function getNb_points() {
         return $this->nb_points;
     }
@@ -135,7 +136,6 @@ class Parametre {
     public function getDate() {
         return $this->date;
     }
-
 
     public function getFic_img() {
         return $this->fic_img;

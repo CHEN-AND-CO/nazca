@@ -195,6 +195,31 @@ class BDDIO {
         return $result;
     }
 
+    public function UpdateCambrure($id, $x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
+        try {
+            $request = 'update cambrure set x=:x, t=:t, f=:f, yintra=:yintra, yextra=:yextra, id_param=:id_param, lgx=:lgx where id=:id';
+
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':x', strval($x), PDO::PARAM_STR, 128);
+            $statement->bindParam(':t', strval($t), PDO::PARAM_STR, 128);
+            $statement->bindParam(':f', strval($f), PDO::PARAM_STR, 128);
+            $statement->bindParam(':yintra', strval($yintra), PDO::PARAM_STR, 128);
+            $statement->bindParam(':yextra', strval($yextra), PDO::PARAM_STR, 128);
+            $statement->bindParam(':id_param', $id_param, PDO::PARAM_INT);
+            $statement->bindParam(':lgx', strval($lgx), PDO::PARAM_STR, 128);
+
+            $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+    }
+
+    public function UpdateCambrureObject($id, $cambrure) {
+        return $this->UpdateCambrure($id, $cambrure->getX(), $cambrure->getT(), $cambrure->getF(), $cambrure->getYintra(), $cambrure->getYextra(), $cambrure->getId_param(), $cambrure->getIgz());
+    }
+
 }
 
 ?>
