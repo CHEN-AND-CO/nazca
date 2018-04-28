@@ -107,12 +107,12 @@ class BDDIO {
             $request = 'delete from parametre where id=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $_id, PDO::PARAM_INT);
-            $statement->execute();
+            $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
             return false;
         }
-        return true;
+        return $result;
     }
 
     public function UpdateParam($id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
@@ -132,13 +132,13 @@ class BDDIO {
             $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
             $statement->bindParam(':fic_csv', $fic_csv, PDO::PARAM_STR, 256);
 
-            $statement->execute();
+            $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
 
-        return true;
+        return $result;
     }
 
     public function UpdateParamObject($id, $param) {
@@ -159,13 +159,13 @@ class BDDIO {
             $statement->bindParam(':id_param', $id_param, PDO::PARAM_INT);
             $statement->bindParam(':lgx', strval($lgx), PDO::PARAM_STR, 128);
 
-            $statement->execute();
+            $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
 
-        return true;
+        return $result;
     }
 
     public function AddCambrureObject($cambrure) {
@@ -214,13 +214,13 @@ class BDDIO {
             $statement->bindParam(':id_param', $id_param, PDO::PARAM_INT);
             $statement->bindParam(':lgx', strval($lgx), PDO::PARAM_STR, 128);
 
-            $statement->execute();
+            $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
 
-        return true;
+        return $result;
     }
 
     public function UpdateCambrureObject($id, $cambrure) {
