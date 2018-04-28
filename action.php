@@ -46,7 +46,7 @@ if (isset($action)) {
             }
 
             $param = new Parametre;
-            $param->init($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv);
+            $param->init(0, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv);
 
             if ($action === 'add_param') {
                 if ($db->AddParamObject($param)) {

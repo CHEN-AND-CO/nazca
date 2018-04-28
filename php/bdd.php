@@ -61,7 +61,7 @@ class BDDIO {
             $statement->bindParam(':tmax_p', strval($tmax_p), PDO::PARAM_STR, 128);
             $statement->bindParam(':fmax_p', strval($fmax_p), PDO::PARAM_STR, 128);
             $statement->bindParam(':tmax', strval($tmax), PDO::PARAM_STR, 128);
-            $statement->bindParam(':fmax', stdval($fmax), PDO::PARAM_STR, 128);
+            $statement->bindParam(':fmax', strval($fmax), PDO::PARAM_STR, 128);
             $statement->bindParam(':nb_points', $nb_points, PDO::PARAM_INT);
             $statement->bindParam(':date', $date, PDO::PARAM_STR);
             $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
@@ -125,7 +125,7 @@ class BDDIO {
             $statement->bindParam(':tmax_p', strval($tmax_p), PDO::PARAM_STR, 128);
             $statement->bindParam(':fmax_p', strval($fmax_p), PDO::PARAM_STR, 128);
             $statement->bindParam(':tmax', strval($tmax), PDO::PARAM_STR, 128);
-            $statement->bindParam(':fmax', stdval($fmax), PDO::PARAM_STR, 128);
+            $statement->bindParam(':fmax', strval($fmax), PDO::PARAM_STR, 128);
             $statement->bindParam(':nb_points', $nb_points, PDO::PARAM_INT);
             $statement->bindParam(':date', $date, PDO::PARAM_STR);
             $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
