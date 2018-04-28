@@ -66,13 +66,13 @@ class BDDIO {
             $statement->bindParam(':date', $date, PDO::PARAM_STR);
             $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
             $statement->bindParam(':fic_csv', $fic_csv, PDO::PARAM_STR, 256);
-            $statement->execute();
+            $result = $statement->execute();
         } catch (PDOException $exception) {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
 
-        return true;
+        return $result;
     }
 
     public function RequestParam($id) {
