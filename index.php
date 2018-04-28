@@ -32,7 +32,7 @@
                 {
                     echo '<tr>';
                         echo '<td class="id">'.$param->getId().'</td>';
-                        echo '<td class="param-item">'
+                        echo '<td class="param-item">';
                             echo '<span>'.$param->getLibelle().'</span>';
                             echo '<div>';
                                 echo '<button class="edit-button" onclick="location.href=\'consultation.php?identifiant='.$param->getId().'\';" id="'.$param->getId().'">🖉</button>';
