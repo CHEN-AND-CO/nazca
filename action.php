@@ -9,7 +9,6 @@ echo "<b>dirty php debugging. if you don't want to loose your soul, get out.</b>
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 
 if (isset($action)) {
-
     echo "<br>action is set, begin processing";
 
     if ($action === 'del_param') {

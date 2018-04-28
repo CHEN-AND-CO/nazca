@@ -72,6 +72,8 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+        
+        return true;
     }
 
     public function RequestParam($id) {
@@ -136,6 +138,8 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+        
+        return true;
     }
 
     public function UpdateParamObject($id, $param) {
@@ -161,6 +165,8 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+        
+        return true;
     }
 
     public function AddCambrureObject($cambrure) {
@@ -214,6 +220,8 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+        
+        return true;
     }
 
     public function UpdateCambrureObject($id, $cambrure) {
