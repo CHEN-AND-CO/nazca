@@ -31,23 +31,31 @@ if (isset($action)) {
         $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
         $fic_img = filter_input(INPUT_POST, 'fic_img', FILTER_SANITIZE_URL);
         $fic_csv = filter_input(INPUT_POST, 'fic_csv', FILTER_SANITIZE_URL);
-
+        
         if (!(isset($libelle) && isset($corde) && isset($tmax_p) && isset($fmax_p) && isset($tmax) && isset($fmax) && isset($nb_points))) {
             //erreur une ou des valeurs du parametre invalide  
         } else {
             if (!isset($date)) {
                 $date = date_create()->format('Y-m-d H:i:s');
             }
-
+            if(!isset($fic_csv)){
+                $fic_csv = '#';
+            } 
+            if(!isset($fic_img)){
+                $fic_img = '#';
+            } 
+            
+            $param = new Parametre;
+            $param->init($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv);
 
             if ($action === 'add_param') {
-                if ($db->AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv)) {
+                if ($db->AddParamObject($param)) {
                     //success
                 } else {
                     //failure
                 }
             } else {
-                if ($db->UpdateParam($id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv)) {
+                if ($db->UpdateParam($id, $param)) {
                     //success
                 } else {
                     //failure

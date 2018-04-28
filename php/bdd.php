@@ -46,10 +46,14 @@ class BDDIO {
         return $db;
     }
 
+    public function AddParamObject($param) {
+        return $this->AddParam($param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_csv());
+    }
+
     public function AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
         try {
-            $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, nb_points, date, fic_img, fic_csv)
-            values(:libelle, :corde, :tmax_p, :fmax_p, :tmax, :fmax, :nb_points, :date, :fic_img, :fic_csv)';
+            $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, date, nb_points, date, fic_img, fic_csv)
+            values(:libelle, :corde, :tmax_p, :fmax_p, :tmax, :fmax, :date, :nb_points, :date, :fic_img, :fic_csv)';
 
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':libelle', $libelle, PDO::PARAM_STR, 40);
@@ -134,6 +138,10 @@ class BDDIO {
         }
     }
 
+    public function UpdateParamObject($id, $param) {
+        return $this->UpdateParam($id, $param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_csv());
+    }
+
     public function AddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
         try {
             $request = 'insert into cambrure(x, t, f, yintra, yextra, id_param, lgx)
@@ -153,6 +161,10 @@ class BDDIO {
             error_log('Connection error: ' . $exception->getMessage());
             return false;
         }
+    }
+
+    public function AddCambrureObject($cambrure) {
+        return $this->AddCambrure($cambrure->getX(), $cambrure->getT(), $cambrure->getF(), $cambrure->getYintra(), $cambrure->getYextra(), $cambrure->getId_param(), $cambrure->getIgz());
     }
 
     public function RequestAllCambruresFromParam($id_param) {
