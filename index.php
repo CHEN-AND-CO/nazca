@@ -30,7 +30,16 @@
                 echo '<table class="flat-table"><thead><td>#</td><td>Enregistrement</td></thead>';
                 foreach ($params as $param)
                 {
-                    echo '<tr><td class="id">'.$param->getId().'</td><td class="param-item"><span>'.$param->getLibelle().'</span><div><button class="edit-button" onclick="location.href=\'consultation.php?identifiant='.$param->getId().'\';" id="'.$param->getId().'">🖉</button><button class="delete-button" id="'.$param->getId().'">×</button></div></td></tr>';
+                    echo '<tr>';
+                        echo '<td class="id">'.$param->getId().'</td>';
+                        echo '<td class="param-item">';
+                            echo '<span>'.$param->getLibelle().'</span>';
+                            echo '<div>';
+                                echo '<button class="edit-button" onclick="location.href=\'consultation.php?identifiant='.$param->getId().'\';" id="'.$param->getId().'">🖉</button>';
+                                echo '<button class="delete-button" id="'.$param->getId().'">×</button>';
+                            echo '</div>';
+                        echo '</td>';
+                    echo '</tr>';
                 }
                 echo '</table>';
                 //Faire des trucs
