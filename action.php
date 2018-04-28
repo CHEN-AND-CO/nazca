@@ -17,34 +17,34 @@
 
             $db = new BDDIO;
 
-            $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
+            $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
             if (isset($action)) {
                 if ($action === 'del_param') {
-                    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+                    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
                     if (!isset($id)) {
-                        // wrong id or not set  
+                        echo '<h2> ERREUR: vous n\'avez pas précisé quel paramètre à supprimer</h2>';
                     } else if ($db->RemoveParam($id)) {
-                        //success
+                        echo '<h2> Vous avez réussi à supprimer le paramètre ! </h2>';
                     } else {
-                        //failure
+                        echo '<h2> ERREUR: Impossible de supprimer le paramètre ...</h2>';
                     }
                 } else if ($action === 'add_param' || $action === 'update_param') {
                     if ($action === 'update_param') {
-                        $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+                        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
                     }
 
-                    $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_STRING);
-                    $corde = filter_input(INPUT_POST, 'corde', FILTER_SANITIZE_NUMBER_FLOAT);
-                    $tmax_p = filter_input(INPUT_POST, 'tmax_p', FILTER_SANITIZE_NUMBER_FLOAT);
-                    $fmax_p = filter_input(INPUT_POST, 'fmax_p', FILTER_SANITIZE_NUMBER_FLOAT);
-                    $tmax = filter_input(INPUT_POST, 'tmax', FILTER_SANITIZE_NUMBER_FLOAT);
-                    $fmax = filter_input(INPUT_POST, 'fmax', FILTER_SANITIZE_NUMBER_FLOAT);
-                    $nb_points = filter_input(INPUT_POST, 'nb_points', FILTER_SANITIZE_NUMBER_INT);
-                    $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
-                    $fic_img = filter_input(INPUT_POST, 'fic_img', FILTER_SANITIZE_URL);
-                    $fic_csv = filter_input(INPUT_POST, 'fic_csv', FILTER_SANITIZE_URL);
+                    $libelle = filter_input(INPUT_GET, 'libelle', FILTER_SANITIZE_STRING);
+                    $corde = filter_input(INPUT_GET, 'corde', FILTER_SANITIZE_NUMBER_FLOAT);
+                    $tmax_p = filter_input(INPUT_GET, 'tmax_p', FILTER_SANITIZE_NUMBER_FLOAT);
+                    $fmax_p = filter_input(INPUT_GET, 'fmax_p', FILTER_SANITIZE_NUMBER_FLOAT);
+                    $tmax = filter_input(INPUT_GET, 'tmax', FILTER_SANITIZE_NUMBER_FLOAT);
+                    $fmax = filter_input(INPUT_GET, 'fmax', FILTER_SANITIZE_NUMBER_FLOAT);
+                    $nb_points = filter_input(INPUT_GET, 'nb_points', FILTER_SANITIZE_NUMBER_INT);
+                    $date = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_STRING);
+                    $fic_img = filter_input(INPUT_GET, 'fic_img', FILTER_SANITIZE_URL);
+                    $fic_csv = filter_input(INPUT_GET, 'fic_csv', FILTER_SANITIZE_URL);
 
                     if (!(isset($libelle) && isset($corde) && isset($tmax_p) && isset($fmax_p) && isset($tmax) && isset($fmax) && isset($nb_points))) {
                         echo '<h2> ERREUR: Une ou des valeurs requises pour la création d\'un paramètre est/sont invalide(s) </h2>';
@@ -89,7 +89,6 @@
             }
 
             echo '<a class="button" href="/">Retour à l\'acceuil</a>';
-            echo '<a class="button" href="/ add.php">Recommencer</a>';
             ?>
         </div>
         <?php
