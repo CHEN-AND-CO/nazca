@@ -23,7 +23,7 @@
                 <?php
                 require_once('php/bdd.php');
 
-                $db =new BDDIO;
+                $db = new BDDIO;
                 
                 $cambrures = $db->RequestAllCambruresFromParam(intval($_GET['identifiant']));
                 
