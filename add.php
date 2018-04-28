@@ -13,8 +13,9 @@
         ?>
 
         <div class="main-content">
+            <!--iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe-->
+            <!--form class="vbox" action="action.php" target="hiddenFrame" method="POST"-->
             <form class="vbox" action="action.php" method="POST">
-
                 <h3>Paramétres de profil</h3>
                 <input type="hidden" name="action" value="add_param">
 
@@ -32,7 +33,7 @@
                 </div>
 
                 <input type="number" name="nb_points" id="nb_points" placeholder="Nombre de points de calcul">
-                
+
                 <button type="submit">Enregistrer et créer le profil</button>
             </form>
         </div>
