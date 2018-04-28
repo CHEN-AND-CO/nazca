@@ -19,15 +19,16 @@ input
 
 
 
-button
+button, .button
 {
     padding: 0.5em;
 
     text-transform: uppercase;
+    text-decoration: none;
     font-weight: bold;
 
     color: white;
-    background-color: rgb(34, 95, 34);
+    background-color: rgb(13, 90, 161);
 
     border-radius: 8px;
     border: none;
@@ -37,7 +38,12 @@ button
     transition: transform 0.3s;
 }
 
-button:hover
+button.highlighted, .button.highlighted
+{
+    background-color: rgb(34, 95, 34);
+}
+
+button:hover, .button:hover
 {
     cursor: pointer;
     transform: scale(1.1);
