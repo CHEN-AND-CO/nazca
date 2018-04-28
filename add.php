@@ -13,7 +13,7 @@
         ?>
 
         <div class="main-content">
-            <form class="vbox" action="action.php">
+            <form class="vbox" action="action.php" method="POST">
 
                 <h3>Paramétres de profil</h3>
                 <input type="hidden" name="action" value="add_param">
