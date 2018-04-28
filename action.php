@@ -4,6 +4,6 @@
     $db = new BDDIO;
 
     if(isset($_POST['supprimer_parametre']) && isset($_POST['id'])){
-        //supprimer
+        $db->RemoveParam($_POST['id']);
     }
 ?>
