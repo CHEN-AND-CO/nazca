@@ -17,7 +17,10 @@ if (isset($action)) {
         } else {
             //failure
         }
-    } else if ($action === 'add_param') {
+    } else if ($action === 'add_param' || $action === 'update_param') {
+        if ($action === 'update_param') {
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+        }
         $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_STRING);
         $corde = filter_input(INPUT_POST, 'corde', FILTER_SANITIZE_NUMBER_FLOAT);
         $tmax_p = filter_input(INPUT_POST, 'tmax_p', FILTER_SANITIZE_NUMBER_FLOAT);
@@ -36,10 +39,19 @@ if (isset($action)) {
                 $date = date_create()->format('Y-m-d H:i:s');
             }
 
-            if ($db->AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv)) {
-                //success
+
+            if ($action === 'add_param') {
+                if ($db->AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv)) {
+                    //success
+                } else {
+                    //failure
+                }
             } else {
-                //failure
+                if ($db->UpdateParam($id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv)) {
+                    //success
+                } else {
+                    //failure
+                }
             }
         }
     }

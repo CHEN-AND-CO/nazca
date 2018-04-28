@@ -126,7 +126,6 @@ class BDDIO {
         try {
             $request = 'select * from parametre';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_CLASS, 'Parametre');
         } catch (PDOException $exception) {
@@ -154,7 +153,7 @@ class BDDIO {
         try {
             $request = 'delete from parametre where id=:id';
             $statement = $this->getBdd()->prepare($request);
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':id', $_id, PDO::PARAM_INT);
             $statement->execute();
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
@@ -167,13 +166,41 @@ class BDDIO {
         try {
             $request = 'delete from parametre where id=:id';
             $statement = $db->prepare($request);
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':id', $_id, PDO::PARAM_INT);
             $statement->execute();
         } catch (PDOException $exception) {
             error_log('Request error: ' . $exception->getMessage());
             return false;
         }
         return true;
+    }
+
+    public function UpdateParam($id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
+        return dbUpdateParam($this->getBdd(), $id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv);
+    }
+
+    public function dbUpdateParam($db, $id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
+        try {
+            $request = 'update parametre set libelle=:libelle, corde=:corde, tmax_p=:tmax_p, fmax_p=:fmax_p, tmax=:tmax, fmax=:fmax, nb_points=:nb_points, date=:date, fic_img=:fic_img, fic_csv=:fic_csv where id=:id';
+
+            $statement = $db->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':libelle', $libelle, PDO::PARAM_STR, 40);
+            $statement->bindParam(':corde', strval($corde), PDO::PARAM_STR, 128);
+            $statement->bindParam(':tmax_p', strval($tmax_p), PDO::PARAM_STR, 128);
+            $statement->bindParam(':fmax_p', strval($fmax_p), PDO::PARAM_STR, 128);
+            $statement->bindParam(':tmax', strval($tmax), PDO::PARAM_STR, 128);
+            $statement->bindParam(':fmax', stdval($fmax), PDO::PARAM_STR, 128);
+            $statement->bindParam(':nb_points', $nb_points, PDO::PARAM_INT);
+            $statement->bindParam(':date', $date, PDO::PARAM_STR);
+            $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
+            $statement->bindParam(':fic_csv', $fic_csv, PDO::PARAM_STR, 256);
+
+            $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
     }
 
     public function AddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
