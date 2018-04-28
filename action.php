@@ -66,6 +66,46 @@
                         if ($action === 'add_param') {
                             if ($db->AddParamObject($param)) {
                                 echo '<h2> Vous avez rajouté ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
+
+                                $dirtytmp = $db->RequestAllParams();
+                                $parametre = $dirtytmp[sizeof($dirtytmp) - 1];
+
+                                /* ===================== Génération des cambrures ==================== */
+                                /* Génération de la première cambrure */
+                                $cambrures = array();
+                                $one = new Cambrure;
+                                $one->genesis($parametre);
+                                array_push($cambrures, $one);
+
+                                /* Génération des autres cambrures */
+                                for ($i = 1; $i < $parametre->getNb_points(); $i++) {
+                                    $tmp = new Cambrure;
+                                    $tmp->create($parametre, $cambrures[$i - 1]);
+
+                                    array_push($cambrures, $tmp);
+                                }
+
+                                /* Préparation au calcul du centre de gravité */
+                                for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
+                                    $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]);
+                                }
+                                $cambrures[$parametre->getNb_points() - 1]->initPg($parametre, $cambrures[0]);
+                                $parametre->initXg($cambrures);
+
+                                /* Calcul des Igz */
+                                for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
+                                    $cambrures[$i]->initIgz($parametre, $cambrures[$i + 1]);
+                                }
+                                $cambrures[$parametre->getNb_points() - 1]->initIgz($parametre, $cambrures[0]);
+
+                                /* Ajout des cambrures */
+                                foreach ($cambrures as $cambrure) {
+                                    if ($db->AddCambrureObject($cambrure)) {
+                                        
+                                    } else {
+                                        echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $parametre->getLibelle() . ' !</h2>';
+                                    }
+                                }
                             } else {
                                 echo '<h2> ERREUR: Impossible d\'ajouter ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
                             }

@@ -48,9 +48,9 @@
 
         </div>
 
-<?php
-include("/res/footer.html");
-?>
+        <?php
+        include("res/footer.html");
+        ?>
 
     </body>
 </html>

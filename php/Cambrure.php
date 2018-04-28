@@ -10,29 +10,47 @@ class Cambrure {
     private $yextra;
     private $id_param;
     private $Igz;
-    private $pxg,$pyg;
+    private $pxg, $pyg;
 
-    public function create($param, $prev){
-        $this->setId($prev->getId()+1);
+    public function create($param, $prev) {
+        $this->setId($prev->getId() + 1);
 
-        $this->setX($prev->getX()+$param->getDx());
+        $this->setX($prev->getX() + $param->getDx());
 
-        $x_sur_c = $this->getX()/$this->getCorde();
+        $x_sur_c = $this->getX() / $param->getCorde();
 
         $this->setT(
-            -(
-                1.015*pow($x_sur_c,4)
-                -2.843*pow($x_sur_c,3)
-                +3.516*pow($x_sur_c,2)
-                +1.26*$x_sur_c
-                -2.969*sqrt($x_sur_c)*$param->getTmax()
-            )
+                -(
+                1.015 * pow($x_sur_c, 4) - 2.843 * pow($x_sur_c, 3) + 3.516 * pow($x_sur_c, 2) + 1.26 * $x_sur_c - 2.969 * sqrt($x_sur_c) * $param->getTmax()
+                )
         );
 
-        $this->setF(-4*(pow($x_sur_c, 2)-($x_sur_c)*$param->getFmax()));
+        $this->setF(-4 * (pow($x_sur_c, 2) - ($x_sur_c) * $param->getFmax()));
 
-        $this->setYintra($this->getF() - $this->getT()/2);
-        $this->setYextra($this->getF() + $this->getT()/2);
+        $this->setYintra($this->getF() - $this->getT() / 2);
+        $this->setYextra($this->getF() + $this->getT() / 2);
+
+        $this->setId_param($param->getId());
+
+        $this->setIgz(0);
+    }
+
+    public function genesis($param) {
+        $this->setId(0);
+        $this->setX(0);
+
+        $x_sur_c = $this->getX() / $param->getCorde();
+
+        $this->setT(
+                -(
+                1.015 * pow($x_sur_c, 4) - 2.843 * pow($x_sur_c, 3) + 3.516 * pow($x_sur_c, 2) + 1.26 * $x_sur_c - 2.969 * sqrt($x_sur_c) * $param->getTmax()
+                )
+        );
+
+        $this->setF(-4 * (pow($x_sur_c, 2) - ($x_sur_c) * $param->getFmax()));
+
+        $this->setYintra($this->getF() - $this->getT() / 2);
+        $this->setYextra($this->getF() + $this->getT() / 2);
 
         $this->setId_param($param->getId());
 
@@ -50,7 +68,7 @@ class Cambrure {
         $this->setIgz($_Igz);
     }
 
-    public function load($_array){
+    public function load($_array) {
         $this->setId($_array[0]);
         $this->setX($_array[1]);
         $this->setT($_array[2]);
@@ -61,27 +79,27 @@ class Cambrure {
         $this->setIgz($_array[7]);
     }
 
-    public function initIgz($param, $next){
-        $tmoy = ($this->getYextra()+$next->getYextra())/2 - ($this->getYintra()+$next->getYintra())/2;
-        $igzi = pow($param->getDx()*$tmoy, 3)/12;
+    public function initIgz($param, $next) {
+        $tmoy = ($this->getYextra() + $next->getYextra()) / 2 - ($this->getYintra() + $next->getYintra()) / 2;
+        $igzi = pow($param->getDx() * $tmoy, 3) / 12;
         $ds = $param->getDx() * $tmoy;
 
-        $this->setIgz($igiz+pow($this->getF()-$param->getYg(), 2)*$ds);
+        $this->setIgz($igzi + pow($this->getF() - $param->getYg(), 2) * $ds);
     }
 
-    public function initPg($param, $next){
-        $tmoy = ($this->getYextra()+$next->getYextra())/2 - ($this->getYintra()+$next->getYintra())/2;
+    public function initPg($param, $next) {
+        $tmoy = ($this->getYextra() + $next->getYextra()) / 2 - ($this->getYintra() + $next->getYintra()) / 2;
         $ds = $param->getDx() * $tmoy;
-        $xgi = $this->getX() + $param->getX()/2;
+        $xgi = $this->getX() + $next->getX() / 2;
 
         $this->setPxg($xgi * $ds);
-        $this->setPyg($this->getF()*$param->getDx() * $tmoy);
+        $this->setPyg($this->getF() * $param->getDx() * $tmoy);
     }
 
-    public function setId($_id){
+    public function setId($_id) {
         $this->id = $_id;
     }
-    
+
     public function setX($_x) {
         $this->x = strval($_x);
     }
@@ -110,15 +128,15 @@ class Cambrure {
         $this->Igz = strval($_Igz);
     }
 
-    public function setPxg($_pxg){
+    public function setPxg($_pxg) {
         $this->pxg = $_pxg;
     }
 
-    public function setPyg($_pyg){
+    public function setPyg($_pyg) {
         $this->pyg = $_pyg;
     }
-    
-    public function getId(){
+
+    public function getId() {
         return $this->id;
     }
 
@@ -150,18 +168,19 @@ class Cambrure {
         return doubleval($this->Igz);
     }
 
-    public function getPxg(){
+    public function getPxg() {
         return $this->pxg;
     }
 
-    public function getPyg(){
+    public function getPyg() {
         return $this->pyg;
     }
 
-    public function getDsi($param, $next){
-        $tmoy = ($this->getYextra()+$next->getYextra())/2 - ($this->getYintra()+$next->getYintra())/2;
+    public function getDsi($param, $next) {
+        $tmoy = ($this->getYextra() + $next->getYextra()) / 2 - ($this->getYintra() + $next->getYintra()) / 2;
         return $param->getDx() * $tmoy;
     }
+
 }
 
 ?>
