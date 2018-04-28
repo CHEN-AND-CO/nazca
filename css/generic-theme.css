@@ -1,17 +1,54 @@
 form
 {
-    display: flex;
-    flex-direction: column;
-
-    max-width: 25vw;
+    width: 50%;
+    max-width: 60vw;
 
     margin: auto;
 }
 
+.hbox
+{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+.hbox > *
+{
+    margin-left: 1em;
+}
+
+.hbox > *:first-child
+{
+    margin-left: 0;
+}
+
+.vbox
+{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.vbox > *
+{
+    margin-bottom: 1em;
+}
+
+.vbox > *:last-child
+{
+    margin-bottom: 0;
+}
+
 input
 {
+    width: 100%;
+    max-width: 60vw;
+    min-width: 10em;
+
     padding: 0.5em;
-    margin-bottom: 1em;
 
     border: solid 1px gray;
     border-radius: 5px;
