@@ -22,11 +22,11 @@ class CSVIO {
         return $out;
     }
 
-    function writeCSVFile($path, $content) {
+    function writeToCSVFile($path, $content) {
         $file = fopen($path, 'w');
 
         foreach ($content as $line) {
-            fwrite($file, $line, strlen($line));
+            fwrite($file, $line . PHP_EOL);
         }
 
         fclose($file);
@@ -78,12 +78,40 @@ class CSVIO {
         return $out;
     }
 
+    function cambrureArrayToArray($cambrures) {
+        $out = array();
+
+        foreach ($cambrures as $element) {
+            $tmp = array();
+
+            array_push($tmp, $element->getX());
+            array_push($tmp, $element->getT());
+            array_push($tmp, $element->getF());
+            array_push($tmp, $element->getYintra());
+            array_push($tmp, $element->getYextra());
+            array_push($tmp, $element->getId_param());
+            array_push($tmp, $element->getIgz());
+
+            array_push($out, $tmp);
+        }
+
+        return $out;
+    }
+
     function csvToCambrureArray($_raw) {
         return self::arrayToCambrureArray(self::csvToArray($_raw));
     }
 
+    function cambrureArrayToCsv($cambrures) {
+        return self::arrayToCsv(self::cambrureArrayToArray($cambrures));
+    }
+
     function getCSVFileAsCambrureArray($_path) {
         return self::csvToCambrureArray(self::getCSVFile($_path));
+    }
+
+    function writeCambrureArrayToCSVFile($path, $content) {
+        self::writeToCSVFile($path, self::cambrureArrayToCsv($content));
     }
 
 }
