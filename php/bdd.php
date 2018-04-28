@@ -149,7 +149,33 @@ class BDDIO{
         return $result;
     }
 
-      public function AddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
+    public function RemoveParam($_id){
+        try{
+            $request = 'delete from parametre where id=:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+        }catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function dbRemoveParam($db, $_id){
+        try{
+            $request = 'delete from parametre where id=:id';
+            $statement = $db->prepare($request);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+        }catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function AddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
         try {
             $request = 'insert into cambrure(x, t, f, yintra, yextra, id_param, lgx)
             values(:x, :t, :f, :yintra, :yextra, :id_param, :lgx)';
