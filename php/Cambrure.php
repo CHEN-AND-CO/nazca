@@ -21,7 +21,7 @@ class Cambrure {
 
         //=-(1,015*PUISSANCE(A3/$H$3; 4) -2,843*PUISSANCE(A3/$H$3; 3)+3,516*PUISSANCE(A3/$H$3; 2)+1,26*(A3/$H$3)-2,969*RACINE(A3/$H$3))*$H$5
         $this->setT(
-                -( 1.015 * pow($x_sur_c, 4) - 2.843 * pow($x_sur_c, 3) + 3.516 * pow($x_sur_c, 2) + 1.26 * $x_sur_c - 2.969 * sqrt($x_sur_c) * $param->getTmax() )
+                -( 1.015 * pow($x_sur_c, 4) - 2.843 * pow($x_sur_c, 3) + 3.516 * pow($x_sur_c, 2) + 1.26 * $x_sur_c - 2.969 * sqrt($x_sur_c) )* $param->getTmax()
         );
 
         $this->setF(-4 * (pow($x_sur_c, 2) - ($x_sur_c)) * $param->getFmax());
