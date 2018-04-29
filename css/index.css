@@ -168,3 +168,15 @@ footer .container
 {
     /*font-size: 2em;*/
 }
+
+#btn-add
+{
+    display: block;
+
+    width: 10em;
+
+    margin: 1em;
+
+    font-size: 0.8em;
+    text-align: center;
+}

@@ -20,7 +20,7 @@
 
             <h2>Accueil > Liste des enregistrements</h2>
 
-            <a class="button" href="add.php">Nouveau profil</a>
+            <a class="button" id="btn-add" href="add.php">Nouveau profil</a>
 
             <?php
             require_once('php/bdd.php');
