@@ -103,7 +103,7 @@ class BDDIO {
     }
 
     public function deleteParam($_id) {
-        if (RemoveCambruresFromParam($_id) && RemoveParam($_id)) {
+        if ($this->RemoveCambruresFromParam($_id) && $this->RemoveParam($_id)) {
             return true;
         } else {
             return false;
