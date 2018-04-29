@@ -62,7 +62,7 @@
 
                         $param = new Parametre;
 
-                        $param->init(0, $libelle, $corde, $tmax_p, $fmax_p, ($tmax_p/100)*$corde, ($fmax_p/100)*$corde, $nb_points, $date, $fic_img, $fic_csv);
+                        $param->init(0, $libelle, $corde, $tmax_p, $fmax_p, ($tmax_p / 100) * $corde, ($fmax_p / 100) * $corde, $nb_points, $date, $fic_img, $fic_csv);
 
                         if ($action === 'add_param') {
                             if ($db->AddParamObject($param)) {
