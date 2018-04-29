@@ -32,14 +32,14 @@
             echo '<table class="flat-table"><thead><td>#</td><td>Enregistrement</td></thead>';
             foreach ($params as $param) {
                 echo '<tr>';
-                echo '<td class="id">' . $param->getId() . '</td>';
-                echo '<td class="param-item">';
-                echo '<span>' . $param->getLibelle() . '</span>';
-                echo '<div>';
-                echo '<button class="edit-button" onclick="location.href=\'consultation.php?identifiant=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
-                echo '<button class="delete-button" onclick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
-                echo '</div>';
-                echo '</td>';
+                    echo '<td class="id">' . $param->getId() . '</td>';
+                    echo '<td class="param-item">';
+                        echo '<span>' . $param->getLibelle() . '</span>';
+                        echo '<div>';
+                            echo '<button class="edit-button" onclick="location.href=\'consultation.php?identifiant=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
+                            echo '<button class="delete-button" onclick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
+                        echo '</div>';
+                    echo '</td>';
                 echo '</tr>';
             }
             echo '</table>';
