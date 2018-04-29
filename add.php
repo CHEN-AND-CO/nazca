@@ -27,11 +27,6 @@
                     <input type="number" name="fmax_p" id="fmax_p" step="any" min="0" placeholder="F max (pourcentage)">
                 </div>
 
-                <div class="hbox">
-                    <input type="number" name="tmax" id="tmax" step="any" min="0" placeholder="T max">
-                    <input type="number" name="fmax" id="fmax" step="any" min="0" placeholder="F max">
-                </div>
-
                 <input type="number" name="nb_points" id="nb_points" step="1" min="0" max="10000" placeholder="Nombre de points de calcul">
 
                 <button type="submit">Enregistrer et créer le profil</button>

@@ -40,14 +40,14 @@
                     $corde = filter_input(INPUT_GET, 'corde', FILTER_SANITIZE_NUMBER_FLOAT);
                     $tmax_p = filter_input(INPUT_GET, 'tmax_p', FILTER_SANITIZE_NUMBER_FLOAT);
                     $fmax_p = filter_input(INPUT_GET, 'fmax_p', FILTER_SANITIZE_NUMBER_FLOAT);
-                    $tmax = filter_input(INPUT_GET, 'tmax', FILTER_SANITIZE_NUMBER_FLOAT);
-                    $fmax = filter_input(INPUT_GET, 'fmax', FILTER_SANITIZE_NUMBER_FLOAT);
+                    //$tmax = filter_input(INPUT_GET, 'tmax', FILTER_SANITIZE_NUMBER_FLOAT);
+                    //$fmax = filter_input(INPUT_GET, 'fmax', FILTER_SANITIZE_NUMBER_FLOAT);
                     $nb_points = filter_input(INPUT_GET, 'nb_points', FILTER_SANITIZE_NUMBER_INT);
                     $date = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_STRING);
                     $fic_img = filter_input(INPUT_GET, 'fic_img', FILTER_SANITIZE_URL);
                     $fic_csv = filter_input(INPUT_GET, 'fic_csv', FILTER_SANITIZE_URL);
 
-                    if (!(isset($libelle) && isset($corde) && isset($tmax_p) && isset($fmax_p) && isset($tmax) && isset($fmax) && isset($nb_points))) {
+                    if (!(isset($libelle) && isset($corde) && isset($tmax_p) && isset($fmax_p) && isset($nb_points))) {
                         echo '<h2> ERREUR: Une ou des valeurs requises pour la création d\'un paramètre est/sont invalide(s) </h2>';
                     } else {
                         if (!isset($date)) {
@@ -62,7 +62,7 @@
 
                         $param = new Parametre;
 
-                        $param->init(0, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv);
+                        $param->init(0, $libelle, $corde, $tmax_p, $fmax_p, ($tmax_p/100)*$corde, ($fmax_p/100)*$corde, $nb_points, $date, $fic_img, $fic_csv);
 
                         if ($action === 'add_param') {
                             if ($db->AddParamObject($param)) {
