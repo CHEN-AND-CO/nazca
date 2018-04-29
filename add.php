@@ -20,19 +20,19 @@
                 <input type="hidden" name="action" value="add_param">
 
                 <input type="text" name="libelle" id="libelle" placeholder="Nom de l'enregistrement">
-                <input type="number" name="corde" id="corde" step="any" placeholder="Corde">
+                <input type="number" name="corde" min="0" step="0.001" id="corde" placeholder="Corde">
 
                 <div class="hbox">
-                    <input type="number" name="tmax_p" id="tmax_p" step="any" placeholder="T max (pourcentage)">
-                    <input type="number" name="fmax_p" id="fmax_p" step="any" placeholder="F max (pourcentage)">
+                    <input type="number" name="tmax_p" id="tmax_p" step="any" min="0" placeholder="T max (pourcentage)">
+                    <input type="number" name="fmax_p" id="fmax_p" step="any" min="0" placeholder="F max (pourcentage)">
                 </div>
 
                 <div class="hbox">
-                    <input type="number" name="tmax" id="tmax" step="any" placeholder="T max">
-                    <input type="number" name="fmax" id="fmax" step="any" placeholder="F max">
+                    <input type="number" name="tmax" id="tmax" step="any" min="0" placeholder="T max">
+                    <input type="number" name="fmax" id="fmax" step="any" min="0" placeholder="F max">
                 </div>
 
-                <input type="number" name="nb_points" id="nb_points" placeholder="Nombre de points de calcul">
+                <input type="number" name="nb_points" id="nb_points" step="1" min="0" max="10000" placeholder="Nombre de points de calcul">
 
                 <button type="submit">Enregistrer et créer le profil</button>
             </form>
