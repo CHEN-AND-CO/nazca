@@ -26,9 +26,10 @@
                     if (!isset($id)) {
                         echo '<h2> ERREUR: vous n\'avez pas précisé quel paramètre à supprimer</h2>';
                     } else if ($db->RemoveParam($id)) {
-                        echo '<h2> Vous avez réussi à supprimer le paramètre ! </h2>';
+                        header("Location: /");
+                        exit;
                     } else {
-                        echo '<h2> ERREUR: Impossible de supprimer le paramètre ...</h2>';
+                        echo '<h2> ERREUR: Impossible de supprimer le paramètre</h2>';
                     }
                 } else if ($action === 'add_param' || $action === 'update_param') {
                     if ($action === 'update_param') {
