@@ -25,7 +25,7 @@
 
                     if (!isset($id)) {
                         echo '<h2> ERREUR: vous n\'avez pas précisé quel paramètre à supprimer</h2>';
-                    } else if ($db->RemoveParam($id)) {
+                    } else if ($db->deleteParam($id)) {
                         header("Location: /");
                         exit;
                     } else {

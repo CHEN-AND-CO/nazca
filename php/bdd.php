@@ -102,9 +102,30 @@ class BDDIO {
         return $result;
     }
 
+    public function deleteParam($_id) {
+        if (RemoveCambruresFromParam($_id) && RemoveParam($_id)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function RemoveParam($_id) {
         try {
             $request = 'delete from parametre where id=:id';
+            $statement = $this->getBdd()->prepare($request);
+            $statement->bindParam(':id', $_id, PDO::PARAM_INT);
+            $result = $statement->execute();
+        } catch (PDOException $exception) {
+            error_log('Request error: ' . $exception->getMessage());
+            return false;
+        }
+        return $result;
+    }
+
+    public function RemoveCambruresFromParam($_id) {
+        try {
+            $request = 'delete from cambrure where id_param=:id';
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $_id, PDO::PARAM_INT);
             $result = $statement->execute();
