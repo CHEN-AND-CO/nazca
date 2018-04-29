@@ -79,7 +79,7 @@
                                 array_push($cambrures, $one);
 
                                 /* Génération des autres cambrures */
-                                for ($i = 1; $i < $parametre->getNb_points(); $i++) {
+                                for ($i = 1; $i < $parametre->getNb_points() + 1; $i++) {
                                     $tmp = new Cambrure;
                                     $tmp->create($parametre, $cambrures[$i - 1]);
 
