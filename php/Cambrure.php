@@ -9,7 +9,7 @@ class Cambrure {
     private $yintra;
     private $yextra;
     private $id_param;
-    private $Igz;
+    private $lgx;
     private $pxg, $pyg;
 
     public function create($param, $prev) {
@@ -124,7 +124,7 @@ class Cambrure {
     }
 
     public function setIgz($_Igz) {
-        $this->Igz = strval($_Igz);
+        $this->lgx = strval($_Igz);
     }
 
     public function setPxg($_pxg) {
@@ -164,7 +164,7 @@ class Cambrure {
     }
 
     public function getIgz() {
-        return doubleval($this->Igz);
+        return doubleval($this->lgx);
     }
 
     public function getPxg() {
