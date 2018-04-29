@@ -13,7 +13,7 @@ $db = new BDDIO;
 
 $data = CSVIO::cambrureArrayToArray($db->RequestAllCambruresFromParam($id));
 
-for ($i=0; $i <= sizeof($data); $i++)
+for ($i=0; $i < sizeof($data); $i++)
 { 
     for ($j=0; $j < sizeof($data[$i]); $j++)
     { 
@@ -21,7 +21,7 @@ for ($i=0; $i <= sizeof($data); $i++)
     }
 }
 
-for ($i=0; $i <= sizeof($values[0]); $i++)
+for ($i=0; $i < sizeof($values[0]); $i++)
 { 
     $values[0][$i] = round($values[0][$i], 0);
 }
