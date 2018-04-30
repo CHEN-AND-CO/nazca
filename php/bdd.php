@@ -58,7 +58,7 @@ class BDDIO {
     /**
      * Ajoute un objet paramètre à la base de données
      * 
-     * @param Parametre $param
+     * @param Parametre $param  paramètre à ajouter
      * 
      * @return boolean
      * @throws Exception si erreur de connexion à la BDD
@@ -70,12 +70,12 @@ class BDDIO {
     /**
      * Ajoute un paramètre à la base de données
      * 
-     * @param string $libelle
-     * @param double $corde
-     * @param double $tmax_p
-     * @param double $fmax_p
-     * @param double $tmax
-     * @param double $fmax
+     * @param string $libelle   nom du paramètre
+     * @param double $corde     valeur de la corde
+     * @param double $tmax_p    valeur de tmax en pourcentages
+     * @param double $fmax_p    valeur de fmax en pourcentages
+     * @param double $tmax      valeur de tmax
+     * @param double $fmax      valeur de fmax
      * @param int $nb_points
      * @param string $date
      * @param string $fic_img
@@ -114,7 +114,7 @@ class BDDIO {
      * 
      * @param int $id
      * 
-     * @return Parametre|boolean $result
+     * @return array|boolean $result
      * @throws Exception si erreur de requète à la BDD
      */
     public function RequestParam($id) {
