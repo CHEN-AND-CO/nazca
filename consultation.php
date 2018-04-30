@@ -76,6 +76,8 @@
                     }
 
                     echo '</table>';
+                    
+                    echo $param->getS($cambrures);
                 }
             }
             ?>
