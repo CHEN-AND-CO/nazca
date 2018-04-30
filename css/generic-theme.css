@@ -163,6 +163,6 @@ table.flat-table thead
     position: sticky;
     top: 0;
     z-index: 99;
-    
+
     background-color: white !important;
 }

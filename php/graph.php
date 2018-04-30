@@ -12,12 +12,18 @@ require_once("../jpgraph/jpgraph.php");
 require_once("../jpgraph/jpgraph_line.php");
 
 
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-
-if (isset($id)) {
+function createGraph($id)
+{
     $db = new BDDIO;
 
     $data = CSVIO::cambrureArrayToArray($db->RequestAllCambruresFromParam($id));
+    $param = $db->RequestParam($id)[0];
+
+    if ( !$param )
+    {
+        echo "ERR_GRAPH_NOPARAM<br>The requested parameter cannot be retrieved.";
+        exit;
+    }
 
     //Invert rows and columns
     for ($i = 0; $i < sizeof($data); $i++) {
@@ -36,17 +42,17 @@ if (isset($id)) {
     // Specify what scale we want to use,
     // int = integer scale for the X-axis
     // int = integer scale for the Y-axis
-    $graph->SetScale('intint');
+    $graph->SetScale('intint', 0, 0, 0, sizeof($values[0])* 1.01);
 
     // Setup a title for the graph
-    $graph->title->Set('Test 1');
+    $graph->title->Set("Aperçu du profil ".$param->getLibelle());
 
     // Setup titles and X-axis labels
     $graph->xaxis->title->Set('(x)');
     $graph->xaxis->SetTickLabels($values[0]);
 
     // Setup Y-axis title
-    $graph->yaxis->title->Set('(Y extrados)');
+    $graph->yaxis->title->Set('(y)');
 
     // Create the linear plot
     $yextra = new LinePlot($values[4]);
@@ -57,11 +63,22 @@ if (isset($id)) {
     $graph->Add($yextra);
     $graph->Add($yintra);
 
-    $yextra->SetColor('blue@0.5');
-    $yintra->SetColor('blue@0.5');
+    $yextra->SetColor( array(43, 91, 161) );
+    $yintra->SetColor( array(43, 91, 161) );
+    $yextra->SetWeight(1);
+    $yintra->SetWeight(1);
 
-    $graph->img->SetAntialiasing();
     // Display the graph
     $graph->Stroke();
 }
+
+/*
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+if (isset($id))
+{
+    createGraph($id);
+}
+*/
+
 ?>
