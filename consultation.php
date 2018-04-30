@@ -37,7 +37,7 @@
                 echo '<td>' . round( $cambrure->getYintra(), 2) . '</td>';
                 echo '<td>' . round( $cambrure->getYextra(), 2) . '</td>';
                 echo '<td>' . round( $cambrure->getId_param(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getIgz(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getIgz(), 5) . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
