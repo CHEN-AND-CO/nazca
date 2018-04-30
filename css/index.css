@@ -177,9 +177,19 @@ footer .container
 
 #params
 {
+    max-width: 25%;
     list-style: none;
     margin-bottom: 5em;
 }
+
+ul#params li
+{
+    display: flex;
+    justify-content: space-between;
+
+    text-align: right;
+}
+
 
 #btn-add
 {
