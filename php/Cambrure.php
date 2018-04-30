@@ -1,7 +1,7 @@
 <?php
 
 class Cambrure {
-    
+
     private $id;
     private $x;
     private $t;
@@ -86,7 +86,7 @@ class Cambrure {
         $this->setId_param($_id_param);
         $this->setIgz($_Igz);
     }
-    
+
     /**
      * Charge les valeurs de la cambrure depuis un tableau
      * 
@@ -102,7 +102,7 @@ class Cambrure {
         $this->setId_param($_array[6]);
         $this->setIgz($_array[7]);
     }
-    
+
     /**
      * Initialise la valeur de Igz
      * 
@@ -164,62 +164,138 @@ class Cambrure {
         $this->t = strval($_t);
     }
 
+    /**
+     * Setter de f
+     * 
+     * @param double $_f
+     */
     public function setF($_f) {
         $this->f = strval($_f);
     }
 
+    /**
+     * Setter de Yintrados
+     * 
+     * @param double $_yintra
+     */
     public function setYintra($_yintra) {
         $this->yintra = strval($_yintra);
     }
 
+    /**
+     * Setter de Yextrados
+     * 
+     * @param double $y_extra
+     */
     public function setYextra($y_extra) {
         $this->yextra = strval($y_extra);
     }
 
+    /**
+     * Setter de l'identifiant du paramètre auquel la cambrure appartient
+     * 
+     * @param int $_id_param
+     */
     public function setId_param($_id_param) {
         $this->id_param = $_id_param;
     }
 
+    /**
+     * Setter de Igz / lgx
+     * 
+     * @param double $_Igz
+     */
     public function setIgz($_Igz) {
         $this->lgx = strval($_Igz);
     }
 
+    /**
+     * Setter de xg pondéré local
+     * 
+     * @param double $_pxg
+     */
     public function setPxg($_pxg) {
         $this->pxg = $_pxg;
     }
 
+    /**
+     * Setter de xg local
+     * 
+     * @param double $_pyg
+     */
     public function setPyg($_pyg) {
         $this->pyg = $_pyg;
     }
 
+    /**
+     * Getter de l'id de la cambrure
+     * 
+     * @return int
+     */
     public function getId() {
         return $this->id;
     }
 
+    /**
+     * Getter de x
+     * 
+     * @return double
+     */
     public function getX() {
         return doubleval($this->x);
     }
 
+    /**
+     * Getter de t
+     * 
+     * @return double
+     */
     public function getT() {
         return doubleval($this->t);
     }
 
+    /**
+     * Getter de f
+     * 
+     * @return double
+     */
     public function getF() {
         return doubleval($this->f);
     }
 
+    /**
+     * Getter de yintrados
+     * 
+     * @return double
+     */
     public function getYintra() {
         return doubleval($this->yintra);
     }
-
+    
+    /**
+     * Getter de yextrados
+     * 
+     * @return double
+     */
     public function getYextra() {
         return doubleval($this->yextra);
     }
 
+    /**
+     * Getter de l'identifiant du paramètre auquel appartient la cambrure
+     * 
+     * @return int
+     */
     public function getId_param() {
         return $this->id_param;
     }
 
+    /**
+     * Getter de xg local
+     * 
+     * @param parametre $param
+     * @return double
+     */
     public function getXgi($param) {
         return $this->getX() + ($param->getDx() / 2);
     }
