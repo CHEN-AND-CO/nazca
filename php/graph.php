@@ -8,8 +8,9 @@
 
 require_once("CSVIO.php");
 require_once("bdd.php");
-require_once(__DIR__."/../jpgraph/jpgraph.php");
+/*require_once(__DIR__."/../jpgraph/jpgraph.php");
 require_once(__DIR__."/../jpgraph/jpgraph_line.php");
+require_once(__DIR__."/../jpgraph/jpgraph_scatter.php");*/
 
 
 function createGraph($id, $fileURI = NULL)
@@ -24,6 +25,13 @@ function createGraph($id, $fileURI = NULL)
         echo "ERR_GRAPH_NOPARAM<br>The requested parameter cannot be retrieved.";
         exit;
     }
+
+    echo "begin<br>";
+    echo "Xg : ".$param->getXg();
+    echo "<pre>";
+    var_dump($param->getYg());
+    echo "</pre><br>end";
+    exit;
 
     //Invert rows and columns
     $values = array();
@@ -59,16 +67,19 @@ function createGraph($id, $fileURI = NULL)
     $f = new LinePlot($values[2]);
     $yextra = new LinePlot($values[4]);
     $yintra = new LinePlot($values[3]);
+    $g = new Scatter( array($param->getXg(), $param->getYg()) );
 
     // Add the plot to the graph
     $graph->Add($yextra);
     $graph->Add($yintra);
     $graph->Add($f);
+    $graph->Add($g);
 
     // Set some parameters
     $yextra->SetColor( array(43, 91, 161) );
     $yintra->SetColor( array(43, 91, 161) );
     $f->SetColor( array(53, 141, 201) );
+    $g->SetColor('yellow');
 
     $yextra->SetWeight(1);
     $yintra->SetWeight(1);
@@ -79,14 +90,14 @@ function createGraph($id, $fileURI = NULL)
     $graph->Stroke($fileURI);
 }
 
-/*
+
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if (isset($id))
 {
     createGraph($id);
 }
-*/
+
 
 
 ?>
