@@ -1,7 +1,7 @@
 <?php
 
 class Cambrure {
-
+    
     private $id;
     private $x;
     private $t;
@@ -12,6 +12,12 @@ class Cambrure {
     private $lgx;
     private $pxg, $pyg;
 
+    /**
+     * Crée une cambrure en calculant les valeurs
+     * 
+     * @param parametre $param  parametre de la cambrure
+     * @param cambrure $prev    cambrure precedente dans le paramètre
+     */
     public function create($param, $prev) {
         $this->setId($prev->getId() + 1);
 
