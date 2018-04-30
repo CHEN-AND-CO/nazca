@@ -95,6 +95,7 @@
                                 }
                                 $cambrures[$parametre->getNb_points() - 1]->initPg($parametre, $cambrures[0]);
                                 $parametre->initXg($cambrures);
+                                $parametre->initYg($cambrures);
 
                                 /* Calcul des Igz */
                                 for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
