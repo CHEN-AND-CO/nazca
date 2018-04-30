@@ -1,12 +1,17 @@
 <?php
 
+/**
+ * @Author: Gwenolé Leroy-Ferrec
+ * @Company: CHEN AND CO
+ * @Email: herrcrazi@gmail.com
+ */
+
 require_once("CSVIO.php");
 require_once("bdd.php");
 require_once("../jpgraph/jpgraph.php");
 require_once("../jpgraph/jpgraph_line.php");
 
 
-//$data = CSVIO::csvToArray(CSVIO::getCSVFile("../test.csv"));
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if (isset($id)) {
@@ -14,40 +19,41 @@ if (isset($id)) {
 
     $data = CSVIO::cambrureArrayToArray($db->RequestAllCambruresFromParam($id));
 
+    //Invert rows and columns
     for ($i = 0; $i < sizeof($data); $i++) {
         for ($j = 0; $j < sizeof($data[$i]); $j++) {
             $values[$j][$i] = $data[$i][$j];
         }
     }
-
+    //Generate the graph x-axis labels
     for ($i = 0; $i < sizeof($values[0]); $i++) {
         $values[0][$i] = round($values[0][$i], 0);
     }
 
-// Create a graph instance
+    // Create a graph instance
     $graph = new Graph(800, 300);
 
-// Specify what scale we want to use,
-// int = integer scale for the X-axis
-// int = integer scale for the Y-axis
+    // Specify what scale we want to use,
+    // int = integer scale for the X-axis
+    // int = integer scale for the Y-axis
     $graph->SetScale('intint');
 
-// Setup a title for the graph
+    // Setup a title for the graph
     $graph->title->Set('Test 1');
 
-// Setup titles and X-axis labels
+    // Setup titles and X-axis labels
     $graph->xaxis->title->Set('(x)');
     $graph->xaxis->SetTickLabels($values[0]);
 
-// Setup Y-axis title
+    // Setup Y-axis title
     $graph->yaxis->title->Set('(Y extrados)');
 
-// Create the linear plot
+    // Create the linear plot
     $yextra = new LinePlot($values[4]);
     $yintra = new LinePlot($values[3]);
 
 
-// Add the plot to the graph
+    // Add the plot to the graph
     $graph->Add($yextra);
     $graph->Add($yintra);
 
@@ -55,7 +61,7 @@ if (isset($id)) {
     $yintra->SetColor('blue@0.5');
 
     $graph->img->SetAntialiasing();
-// Display the graph
+    // Display the graph
     $graph->Stroke();
 }
 ?>
