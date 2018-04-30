@@ -20,32 +20,36 @@
 
             <h2>Accueil > Liste des enregistrements</h2>
 
-            <a class="button" id="btn-add" href="add.php">Nouveau profil</a>
+            
 
-            <?php
-            require_once('php/bdd.php');
+            <table class="flat-table" id="plist" >
+                <thead>
+                    <td>#</td>
+                    <td>Enregistrement <a class="button" id="btn-add" href="add.php">Nouveau profil</a></td>
+                </thead>
 
-            $db = new BDDIO;
+                <?php
+                require_once('php/bdd.php');
 
-            $params = $db->RequestAllParams();
+                $db = new BDDIO;
 
-            echo '<table class="flat-table"><thead><td>#</td><td>Enregistrement</td></thead>';
-            foreach ($params as $param) {
-                echo '<tr>';
-                    echo '<td class="id">' . $param->getId() . '</td>';
-                    echo '<td class="param-item">';
-                        echo '<span>' . $param->getLibelle() . '</span>';
-                        echo '<div>';
-                            echo '<button class="edit-button" onclick="location.href=\'consultation.php?identifiant=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
-                            echo '<button class="delete-button" onclick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
-                        echo '</div>';
-                    echo '</td>';
-                echo '</tr>';
-            }
-            echo '</table>';
-            //Faire des trucs
-            ?>
+                $params = $db->RequestAllParams();
 
+                foreach ($params as $param) {
+                    echo '<tr>';
+                        echo '<td class="id">' . $param->getId() . '</td>';
+                        echo '<td class="param-item">';
+                            echo '<span>' . $param->getLibelle() . '</span>';
+                            echo '<div>';
+                                echo '<button class="edit-button" onclick="location.href=\'consultation.php?identifiant=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
+                                echo '<button class="delete-button" onclick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
+                            echo '</div>';
+                        echo '</td>';
+                    echo '</tr>';
+                }
+                //Faire des trucs
+                ?>
+            </table>
         </div>
 
         <?php

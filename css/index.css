@@ -138,13 +138,12 @@ footer .container
     margin: auto;
 }
 
-.param-item
+.param-item, table#plist thead td:last-child
 {
     display: flex;
     justify-content: space-between;
     align-content: center;
 
-    vertical-align: middle;
     line-height: 2em;
 }
 
@@ -175,8 +174,8 @@ footer .container
 
     width: 10em;
 
-    margin: 1em;
-
     font-size: 0.8em;
     text-align: center;
+    line-height: 1.6em;
 }
+

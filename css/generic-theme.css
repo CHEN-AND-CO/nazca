@@ -114,7 +114,7 @@ td
     text-align: left;
 }
 
-tr:nth-child(even), thead td
+tr:nth-child(even)
 {
     background-color: rgb(245, 245, 245);
 }
@@ -152,17 +152,12 @@ table.flat-table tr:nth-child(odd)
     background-color: rgb(230, 230, 230);
 }
 
-table.flat-table thead, table.flat-table thead *
-{
-    background-color: transparent !important;
-    border: none;
-}
-
-table.flat-table thead
+table.flat-table thead tr
 {
     position: sticky;
     top: 0;
     z-index: 99;
 
+    border: none;
     background-color: white !important;
 }

@@ -57,7 +57,7 @@
                         /* Nom des fichiers image et csv */
                         $filename = sizeof( $db->RequestAllParams() ).str_replace(' ', '_', $libelle);
                         $fic_img = '/res/img/'.$filename.'.jpg';
-                        $fic_csv = '/res/csv/'.$filename.'.jpg';
+                        $fic_csv = '/res/csv/'.$filename.'.csv';
 
                         $param = new Parametre;
 
