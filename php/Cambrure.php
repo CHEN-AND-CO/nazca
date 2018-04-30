@@ -39,6 +39,11 @@ class Cambrure {
         $this->setIgz(0);
     }
 
+    /**
+     * Génère la première cambrure du paramètre
+     * 
+     * @param parametre $param  parametre de la cambrure
+     */
     public function genesis($param) {
         $this->setId(0);
         $this->setX(0);
@@ -59,6 +64,18 @@ class Cambrure {
         $this->setIgz(0);
     }
 
+    /**
+     * Initialise la cambrure
+     * 
+     * @param int $_id
+     * @param double $_x
+     * @param double $_t
+     * @param double $_f
+     * @param double $_yintra
+     * @param double $_yextra
+     * @param int $_id_param
+     * @param double $_Igz
+     */
     public function init($_id, $_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_Igz) {
         $this->setId($_id);
         $this->setX($_x);
