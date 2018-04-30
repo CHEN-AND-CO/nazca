@@ -8,11 +8,11 @@
 
 require_once("CSVIO.php");
 require_once("bdd.php");
-require_once("../jpgraph/jpgraph.php");
-require_once("../jpgraph/jpgraph_line.php");
+require_once(__DIR__."/../jpgraph/jpgraph.php");
+require_once(__DIR__."/../jpgraph/jpgraph_line.php");
 
 
-function createGraph($id)
+function createGraph($id, $fileURI = NULL)
 {
     $db = new BDDIO;
 
@@ -69,7 +69,7 @@ function createGraph($id)
     $yintra->SetWeight(1);
 
     // Display the graph
-    $graph->Stroke();
+    $graph->Stroke($fileURI);
 }
 
 /*
@@ -80,5 +80,6 @@ if (isset($id))
     createGraph($id);
 }
 */
+
 
 ?>

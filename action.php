@@ -14,6 +14,7 @@
         <div class="main-content">
             <?php
             require_once('php/bdd.php');
+            require_once('php/graph.php');
 
             $db = new BDDIO;
 
@@ -44,8 +45,7 @@
                     //$fmax = filter_input(INPUT_GET, 'fmax', FILTER_SANITIZE_NUMBER_FLOAT);
                     $nb_points = filter_input(INPUT_GET, 'nb_points', FILTER_SANITIZE_NUMBER_INT);
                     $date = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_STRING);
-                    $fic_img = filter_input(INPUT_GET, 'fic_img', FILTER_SANITIZE_URL);
-                    $fic_csv = filter_input(INPUT_GET, 'fic_csv', FILTER_SANITIZE_URL);
+                    
 
                     if (!(isset($libelle) && isset($corde) && isset($tmax_p) && isset($fmax_p) && isset($nb_points))) {
                         echo '<h2> ERREUR: Une ou des valeurs requises pour la création d\'un paramètre est/sont invalide(s) </h2>';
@@ -53,12 +53,11 @@
                         if (!isset($date)) {
                             $date = date_create()->format('Y-m-d');
                         }
-                        if (!isset($fic_csv)) {
-                            $fic_csv = '#';
-                        }
-                        if (!isset($fic_img)) {
-                            $fic_img = '#';
-                        }
+
+                        /* Nom des fichiers image et csv */
+                        $filename = sizeof( $db->RequestAllParams() ).str_replace(' ', '_', $libelle);
+                        $fic_img = '/res/img/'.$filename.'.jpg';
+                        $fic_csv = '/res/csv/'.$filename.'.jpg';
 
                         $param = new Parametre;
 
@@ -107,6 +106,11 @@
                                         echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $parametre->getLibelle() . ' !</h2>';
                                     }
                                 }
+
+                                /* Création des fichiers CSV et image */
+                                echo __DIR__.$fic_img;
+                                createGraph(17, __DIR__.$fic_img);
+                                
                             } else {
                                 echo '<h2> ERREUR: Impossible d\'ajouter ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
                             }
