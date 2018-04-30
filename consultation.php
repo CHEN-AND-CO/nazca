@@ -23,26 +23,31 @@
             <?php
             require_once('php/bdd.php');
 
-            $db = new BDDIO;
+            $identifiant = filter_input(INPUT_GET, 'identifiant', FILTER_SANITIZE_NUMBER_INT);
+            
+            if (isset($identifiant)) {
+                $db = new BDDIO;
 
-            $cambrures = $db->RequestAllCambruresFromParam(intval($_GET['identifiant']));
+                $cambrures = $db->RequestAllCambruresFromParam($identifiant);
 
-            echo '<table class="flat-table"><thead><td>id</td><td>x</td><td>f</td><td>t</td><td>yintra</td><td>yextra</td><td>id_param</td><td>Igz</td></thead>';
-            foreach ($cambrures as $cambrure) {
-                echo '<tr>';
-                echo '<td>' . round( $cambrure->getId(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getX(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getF(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getT(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getYintra(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getYextra(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getId_param(), 2) . '</td>';
-                echo '<td>' . round( $cambrure->getIgz(), 5) . '</td>';
-                echo '</tr>';
+                echo '<table class="flat-table"><thead><td>id</td><td>x</td><td>f</td><td>t</td><td>yintra</td><td>yextra</td><td>id_param</td><td>Igz</td></thead>';
+                foreach ($cambrures as $cambrure) {
+                    echo '<tr>';
+                    echo '<td>' . round($cambrure->getId(), 2) . '</td>';
+                    echo '<td>' . round($cambrure->getX(), 2) . '</td>';
+                    echo '<td>' . round($cambrure->getF(), 2) . '</td>';
+                    echo '<td>' . round($cambrure->getT(), 2) . '</td>';
+                    echo '<td>' . round($cambrure->getYintra(), 2) . '</td>';
+                    echo '<td>' . round($cambrure->getYextra(), 2) . '</td>';
+                    echo '<td>' . round($cambrure->getId_param(), 2) . '</td>';
+                    echo '<td>' . round($cambrure->getIgz(), 5) . '</td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
+
+                CSVIO::writeCambrureArrayToCSVFile('test' . date_create()->format('Y-m-d') . '.csv', $cambrures);
             }
-            echo '</table>';
-
-
+            
             echo '<br></br><h2> test de chargement de CSV </h2>';
 
             require_once('php/CSVIO.php');
@@ -63,8 +68,6 @@
                 echo '</tr>';
             }
             echo '</table>';
-
-            CSVIO::writeCambrureArrayToCSVFile('test' . date_create()->format('Y-m-d') . '.csv', $cambrures);
             ?>
 
         </div>

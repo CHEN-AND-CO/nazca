@@ -13,18 +13,37 @@ class BDDIO {
 
     private $bdd;
 
+    /**
+     * Constructeur de l'interface de gestion de la bdd
+     */
     public function BDDIO() {
         $this->Connect();
     }
 
+    /**
+     * Retourne l'objet PDO mysql stocké dans la classe
+     *
+     * @return PDO
+     */
     public function getBdd() {
         return $this->bdd;
     }
 
+    /**
+     * Stocke un objet PDO dans la classe
+     * 
+     * @param PDO $_bdd
+     */
     public function setBdd($_bdd) {
         $this->bdd = $_bdd;
     }
 
+    /**
+     * Connecte l'objet PDO à la base de donnée en utilisant les constantes
+     *  
+     * @return boolean
+     * @throws Exception si erreur de connexion à la BDD
+     */
     public function Connect() {
         try {
             $this->setBdd(new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASSWORD));
@@ -36,20 +55,35 @@ class BDDIO {
         return $this->getBdd();
     }
 
-    public function dbConnect() {
-        try {
-            $db = new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASSWORD);
-        } catch (PDOException $exception) {
-            error_log('Connection error: ' . $exception->getMessage());
-            return false;
-        }
-        return $db;
-    }
-
+    /**
+     * Ajoute un objet paramètre à la base de données
+     * 
+     * @param Parametre $param
+     * 
+     * @return boolean
+     * @throws Exception si erreur de connexion à la BDD
+     */
     public function AddParamObject($param) {
         return $this->AddParam($param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_csv());
     }
 
+    /**
+     * Ajoute un paramètre à la base de données
+     * 
+     * @param string $libelle
+     * @param double $corde
+     * @param double $tmax_p
+     * @param double $fmax_p
+     * @param double $tmax
+     * @param double $fmax
+     * @param int $nb_points
+     * @param string $date
+     * @param string $fic_img
+     * @param string $fic_csv 
+     * 
+     * @return boolean
+     * @throws Exception si erreur de connexion à la BDD
+     */
     public function AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
         try {
             $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, nb_points, date, fic_img, fic_csv)
@@ -75,6 +109,14 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Demande un paramètre spécifique à la BDD
+     * 
+     * @param int $id
+     * 
+     * @return Parametre|boolean $result
+     * @throws Exception si erreur de requète à la BDD
+     */
     public function RequestParam($id) {
         try {
             $request = 'select * from parametre where id=:id';
@@ -89,6 +131,12 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Demande tous les parametres à la BDD
+     * 
+     * @return array|boolean $result
+     * @throws Exception si erreur de requète à la BDD
+     */
     public function RequestAllParams() {
         try {
             $request = 'select * from parametre';
@@ -102,6 +150,13 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Enlève un paramètre spécifique et ces cambrures associées de la BDD
+     * 
+     * @param int $_id
+     * 
+     * @return boolean
+     */
     public function deleteParam($_id) {
         if ($this->RemoveCambruresFromParam($_id) && $this->RemoveParam($_id)) {
             return true;
@@ -110,6 +165,14 @@ class BDDIO {
         }
     }
 
+    /**
+     * Enlève un paramètre spécifique de la BDD
+     * 
+     * @param int $_id
+     * 
+     * @return boolean
+     * @throws Exception si erreur de requète à la BDD
+     */
     public function RemoveParam($_id) {
         try {
             $request = 'delete from parametre where id=:id';
@@ -123,6 +186,14 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Enlève toutes les cambrures d'un paramètre spécifié de la BDD
+     * 
+     * @param int $_id
+     * 
+     * @return boolean
+     * @throws Exception si erreur de requète à la BDD
+     */
     public function RemoveCambruresFromParam($_id) {
         try {
             $request = 'delete from cambrure where id_param=:id';
@@ -136,6 +207,24 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Modifie les valeurs d'un paramètre spécifique de la BDD
+     * 
+     * @param int $id
+     * @param string $libelle
+     * @param double $corde
+     * @param double $tmax_p
+     * @param double $fmax_p
+     * @param double $tmax
+     * @param double $fmax
+     * @param int $nb_points
+     * @param string $date
+     * @param string $fic_img
+     * @param string $fic_csv
+     * 
+     * @return boolean
+     * @throws Exception si erreur de connexion à la BDD
+     */
     public function UpdateParam($id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
         try {
             $request = 'update parametre set libelle=:libelle, corde=:corde, tmax_p=:tmax_p, fmax_p=:fmax_p, tmax=:tmax, fmax=:fmax, nb_points=:nb_points, date=:date, fic_img=:fic_img, fic_csv=:fic_csv where id=:id';
@@ -162,10 +251,31 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Modifie un paramètre spécifique de la BDD
+     * 
+     * @param int $id
+     * @param Parametre $param
+     * @return boolean
+     */
     public function UpdateParamObject($id, $param) {
         return $this->UpdateParam($id, $param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_csv());
     }
 
+    /**
+     * Ajoute une cambrure à la BDD
+     * 
+     * @param double $x
+     * @param double $t
+     * @param double $f
+     * @param double $yintra
+     * @param double $yextra
+     * @param int $id_param
+     * @param double $lgx
+     * 
+     * @return boolean
+     * @throws Exception si erreur de connexion à la BDD
+     */
     public function AddCambrure($x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
         try {
             $request = 'insert into cambrure(x, t, f, yintra, yextra, id_param, lgx)
@@ -189,10 +299,25 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Ajoute un objet cambrure à la BDD
+     * 
+     * @param Cambrure $cambrure
+     * 
+     * @return boolean
+     */
     public function AddCambrureObject($cambrure) {
         return $this->AddCambrure($cambrure->getX(), $cambrure->getT(), $cambrure->getF(), $cambrure->getYintra(), $cambrure->getYextra(), $cambrure->getId_param(), $cambrure->getIgz());
     }
 
+    /**
+     * Demande toutes les cambrures d'un paramètre de la BDD
+     * 
+     * @param int $id_param
+     * 
+     * @return boolean|array $result
+     * @throws Exception si erreur de requète
+     */
     public function RequestAllCambruresFromParam($id_param) {
         try {
             $request = 'select * from cambrure where id_param=:id_param';
@@ -207,6 +332,14 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Demande une cambrure spécifique à la BDD
+     * 
+     * @param int $id
+     * 
+     * @return boolean
+     * @throws Exception si erreur de requète à la BDD
+     */
     public function RequestCambrure($id) {
         try {
             $request = 'select * from cambrure where id=:id';
@@ -221,6 +354,21 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Modifie les valeurs d'une cambrure de la BDD
+     * 
+     * @param int $id
+     * @param double $x
+     * @param double $t
+     * @param double $f
+     * @param double $yintra
+     * @param double $yextra
+     * @param int $id_param
+     * @param double $lgx
+     * 
+     * @return boolean
+     * @throws Exception si erreur de connexion à la BDD
+     */
     public function UpdateCambrure($id, $x, $t, $f, $yintra, $yextra, $id_param, $lgx) {
         try {
             $request = 'update cambrure set x=:x, t=:t, f=:f, yintra=:yintra, yextra=:yextra, id_param=:id_param, lgx=:lgx where id=:id';
@@ -244,6 +392,14 @@ class BDDIO {
         return $result;
     }
 
+    /**
+     * Modifie les valeurs d'une cambrure de la BDD
+     * 
+     * @param int $id
+     * @param cambrure $cambrure
+     * 
+     * @return boolean
+     */
     public function UpdateCambrureObject($id, $cambrure) {
         return $this->UpdateCambrure($id, $cambrure->getX(), $cambrure->getT(), $cambrure->getF(), $cambrure->getYintra(), $cambrure->getYextra(), $cambrure->getId_param(), $cambrure->getIgz());
     }
