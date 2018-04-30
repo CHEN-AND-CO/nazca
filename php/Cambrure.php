@@ -88,6 +88,12 @@ class Cambrure {
         $this->setPyg($this->getF() * $this->getDsi($param, $next));
     }
 
+    public function clear() {
+        $this->init(0, 0, 0, 0, 0, 0, 0, 0);
+        $this->setPxg(0);
+        $this->setPyg(0);
+    }
+
     public function setId($_id) {
         $this->id = $_id;
     }
@@ -177,7 +183,7 @@ class Cambrure {
     }
 
     public function getTmoy($next) {
-        return ($this->getYextra() + $next->getYextra()) / 2 - ($this->getYintra() + $next->getYextra()) / 2;
+        return ($this->getYextra() + $next->getYextra() - $this->getYintra() - $next->getYintra()) / 2;
     }
 
     public function getDsi($param, $next) {

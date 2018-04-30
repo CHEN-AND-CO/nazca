@@ -8,6 +8,7 @@
     </head>
 
     <body id="#page-list">
+        <!-- Inclusion Header -->
         <?php
         include("res/header.html");
         ?>
@@ -19,8 +20,6 @@
             </div>
 
             <h2>Accueil > Liste des enregistrements</h2>
-
-            
 
             <table class="flat-table" id="plist" >
                 <thead>
@@ -52,6 +51,7 @@
             </table>
         </div>
 
+        <!-- Inclusion Footer -->
         <?php
         include("res/footer.html");
         ?>

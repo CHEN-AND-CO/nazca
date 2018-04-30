@@ -26,6 +26,7 @@ function createGraph($id, $fileURI = NULL)
     }
 
     //Invert rows and columns
+    $values = array();
     for ($i = 0; $i < sizeof($data); $i++) {
         for ($j = 0; $j < sizeof($data[$i]); $j++) {
             $values[$j][$i] = $data[$i][$j];

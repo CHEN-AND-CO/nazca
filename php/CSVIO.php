@@ -25,21 +25,29 @@ class CSVIO {
     function writeToCSVFile($path, $content) {
         $file = fopen($path, 'w');
 
-        foreach ($content as $line) {
-            fwrite($file, $line . PHP_EOL);
+        if (isset($file)) {
+            foreach ($content as $line) {
+                fwrite($file, $line . PHP_EOL);
+            }
+
+            return fclose($file);
         }
 
-        fclose($file);
+        return false;
     }
 
     function addToCSVFile($path, $content) {
         $file = fopen($path, 'a');
 
-        foreach ($content as $line) {
-            fwrite($file, $line, strlen($line));
+        if (isset($file)) {
+            foreach ($content as $line) {
+                fwrite($file, $line, strlen($line));
+            }
+
+            return fclose($file);
         }
 
-        fclose($file);
+        return false;
     }
 
     function csvToArray($_raw) {
