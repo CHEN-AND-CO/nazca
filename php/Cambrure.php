@@ -86,7 +86,12 @@ class Cambrure {
         $this->setId_param($_id_param);
         $this->setIgz($_Igz);
     }
-
+    
+    /**
+     * Charge les valeurs de la cambrure depuis un tableau
+     * 
+     * @param array $_array
+     */
     public function load($_array) {
         $this->setId($_array[0]);
         $this->setX($_array[1]);
@@ -97,7 +102,13 @@ class Cambrure {
         $this->setId_param($_array[6]);
         $this->setIgz($_array[7]);
     }
-
+    
+    /**
+     * Initialise la valeur de Igz
+     * 
+     * @param parametre $param
+     * @param cambrure $next
+     */
     public function initIgz($param, $next) {
         $this->setIgz(
                 $this->getIgiz($param, $next) +
