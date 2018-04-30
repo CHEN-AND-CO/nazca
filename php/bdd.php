@@ -76,10 +76,10 @@ class BDDIO {
      * @param double $fmax_p    valeur de fmax en pourcentages
      * @param double $tmax      valeur de tmax
      * @param double $fmax      valeur de fmax
-     * @param int $nb_points
-     * @param string $date
-     * @param string $fic_img
-     * @param string $fic_csv 
+     * @param int $nb_points    nombre de points
+     * @param string $date      date de création du paramètre
+     * @param string $fic_img   emplacement fichier image
+     * @param string $fic_csv   emplacement fichier csv
      * 
      * @return boolean
      * @throws Exception si erreur de connexion à la BDD
@@ -112,7 +112,7 @@ class BDDIO {
     /**
      * Demande un paramètre spécifique à la BDD
      * 
-     * @param int $id
+     * @param int $id   identifiant du paramètre
      * 
      * @return array|boolean $result
      * @throws Exception si erreur de requète à la BDD
@@ -153,7 +153,7 @@ class BDDIO {
     /**
      * Enlève un paramètre spécifique et ces cambrures associées de la BDD
      * 
-     * @param int $_id
+     * @param int $_id  identifiant du paramètre
      * 
      * @return boolean
      */
@@ -168,7 +168,7 @@ class BDDIO {
     /**
      * Enlève un paramètre spécifique de la BDD
      * 
-     * @param int $_id
+     * @param int $_id  identifiant du paramètre
      * 
      * @return boolean
      * @throws Exception si erreur de requète à la BDD
@@ -189,7 +189,7 @@ class BDDIO {
     /**
      * Enlève toutes les cambrures d'un paramètre spécifié de la BDD
      * 
-     * @param int $_id
+     * @param int $_id  identifiant du paramètre
      * 
      * @return boolean
      * @throws Exception si erreur de requète à la BDD
@@ -210,17 +210,17 @@ class BDDIO {
     /**
      * Modifie les valeurs d'un paramètre spécifique de la BDD
      * 
-     * @param int $id
-     * @param string $libelle
-     * @param double $corde
-     * @param double $tmax_p
-     * @param double $fmax_p
-     * @param double $tmax
-     * @param double $fmax
-     * @param int $nb_points
-     * @param string $date
-     * @param string $fic_img
-     * @param string $fic_csv
+     * @param int $id           identifiant du paramètre
+     * @param string $libelle   description du paramètre
+     * @param double $corde     valeur de la corde
+     * @param double $tmax_p    valeur de tmax en poucentages
+     * @param double $fmax_p    valeur de fmax en pourcentages
+     * @param double $tmax      valeur de tmax
+     * @param double $fmax      valeur de fmax
+     * @param int $nb_points    nombre de points
+     * @param string $date      date de création
+     * @param string $fic_img   emplacement du fichier image
+     * @param string $fic_csv   emplacement du fichier csv
      * 
      * @return boolean
      * @throws Exception si erreur de connexion à la BDD
