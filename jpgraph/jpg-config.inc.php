@@ -139,12 +139,11 @@ define('SUPERSAMPLING_SCALE', 1);
 
 define('ANTIALIASING', false);
 
-/*
 if(!ANTIALIASING){
     function imageantialias($image, $enabled){
         return true;
     }
 }
-*/
+
 
 ?>
