@@ -110,6 +110,7 @@
                                 /* Création des fichiers CSV et image */
                                 echo __DIR__.$fic_img;
                                 createGraph(17, __DIR__.$fic_img);
+                                CSVIO::writeCambrureArrayToCSVFile(__DIR__.$fic_csv, $cambrures);
                                 
                             } else {
                                 echo '<h2> ERREUR: Impossible d\'ajouter ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
