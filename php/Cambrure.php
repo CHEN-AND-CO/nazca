@@ -169,7 +169,7 @@ class Cambrure {
     }
 
     public function getXgi($param) {
-        return $this->getX() + $param->getDx() / 2;
+        return $this->getX() + ($param->getDx() / 2);
     }
 
     public function getIgz() {

@@ -75,7 +75,10 @@ function createGraph($id, $fileURI = NULL) {
     $yextra->SetColor(array(43, 91, 161));
     $yintra->SetColor(array(43, 91, 161));
     $f->SetColor(array(53, 141, 201));
-    $g->SetColor('yellow');
+    $g->SetColor('blue');
+
+    $g->mark->SetType(MARK_FILLEDCIRCLE);
+    $g->mark->SetFillColor("yellow");
 
     $yextra->SetWeight(1);
     $yintra->SetWeight(1);
