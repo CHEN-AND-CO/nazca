@@ -36,15 +36,19 @@
                 {
                     echo "<h2>Profil <i>".$param->getLibelle()."</i></h2>";
 
-                    echo '<ul>';
+                    echo '<img src="' . $param->getFic_img() . '" alt="Pas d\'aperçu disponible" class="graph">';
+
+                    echo '<h3>Caractéristiques</h3>';
+                    echo '<ul id="params">';
                         echo '<li><b>N° : </b>' . $param->getId() . '</li>';
                         echo '<li><b>Nom : </b>' . $param->getLibelle() . '</li>';
                         echo '<li><b>Corde : </b>' . $param->getCorde() . ' mm</li>';
-                        echo '<li><b>T<sub>max</sub> : </b>' . $param->getTmax() . 'mm (' . $param->getTmax_p() . ' %)</li>';
-                        echo '<li><b>F<sub>max</sub> : </b>' . $param->getFmax() . 'mm (' . $param->getFmax_p() . ' %)</li>';
-                        echo '<li><b>Nom : </b>' . $param->getLibelle() . '</li>';
+                        echo '<li><b>T<sub>max</sub> : </b>' . $param->getTmax() . ' mm (' . $param->getTmax_p() . ' %)</li>';
+                        echo '<li><b>F<sub>max</sub> : </b>' . $param->getFmax() . ' mm (' . $param->getFmax_p() . ' %)</li>';
+                        echo '<li><b>Points de calcul : </b>' . $param->getNb_points() . '</li>';
                     echo '</ul>';
-                    
+
+
                     $cambrures = $db->RequestAllCambruresFromParam(intval($_GET['id']));
 
                     echo '<table class="flat-table">';

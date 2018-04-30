@@ -167,6 +167,14 @@ footer .container
     /*font-size: 2em;*/
 }
 
+.graph
+{
+    float: right;
+    max-width: 50%;
+
+    margin-left: 5em;
+}
+
 #btn-add
 {
     display: block;

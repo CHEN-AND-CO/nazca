@@ -109,7 +109,7 @@
 
                                 /* Création des fichiers CSV et image */
                                 echo __DIR__.$fic_img;
-                                createGraph(17, __DIR__.$fic_img);
+                                createGraph($id, __DIR__.$fic_img);
                                 CSVIO::writeCambrureArrayToCSVFile(__DIR__.$fic_csv, $cambrures);
                                 
                             } else {
