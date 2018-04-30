@@ -27,7 +27,7 @@
                     if (!isset($id)) {
                         echo '<h2> ERREUR: vous n\'avez pas précisé quel paramètre à supprimer</h2>';
                     } else if ($db->deleteParam($id)) {
-                        header("Location: /");
+                        header("Location: index.php");
                         exit;
                     } else {
                         echo '<h2> ERREUR: Impossible de supprimer le paramètre</h2>';
@@ -60,8 +60,8 @@
                         
                         /* Nom des fichiers image et csv */
                         $filename = $id.str_replace(' ', '_', $libelle);
-                        $fic_img = '/res/img/'.$filename.'.jpg';
-                        $fic_csv = '/res/csv/'.$filename.'.csv';
+                        $fic_img = 'res/img/'.$filename.'.jpg';
+                        $fic_csv = 'res/csv/'.$filename.'.csv';
 
                         $param = new Parametre;
 
@@ -116,7 +116,7 @@
                                 createGraph($id, __DIR__.$fic_img);
                                 CSVIO::writeCambrureArrayToCSVFile(__DIR__.$fic_csv, $cambrures);
 
-                                header('Location: /consultation.php?id='.$id);
+                                header('Location: consultation.php?id='.$id);
                                 
                             } else {
                                 echo '<h2> ERREUR: Impossible d\'ajouter ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
@@ -140,7 +140,7 @@
                 echo "<br>ERR_ACTION_UNSET";
             }
 
-            echo '<a class="button" href="/">Retour à l\'acceuil</a>';
+            echo '<a class="button" href="index.php">Retour à l\'acceuil</a>';
             ?>
         </div>
         <?php
