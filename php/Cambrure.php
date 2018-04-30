@@ -117,25 +117,49 @@ class Cambrure {
         );
     }
 
+    /**
+     * Initialise les valeurs de yg local et xg local
+     * 
+     * @param parametre $param
+     * @param cambrure $next
+     */
     public function initPg($param, $next) {
         $this->setPxg($this->getXgi($param) * $this->getDsi($param, $next));
         $this->setPyg($this->getF() * $this->getDsi($param, $next));
     }
 
+    /**
+     * Met tous les parametres de la cambrure à 0
+     */
     public function clear() {
         $this->init(0, 0, 0, 0, 0, 0, 0, 0);
         $this->setPxg(0);
         $this->setPyg(0);
     }
 
+    /**
+     * Setter de l'id de la cambrure
+     * 
+     * @param int $_id
+     */
     public function setId($_id) {
         $this->id = $_id;
     }
 
+    /**
+     * Setter de x
+     * 
+     * @param double $_x
+     */
     public function setX($_x) {
         $this->x = strval($_x);
     }
 
+    /**
+     * Setter de t
+     * 
+     * @param double $_t
+     */
     public function setT($_t) {
         $this->t = strval($_t);
     }
