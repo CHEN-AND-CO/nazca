@@ -31,6 +31,15 @@ class Parametre {
         $this->setYg(0);
     }
 
+    public function initG($cambrures) {
+        for ($i = 0; $i < $this->getNb_points() - 1; $i++) {
+            $cambrures[$i]->initPg($this, $cambrures[$i + 1]);
+        }
+        $cambrures[$this->getNb_points() - 1]->initPg($this, $cambrures[0]);
+        $this->initXg($cambrures);
+        $this->initYg($cambrures);
+    }
+
     public function initXg($cambrures) {
         $this->xg = 0;
 
