@@ -54,32 +54,38 @@ function createGraph($id, $fileURI = NULL)
     // Setup Y-axis title
     $graph->yaxis->title->Set('(y)');
 
-    // Create the linear plot
+    // Create the linear plot (with both upper and lower profiles and the median line)
+    $f = new LinePlot($values[2]);
     $yextra = new LinePlot($values[4]);
     $yintra = new LinePlot($values[3]);
-
 
     // Add the plot to the graph
     $graph->Add($yextra);
     $graph->Add($yintra);
+    $graph->Add($f);
 
+    // Set some parameters
     $yextra->SetColor( array(43, 91, 161) );
     $yintra->SetColor( array(43, 91, 161) );
+    $f->SetColor( array(53, 141, 201) );
+
     $yextra->SetWeight(1);
     $yintra->SetWeight(1);
+    $f->SetWeight(1);
+    $f->SetStyle('dashed');
 
     // Display the graph
     $graph->Stroke($fileURI);
 }
 
-/*
+
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if (isset($id))
 {
     createGraph($id);
 }
-*/
+
 
 
 ?>
