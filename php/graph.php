@@ -79,14 +79,14 @@ function createGraph($id, $fileURI = NULL)
     $graph->Stroke($fileURI);
 }
 
-
+/*
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if (isset($id))
 {
     createGraph($id);
 }
-
+*/
 
 
 ?>
