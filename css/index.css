@@ -192,3 +192,8 @@ footer .container
     line-height: 1.6em;
 }
 
+#btn-csv
+{
+    float: right;
+    font-size: 0.8em;
+}

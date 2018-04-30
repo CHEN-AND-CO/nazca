@@ -34,6 +34,7 @@
 
                 if ($param) 
                 {
+                    echo '<a class="button" id="btn-csv" href="'.$param->getFic_csv().'">Télécharger au format CSV</a>';
                     echo "<h2>Profil <i>".$param->getLibelle()."</i></h2>";
 
                     echo '<img src="' . $param->getFic_img() . '" alt="Pas d\'aperçu disponible" class="graph">';
