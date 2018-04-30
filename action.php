@@ -45,7 +45,7 @@
                     //$fmax = filter_input(INPUT_GET, 'fmax', FILTER_SANITIZE_NUMBER_FLOAT);
                     $nb_points = filter_input(INPUT_GET, 'nb_points', FILTER_SANITIZE_NUMBER_INT);
                     $date = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_STRING);
-                    
+
 
                     if (!(isset($libelle) && isset($corde) && isset($tmax_p) && isset($fmax_p) && isset($nb_points))) {
                         echo '<h2> ERREUR: Une ou des valeurs requises pour la création d\'un paramètre est/sont invalide(s) </h2>';
@@ -54,14 +54,11 @@
                             $date = date_create()->format('Y-m-d');
                         }
 
-                        /* Récupération de l'ID du dernier profil */
-                        $tmp_allParams = $db->RequestAllParams();
-                        $id = $tmp_allParams[sizeof($tmp_allParams) -1]->getId() +1;
-                        
                         /* Nom des fichiers image et csv */
-                        $filename = $id.str_replace(' ', '_', $libelle);
-                        $fic_img = '/res/img/'.$filename.'.jpg';
-                        $fic_csv = '/res/csv/'.$filename.'.csv';
+                        //$filename = $id.str_replace(' ', '_', $libelle);
+                        $filename = str_replace(' ', '_', $libelle) . '-' . $date;
+                        $fic_img = '/res/img/' . $filename . '.jpg';
+                        $fic_csv = '/res/csv/' . $filename . '.csv';
 
                         $param = new Parametre;
 
@@ -82,13 +79,13 @@
                                 array_push($cambrures, $one);
 
                                 /* Génération des autres cambrures */
-                                for ($i = 1; $i < $parametre->getNb_points()+1; $i++) {
+                                for ($i = 1; $i < $parametre->getNb_points() + 1; $i++) {
                                     $tmp = new Cambrure;
                                     $tmp->create($parametre, $cambrures[$i - 1]);
 
                                     array_push($cambrures, $tmp);
                                 }
-                                
+
                                 /* Préparation au calcul du centre de gravité */
                                 for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
                                     $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]);
@@ -112,12 +109,15 @@
                                     }
                                 }
 
-                                /* Création des fichiers CSV et image */
-                                createGraph($id, __DIR__.$fic_img);
-                                CSVIO::writeCambrureArrayToCSVFile(__DIR__.$fic_csv, $cambrures);
+                                /* Récupération de l'ID du dernier profil */
+                                $tmp_allParams = $db->RequestAllParams();
+                                $id = $tmp_allParams[sizeof($tmp_allParams) - 1]->getId() + 1;
 
-                                header('Location: consultation.php?id='.$id);
-                                
+                                /* Création des fichiers CSV et image */
+                                createGraph($id, __DIR__ . $fic_img);
+                                CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $fic_csv, $cambrures);
+
+                                header('Location: consultation.php?id=' . $id);
                             } else {
                                 echo '<h2> ERREUR: Impossible d\'ajouter ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
                             }
