@@ -88,7 +88,7 @@
 
                                     array_push($cambrures, $tmp);
                                 }
-
+                                
                                 /* Préparation au calcul du centre de gravité */
                                 for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
                                     $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]);

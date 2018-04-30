@@ -87,6 +87,12 @@ class Cambrure {
         $this->setPxg($this->getXgi($param) * $this->getDsi($param, $next));
         $this->setPyg($this->getF() * $this->getDsi($param, $next));
     }
+    
+    public function clear(){
+       $this->init(0, 0, 0, 0, 0, 0, 0, 0);
+       $this->setPxg(0);
+       $this->setPyg(0);
+    }
 
     public function setId($_id) {
         $this->id = $_id;
