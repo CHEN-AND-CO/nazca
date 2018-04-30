@@ -160,8 +160,9 @@ class Parametre {
     public function getS($cambrures) {
         $s = 0;
         for ($i = 0; $i < $this->getNb_points() - 1; $i++) {
-           // $s += $cambrures[$i] . getDsi($this, $cambrures[i + 1]);
+            $s += $cambrures[$i]->getDsi($this, $cambrures[i + 1]);
         }
+        $s += $cambrures[$this->getNb_points() - 1]->getDsi($this, $cambrures[0]);
 
         return $s;
     }
