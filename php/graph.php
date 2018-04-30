@@ -5,33 +5,26 @@
  * @Company: CHEN AND CO
  * @Email: herrcrazi@gmail.com
  */
-
 require_once("CSVIO.php");
 require_once("bdd.php");
-/*require_once(__DIR__."/../jpgraph/jpgraph.php");
-require_once(__DIR__."/../jpgraph/jpgraph_line.php");
-require_once(__DIR__."/../jpgraph/jpgraph_scatter.php");*/
+/* require_once(__DIR__."/../jpgraph/jpgraph.php");
+  require_once(__DIR__."/../jpgraph/jpgraph_line.php");
+  require_once(__DIR__."/../jpgraph/jpgraph_scatter.php"); */
 
-
-function createGraph($id, $fileURI = NULL)
-{
+function createGraph($id, $fileURI = NULL) {
     $db = new BDDIO;
 
-    $data = CSVIO::cambrureArrayToArray($db->RequestAllCambruresFromParam($id));
     $param = $db->RequestParam($id)[0];
 
-    if ( !$param )
-    {
+    if (!$param) {
         echo "ERR_GRAPH_NOPARAM<br>The requested parameter cannot be retrieved.";
         exit;
     }
 
-    echo "begin<br>";
-    echo "Xg : ".$param->getXg();
-    echo "<pre>";
-    var_dump($param->getYg());
-    echo "</pre><br>end";
-    exit;
+    $cambrures = $db->RequestAllCambruresFromParam($id);
+    $param->initG($cambrures);
+
+    $data = CSVIO::cambrureArrayToArray($cambrures);
 
     //Invert rows and columns
     $values = array();
@@ -51,10 +44,10 @@ function createGraph($id, $fileURI = NULL)
     // Specify what scale we want to use,
     // int = integer scale for the X-axis
     // int = integer scale for the Y-axis
-    $graph->SetScale('intint', 0, 0, 0, sizeof($values[0])* 1.01);
+    $graph->SetScale('intint', 0, 0, 0, sizeof($values[0]) * 1.01);
 
     // Setup a title for the graph
-    $graph->title->Set("Aperçu du profil ".$param->getLibelle());
+    $graph->title->Set("Aperçu du profil " . $param->getLibelle());
 
     // Setup titles and X-axis labels
     $graph->xaxis->title->Set('(x)');
@@ -67,7 +60,7 @@ function createGraph($id, $fileURI = NULL)
     $f = new LinePlot($values[2]);
     $yextra = new LinePlot($values[4]);
     $yintra = new LinePlot($values[3]);
-    $g = new Scatter( array($param->getXg(), $param->getYg()) );
+    $g = new Scatter(array($param->getXg(), $param->getYg()));
 
     // Add the plot to the graph
     $graph->Add($yextra);
@@ -76,9 +69,9 @@ function createGraph($id, $fileURI = NULL)
     $graph->Add($g);
 
     // Set some parameters
-    $yextra->SetColor( array(43, 91, 161) );
-    $yintra->SetColor( array(43, 91, 161) );
-    $f->SetColor( array(53, 141, 201) );
+    $yextra->SetColor(array(43, 91, 161));
+    $yintra->SetColor(array(43, 91, 161));
+    $f->SetColor(array(53, 141, 201));
     $g->SetColor('yellow');
 
     $yextra->SetWeight(1);
@@ -90,14 +83,9 @@ function createGraph($id, $fileURI = NULL)
     $graph->Stroke($fileURI);
 }
 
-
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-if (isset($id))
-{
+if (isset($id)) {
     createGraph($id);
 }
-
-
-
 ?>
