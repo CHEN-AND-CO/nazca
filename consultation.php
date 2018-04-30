@@ -30,14 +30,14 @@
             echo '<table class="flat-table"><thead><td>id</td><td>x</td><td>f</td><td>t</td><td>yintra</td><td>yextra</td><td>id_param</td><td>Igz</td></thead>';
             foreach ($cambrures as $cambrure) {
                 echo '<tr>';
-                echo '<td>' . $cambrure->getId() . '</td>';
-                echo '<td>' . $cambrure->getX() . '</td>';
-                echo '<td>' . $cambrure->getF() . '</td>';
-                echo '<td>' . $cambrure->getT() . '</td>';
-                echo '<td>' . $cambrure->getYintra() . '</td>';
-                echo '<td>' . $cambrure->getYextra() . '</td>';
-                echo '<td>' . $cambrure->getId_param() . '</td>';
-                echo '<td>' . $cambrure->getIgz() . '</td>';
+                echo '<td>' . round( $cambrure->getId(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getX(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getF(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getT(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getYintra(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getYextra(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getId_param(), 2) . '</td>';
+                echo '<td>' . round( $cambrure->getIgz(), 2) . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
