@@ -135,6 +135,8 @@ footer .container
 .main-content
 {
     width: 80%;
+    min-height: 80vh;
+    
     margin: auto;
 }
 
