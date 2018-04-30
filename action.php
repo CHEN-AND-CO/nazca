@@ -60,8 +60,8 @@
                         
                         /* Nom des fichiers image et csv */
                         $filename = $id.str_replace(' ', '_', $libelle);
-                        $fic_img = 'res/img/'.$filename.'.jpg';
-                        $fic_csv = 'res/csv/'.$filename.'.csv';
+                        $fic_img = '/res/img/'.$filename.'.jpg';
+                        $fic_csv = '/res/csv/'.$filename.'.csv';
 
                         $param = new Parametre;
 
