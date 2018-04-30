@@ -175,6 +175,12 @@ footer .container
     margin-left: 5em;
 }
 
+#params
+{
+    list-style: none;
+    margin-bottom: 5em;
+}
+
 #btn-add
 {
     display: block;

@@ -54,8 +54,12 @@
                             $date = date_create()->format('Y-m-d');
                         }
 
+                        /* Récupération de l'ID du dernier profil */
+                        $tmp_allParams = $db->RequestAllParams();
+                        $id = $tmp_allParams[sizeof($tmp_allParams) -1]->getId() +1;
+                        
                         /* Nom des fichiers image et csv */
-                        $filename = sizeof( $db->RequestAllParams() ).str_replace(' ', '_', $libelle);
+                        $filename = $id.str_replace(' ', '_', $libelle);
                         $fic_img = '/res/img/'.$filename.'.jpg';
                         $fic_csv = '/res/csv/'.$filename.'.csv';
 
