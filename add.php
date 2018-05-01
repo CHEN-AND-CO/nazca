@@ -23,8 +23,6 @@
         
         <!-- Formulaire d'ajout/édition de profil-->
         <div class="main-content">
-            <!--iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe-->
-            <!--form class="vbox" action="action.php" target="hiddenFrame" method="GET"-->
             <form id="edit-param" class="vbox" action="action.php" method="GET">
                 <h3>Paramètres de profil</h3>
                 <input type="hidden" name="action" value="add_param">
