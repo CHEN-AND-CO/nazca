@@ -174,9 +174,6 @@ class BDDIO {
      */
     public function removeParamFiles($id) {
         $param = $this->RequestParam($id);
-        if (!isset($param)) {
-            return false;
-        }
 
         unlink($param->getFic_csv());
         unlink($param->getFic_img());
