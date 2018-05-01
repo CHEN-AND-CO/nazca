@@ -167,30 +167,65 @@ class Parametre {
         $this->tmax = strval($_tmax);
     }
 
+    /**
+     * Setter de la valeur de fmax en mm
+     * 
+     * @param double $_fmax
+     */
     public function setFmax($_fmax) {
         $this->fmax = strval($_fmax);
     }
 
+    /**
+     * Setter du nombre de points du profil
+     * 
+     * @param int $_nb_points
+     */
     public function setNb_points($_nb_points) {
         $this->nb_points = $_nb_points;
     }
 
+    /**
+     * Setter de la date de création
+     * 
+     * @param string $_date
+     */
     public function setDate($_date) {
         $this->date = $_date;
     }
 
+    /**
+     * Setter de l'emplacement du fichier image
+     * 
+     * @param string $_fic_img
+     */
     public function setFic_img($_fic_img) {
         $this->fic_img = $_fic_img;
     }
 
+    /**
+     * Setter de l'emplacement du fichier csv
+     * 
+     * @param string $_fic_csv
+     */
     public function setFic_csv($_fic_csv) {
         $this->fic_csv = $_fic_csv;
     }
 
+    /**
+     * Setter de l'abscisse du centre de gravité
+     * 
+     * @param double $_xg
+     */
     public function setXg($_xg) {
         $this->xg = $_xg;
     }
 
+    /**
+     * Setter de l'ordonnée du centre de gravité
+     * 
+     * @param double $_yg
+     */
     public function setYg($_yg) {
         $this->yg = $_yg;
     }
