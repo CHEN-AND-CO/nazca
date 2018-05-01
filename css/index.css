@@ -1,9 +1,3 @@
-.circle
-{
-    border-radius: 100%;
-    width: 4em;
-}
-
 html
 {
     /*background: url("/chenco_NAZCA_logo.png") center fixed no-repeat;*/
@@ -136,7 +130,7 @@ footer .container
 {
     width: 80%;
     min-height: 80vh;
-    
+
     margin: auto;
 }
 
@@ -192,7 +186,6 @@ ul#params li
     text-align: right;
 }
 
-
 #btn-add
 {
     display: block;
@@ -208,4 +201,9 @@ ul#params li
 {
     float: right;
     font-size: 0.8em;
+}
+
+form#edit-param
+{
+    transition: opacity 0.3s;
 }

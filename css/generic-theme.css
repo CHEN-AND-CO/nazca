@@ -178,3 +178,59 @@ table.flat-table thead tr
     border: none;
     background-color: white !important;
 }
+
+
+
+#loading
+{
+    width: 100px;
+    height: 100px;
+    animation: rotate 1s linear infinite;
+
+    transition: opacity 1s;
+}
+
+#loading.hidden
+{
+    opacity: 0;
+    z-index: -100 !important;
+}
+
+#loading, #outer-circle, #inner-circle
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+#outer-circle, #inner-circle
+{
+    border-radius: 50%;
+}
+
+#outer-circle
+{
+    width: 100px;
+    height: 100px;
+
+    background-color: var(--btn-back);
+}
+
+#inner-circle
+{
+    z-index: 99;
+    width: 100px;
+    height: 100px;
+
+    background-color: white;
+
+    transform: translate(-50%, -50%) translateX(-5px);
+}
+
+@keyframes rotate
+{
+    from { transform: translate(-50%, -50%) rotate(0); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
