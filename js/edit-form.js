@@ -1,3 +1,10 @@
+/************************************/
+/*          edit-form.js            */
+/* Gère l'animation de chargement   */
+/* du formulaire ajout/edition      */
+/* G. Leroy-Ferrec             2018 */
+/************************************/
+
 window.onload = function ()
 {
     var loadingDiv = document.getElementById('loading');

@@ -15,11 +15,13 @@
         include("res/header.html");
         ?>
 
+        <!-- Animation de chargement-->
         <div id="loading" class="hidden">
             <div id="outer-circle"></div>
             <div id="inner-circle"></div>
         </div>
         
+        <!-- Formulaire d'ajout/édition de profil-->
         <div class="main-content">
             <!--iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe-->
             <!--form class="vbox" action="action.php" target="hiddenFrame" method="GET"-->
