@@ -17,6 +17,16 @@ class Parametre {
     private $fic_csv;
     private $xg, $yg;
 
+    /**
+     * Initialisation spéciale pour calculer la rigidité du profil, renvoie la valeur de Igz totale
+     * 
+     * @param double $_corde    valeur de la corde en mm
+     * @param double $_tmax_p   valeur de tmax en %
+     * @param double $_fmax_p   valeur de fmax en %
+     * @param int $_nb_points   nombre de points du profil
+     * 
+     * @return double   $igz    Valeur de igz total
+     */
     public function rigidite($_corde, $_tmax_p, $_fmax_p, $_nb_points) {
         $this->init(0, null, $_corde, $_tmax_p, $_fmax_p, ($_tmax_p / 100) * $_corde, ($_fmax_p / 100) * $_corde, $_nb_points, null, null, null);
 
