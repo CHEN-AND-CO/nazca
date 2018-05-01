@@ -63,7 +63,7 @@ function createGraph($id, $fileURI = NULL) {
     $f = new LinePlot($values[2]);
     $yextra = new LinePlot($values[4]);
     $yintra = new LinePlot($values[3]);
-    $g = new ScatterPlot(array($param->getYg()), array($param->getXg()));
+    $g = new ScatterPlot(array($param->getYg()), array( $param->getXg() * ($param->getNb_points() / $param->getCorde()) ));
 
     // Add the plot to the graph
     $graph->Add($yextra);
