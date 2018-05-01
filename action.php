@@ -79,6 +79,7 @@
                             if ($db->AddParamObject($param)) {// Si ajout réussi
                                 echo '<h2> Vous avez rajouté ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
 
+                                /* On récupère le paramètre ajouté */
                                 $dirtytmp = $db->RequestAllParams();
                                 $parametre = $dirtytmp[sizeof($dirtytmp) - 1];
 
@@ -99,11 +100,11 @@
 
                                 /* Préparation au calcul du centre de gravité */
                                 for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
-                                    $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]);
+                                    $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
                                 }
-                                $cambrures[$parametre->getNb_points() - 1]->initPg($parametre, $cambrures[0]);
-                                $parametre->initXg($cambrures);
-                                $parametre->initYg($cambrures);
+                                $cambrures[$parametre->getNb_points() - 1]->initPg($parametre, $cambrures[0]); //Pareil pour le dernier
+                                $parametre->initXg($cambrures); //Calcul de l'abscisse du point G
+                                $parametre->initYg($cambrures); //Calcul de l'ordonnée du point G
 
                                 /* Calcul des Igz */
                                 for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
@@ -114,28 +115,25 @@
                                 /* Ajout des cambrures */
                                 foreach ($cambrures as $cambrure) {
                                     if ($db->AddCambrureObject($cambrure)) {
-                                        
+                                        // Ajout réussi
                                     } else {
                                         echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $parametre->getLibelle() . ' !</h2>';
                                     }
                                 }
 
-                                /* Récupération de l'ID du dernier profil */
-                                $tmp_allParams = $db->RequestAllParams();
-                                $id = $tmp_allParams[sizeof($tmp_allParams) - 1]->getId() + 1;
-
                                 /* Création des fichiers CSV et image */
-                                createGraph($id, __DIR__ . $fic_img);
+                                createGraph($parametre->getId(), __DIR__ . $fic_img);
                                 CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $fic_csv, $cambrures);
 
-                                header('Location: consultation.php?id=' . $id);
-                            } else {
+                                /* Redirection vers la page de consultation du paramètre créé */
+                                header('Location: consultation.php?id=' . $parametre->getId());
+                            } else {//Si ajout raté
                                 echo '<h2> ERREUR: Impossible d\'ajouter ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
                             }
-                        } else {
-                            if ($db->UpdateParam($id, $param)) {
+                        } else { // Si onveut modifier un paramètre
+                            if ($db->UpdateParam($id, $param)) { //Si modification réussie
                                 echo '<h2> Vous avez modifié ' . $param->getLibelle() . ' avec succès ! </h2>';
-                            } else {
+                            } else {//Sinon
                                 echo '<h2> ERREUR: Impossible de modifier ' . $param->getLibelle() . ' dans la Base de donnée !</h2>';
                             }
                         }
@@ -144,16 +142,19 @@
                     echo "<br>ERR_ACTION_NOTIMPL";
                 } else if ($action === 'add_cambrure') {
                     echo "<br>ERR_ACTION_NOTIMPL";
-                } else {
+                } else { //Si action inconnue
                     echo '<h2> ERREUR: Cette action n\'existe pas </h2>';
                 }
-            } else {
+            } else { //Si pas d'action précisée
                 echo "<br>ERR_ACTION_UNSET";
             }
 
-            echo '<a class="button" href="index.php">Retour à l\'acceuil</a>';
+            /* Bouton de retour ç l'accueil */
+            echo '<a class="button" href="index.php">Retour à l\'accueil</a>';
             ?>
         </div>
+
+        <!-- Inclusion Footer -->
         <?php
         include("res/footer.html");
         ?>
