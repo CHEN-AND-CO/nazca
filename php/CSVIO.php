@@ -12,7 +12,7 @@ class CSVIO {
     /**
      * Récupération d'un fichier CSV
      * 
-     * @param string $path
+     * @param string $path  Emplacement du fichier
      * 
      * @return array
      */
@@ -32,8 +32,8 @@ class CSVIO {
     /**
      * Ecriture d'un fichier CSV
      * 
-     * @param string $path
-     * @param array $content
+     * @param string $path      Emplacement du fichier
+     * @param array $content    Contenu à écrire
      * 
      * @return boolean
      */
@@ -54,8 +54,8 @@ class CSVIO {
     /**
      * Ajout à un fichier CSV
      * 
-     * @param string $path
-     * @param array $content
+     * @param string $path      Emplacement du fichier
+     * @param array $content    Contenu du fichier
      * 
      * @return boolean
      */
@@ -76,14 +76,14 @@ class CSVIO {
     /**
      * Conversion d'un tableau format CSV en tableau de tableau de valeurs
      * 
-     * @param array $_raw
+     * @param array $raw   Tableau format CSV
      * 
-     * @return array
+     * @return array       Tableau de tableau de valeurs
      */
-    function csvToArray($_raw) {
+    function csvToArray($raw) {
         $out = array();
 
-        foreach ($_raw as $line) {
+        foreach ($raw as $line) {
             array_push($out, explode(",", $line));
         }
 
@@ -93,9 +93,9 @@ class CSVIO {
     /**
      * Conversion d'un tableau de tableau de valeurs en tableau format CSV
      * 
-     * @param array $_array
+     * @param array $_array     Tableau de tableau de valeurs
      * 
-     * @return array
+     * @return array            Tableau format CSV
      */
     function arrayToCsv($_array) {
         $out = array();
@@ -110,15 +110,15 @@ class CSVIO {
     /**
      * Conversion d'un tableau de tableau de valeurs en tableau de cambrures
      * 
-     * @param array $_array
+     * @param array $array     Tableau de tableau de valeurs
      * 
-     * @return array
+     * @return array            Tableau de cambrures
      */
-    function arrayToCambrureArray($_array) {
+    function arrayToCambrureArray($array) {
         $out = array();
         $id = 0;
 
-        foreach ($_array as $element) {
+        foreach ($array as $element) {
             array_unshift($element, $id);
             $tmp = new Cambrure;
 
