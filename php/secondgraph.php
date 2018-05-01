@@ -31,7 +31,7 @@ if (isset($id)) {
                 $tmp2 = $tmp->rigidite($param->getCorde(), $param->getTmax_p(), $i, $param->getNb_points());
                 array_push($igzs, $tmp2);
                 array_push($fmaxs, $i);
-                array_push($igzvmaxs, $tmp2 / ($param->getTmax_p() / 2));
+                array_push($igzvmaxs, $tmp2 / ($param->getTmax_p())); //Fix : pas de division par 2
             }
 
             // Create a graph instance
