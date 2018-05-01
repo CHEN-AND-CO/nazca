@@ -106,6 +106,11 @@ class Parametre {
         $this->libelle = $_libelle;
     }
 
+    /**
+     * Setter de la valeur de corde du profil
+     * 
+     * @param double $_corde
+     */
     public function setCorde($_corde) {
         $this->corde = strval($_corde);
     }
