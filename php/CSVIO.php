@@ -9,6 +9,13 @@ require_once('Cambrure.php');
 
 class CSVIO {
 
+    /**
+     * Récupération d'un fichier CSV
+     * 
+     * @param string $path
+     * 
+     * @return array
+     */
     function getCSVFile($path) {
         $out = array();
         $file = fopen($path, 'r');
@@ -22,6 +29,14 @@ class CSVIO {
         return $out;
     }
 
+    /**
+     * Ecriture d'un fichier CSV
+     * 
+     * @param string $path
+     * @param array $content
+     * 
+     * @return boolean
+     */
     function writeToCSVFile($path, $content) {
         $file = fopen($path, 'w');
 
@@ -36,6 +51,14 @@ class CSVIO {
         return false;
     }
 
+    /**
+     * Ajout à un fichier CSV
+     * 
+     * @param string $path
+     * @param array $content
+     * 
+     * @return boolean
+     */
     function addToCSVFile($path, $content) {
         $file = fopen($path, 'a');
 
@@ -50,6 +73,13 @@ class CSVIO {
         return false;
     }
 
+    /**
+     * Conversion d'un tableau format CSV en tableau de tableau de valeurs
+     * 
+     * @param array $_raw
+     * 
+     * @return array
+     */
     function csvToArray($_raw) {
         $out = array();
 
@@ -60,6 +90,13 @@ class CSVIO {
         return $out;
     }
 
+    /**
+     * Conversion d'un tableau de tableau de valeurs en tableau format CSV
+     * 
+     * @param array $_array
+     * 
+     * @return array
+     */
     function arrayToCsv($_array) {
         $out = array();
 
@@ -70,6 +107,13 @@ class CSVIO {
         return $out;
     }
 
+    /**
+     * Conversion d'un tableau de tableau de valeurs en tableau de cambrures
+     * 
+     * @param array $_array
+     * 
+     * @return array
+     */
     function arrayToCambrureArray($_array) {
         $out = array();
         $id = 0;
@@ -86,6 +130,13 @@ class CSVIO {
         return $out;
     }
 
+    /**
+     * Conversion d'un tableau de cambrures en tableau de tableau de valeurs
+     * 
+     * @param array $cambrures
+     * 
+     * @return array
+     */
     function cambrureArrayToArray($cambrures) {
         $out = array();
 
@@ -106,18 +157,45 @@ class CSVIO {
         return $out;
     }
 
+    /**
+     * Conversion d'un tableau format CSV en tableau de cambrures
+     * 
+     * @param array $_raw
+     * 
+     * @return array
+     */
     function csvToCambrureArray($_raw) {
         return self::arrayToCambrureArray(self::csvToArray($_raw));
     }
 
+    /**
+     * Conversion d'un tableau de cambrures en tableau format CSV
+     * 
+     * @param array $cambrures
+     * 
+     * @return array
+     */
     function cambrureArrayToCsv($cambrures) {
         return self::arrayToCsv(self::cambrureArrayToArray($cambrures));
     }
 
+    /**
+     * Récupération d'un tableau de cambrures stocké dans un fichier CSV
+     * 
+     * @param string $_path
+     * 
+     * @return array
+     */
     function getCSVFileAsCambrureArray($_path) {
         return self::csvToCambrureArray(self::getCSVFile($_path));
     }
 
+    /**
+     * Ecriture du tableau de cambrures dans un fichier CSV
+     * 
+     * @param string $path
+     * @param array $content
+     */
     function writeCambrureArrayToCSVFile($path, $content) {
         self::writeToCSVFile($path, self::cambrureArrayToCsv($content));
     }
