@@ -104,7 +104,9 @@
                                 for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
                                     $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
                                 }
-                                $cambrures[$parametre->getNb_points() - 1]->initPg($parametre, $cambrures[0]); //Pareil pour le dernier
+                                $vide = new Cambrure;
+                                $vide->clear();
+                                $cambrures[$parametre->getNb_points() - 1]->initPg($parametre, $vide); //Pareil pour le dernier
                                 $parametre->initXg($cambrures); //Calcul de l'abscisse du point G
                                 $parametre->initYg($cambrures); //Calcul de l'ordonnée du point G
 
@@ -112,7 +114,7 @@
                                 for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
                                     $cambrures[$i]->initIgz($parametre, $cambrures[$i + 1]);
                                 }
-                                $cambrures[$parametre->getNb_points() - 1]->initIgz($parametre, $cambrures[0]);
+                                $cambrures[$parametre->getNb_points() - 1]->initIgz($parametre, $vide);
 
                                 /* Ajout des cambrures */
                                 foreach ($cambrures as $cambrure) {
