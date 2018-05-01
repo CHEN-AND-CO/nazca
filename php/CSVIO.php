@@ -182,9 +182,9 @@ class CSVIO {
     /**
      * Récupération d'un tableau de cambrures stocké dans un fichier CSV
      * 
-     * @param string $_path
+     * @param string $_path     Emplacement du fichier
      * 
-     * @return array
+     * @return array            Contenu du fichier
      */
     function getCSVFileAsCambrureArray($_path) {
         return self::csvToCambrureArray(self::getCSVFile($_path));
@@ -193,8 +193,8 @@ class CSVIO {
     /**
      * Ecriture du tableau de cambrures dans un fichier CSV
      * 
-     * @param string $path
-     * @param array $content
+     * @param string $path      Emplacement du fichier
+     * @param array $content    Contenu à écrire
      */
     function writeCambrureArrayToCSVFile($path, $content) {
         self::writeToCSVFile($path, self::cambrureArrayToCsv($content));
