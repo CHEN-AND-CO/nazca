@@ -67,14 +67,14 @@ class Cambrure {
     /**
      * Initialise la cambrure
      * 
-     * @param int $_id
-     * @param double $_x
-     * @param double $_t
-     * @param double $_f
-     * @param double $_yintra
-     * @param double $_yextra
-     * @param int $_id_param
-     * @param double $_Igz
+     * @param int $_id          Identifiant de la cambrure
+     * @param double $_x        valeur de x de la cambrure
+     * @param double $_t        valeur de t de la cambrure
+     * @param double $_f        valeur de f de la cambrue
+     * @param double $_yintra   valeur de Yintrados
+     * @param double $_yextra   valeur de Yextrados
+     * @param int $_id_param    Identifiant du paramètre auquel appartient la cambrure
+     * @param double $_Igz      valeur de Igz
      */
     public function init($_id, $_x, $_t, $_f, $_yintra, $_yextra, $_id_param, $_Igz) {
         $this->setId($_id);
@@ -90,24 +90,24 @@ class Cambrure {
     /**
      * Charge les valeurs de la cambrure depuis un tableau
      * 
-     * @param array $_array
+     * @param array $array
      */
-    public function load($_array) {
-        $this->setId($_array[0]);
-        $this->setX($_array[1]);
-        $this->setT($_array[2]);
-        $this->setF($_array[3]);
-        $this->setYintra($_array[4]);
-        $this->setYextra($_array[5]);
-        $this->setId_param($_array[6]);
-        $this->setIgz($_array[7]);
+    public function load($array) {
+        $this->setId($array[0]);
+        $this->setX($array[1]);
+        $this->setT($array[2]);
+        $this->setF($array[3]);
+        $this->setYintra($array[4]);
+        $this->setYextra($array[5]);
+        $this->setId_param($array[6]);
+        $this->setIgz($array[7]);
     }
 
     /**
      * Initialise la valeur de Igz
      * 
-     * @param parametre $param
-     * @param cambrure $next
+     * @param parametre $param      Parametre du profil
+     * @param cambrure $next        Cambrure suivante dans le profil
      */
     public function initIgz($param, $next) {
         $this->setIgz(
@@ -120,8 +120,8 @@ class Cambrure {
     /**
      * Initialise les valeurs de yg local et xg local
      * 
-     * @param parametre $param
-     * @param cambrure $next
+     * @param parametre $param      Parametre du profil
+     * @param cambrure $next        Cambrure suivante dans le profil
      */
     public function initPg($param, $next) {
         $this->setPxg($this->getXgi($param) * $this->getDsi($param, $next));
@@ -140,7 +140,7 @@ class Cambrure {
     /**
      * Setter de l'id de la cambrure
      * 
-     * @param int $_id
+     * @param int $_id      Identifiant
      */
     public function setId($_id) {
         $this->id = $_id;
@@ -271,7 +271,7 @@ class Cambrure {
     public function getYintra() {
         return doubleval($this->yintra);
     }
-    
+
     /**
      * Getter de yextrados
      * 
@@ -300,10 +300,23 @@ class Cambrure {
         return $this->getX() + ($param->getDx() / 2);
     }
 
+    /**
+     * Getter de lgx ( valeur de igz )
+     * 
+     * @return double
+     */
     public function getIgz() {
         return doubleval($this->lgx);
     }
 
+    /**
+     * Getter de igzi ( igz local )
+     * 
+     * @param Parametre $param      Parametre de la cambrure
+     * @param type $next            Cambrure suivante dans le profil
+     * 
+     * @return double
+     */
     public function getIgiz($param, $next) {
         return pow($param->getDx() * $this->getTmoy($next), 3) / 12;
     }
