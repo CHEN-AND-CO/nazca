@@ -15,6 +15,21 @@ class Parametre {
     private $fic_csv;
     private $xg, $yg;
 
+    /**
+     * Initialisation du Paramètre/Profil
+     * 
+     * @param int $_id          identifiant du profil
+     * @param string $_libelle  description du profil
+     * @param double $_corde    valeur de corde en mm
+     * @param double $_tmax_p   valeur de tmax en pourcentages
+     * @param double $_fmax_p   valeur de fmax en pourcentages
+     * @param double $_tmax     valeur de tmax en mm
+     * @param double $_fmax     valeur de fmax en mm
+     * @param int $_nb_points   nombre de points
+     * @param string $_date     date de création
+     * @param string $_fic_img  emplacement du fichier image
+     * @param string $_fic_csv  emplacement du fichier csv
+     */
     public function init($_id, $_libelle, $_corde, $_tmax_p, $_fmax_p, $_tmax, $_fmax, $_nb_points, $_date, $_fic_img, $_fic_csv) {
         $this->setId($_id);
         $this->setLibelle($_libelle);
