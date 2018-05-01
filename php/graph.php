@@ -88,7 +88,7 @@ function createGraph($id, $fileURI = NULL) {
     $graph->Stroke($fileURI);
 }
 
-function graphRigidite($id) {
+function graphRigidite($id, $fileURI = NULL) {
     $db = new BDDIO;
     $param = $db->RequestParam($id)[0];
 
@@ -138,7 +138,7 @@ function graphRigidite($id) {
             $rigid->SetWeight(2);
 
             // Display the graph
-            $graph->Stroke();
+            $graph->Stroke($fileURI);
         }
     }
 }
