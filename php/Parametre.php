@@ -195,22 +195,47 @@ class Parametre {
         $this->yg = $_yg;
     }
 
+    /**
+     * Getter de l'identifiant du profil
+     * 
+     * @return int
+     */
     public function getId() {
         return $this->id;
     }
 
+    /**
+     * Getter de la description du profil
+     * 
+     * @return string
+     */
     public function getLibelle() {
         return $this->libelle;
     }
 
+    /**
+     * Getter de la valeur de la corde en mm
+     * 
+     * @return double
+     */
     public function getCorde() {
         return doubleval($this->corde);
     }
 
+    /**
+     * Getter de la valeur de tmax en %
+     * 
+     * @return double
+     */
     public function getTmax_p() {
         return doubleval($this->tmax_p);
     }
 
+    /**
+     * Getter de la valeur de fmax en %
+     * 
+     * @return double
+     */
     public function getFmax_p() {
         return doubleval($this->fmax_p);
     }
