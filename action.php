@@ -101,20 +101,20 @@
                                 }
 
                                 /* Préparation au calcul du centre de gravité */
-                                for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
+                                for ($i = 0; $i < $parametre->getNb_points(); $i++) {
                                     $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
                                 }
                                 $vide = new Cambrure;
                                 $vide->clear();
-                                $cambrures[$parametre->getNb_points() - 1]->initPg($parametre, $vide); //Pareil pour le dernier
+                                $cambrures[$parametre->getNb_points()]->initPg($parametre, $vide); //Pareil pour le dernier
                                 $parametre->initXg($cambrures); //Calcul de l'abscisse du point G
                                 $parametre->initYg($cambrures); //Calcul de l'ordonnée du point G
 
                                 /* Calcul des Igz */
-                                for ($i = 0; $i < $parametre->getNb_points() - 1; $i++) {
+                                for ($i = 0; $i < $parametre->getNb_points(); $i++) {
                                     $cambrures[$i]->initIgz($parametre, $cambrures[$i + 1]);
                                 }
-                                $cambrures[$parametre->getNb_points() - 1]->initIgz($parametre, $vide);
+                                $cambrures[$parametre->getNb_points()]->initIgz($parametre, $vide);
 
                                 /* Ajout des cambrures */
                                 foreach ($cambrures as $cambrure) {
