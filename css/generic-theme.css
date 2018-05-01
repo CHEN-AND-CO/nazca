@@ -1,3 +1,18 @@
+
+
+:root
+{
+    --btn-front: white;
+    --btn-back: rgb(13, 90, 161);
+    --btn-disable: rgb(82, 82, 82);
+    --btn-alt: rgb(34, 95, 34);
+
+    --input-border: gray;
+    --input-shadow: rgba(128, 128, 128, 0.651);
+    --input-border-active: rgb(197, 92, 54);
+}
+
+
 form
 {
     width: 50%;
@@ -50,7 +65,7 @@ input
 
     padding: 0.5em;
 
-    border: solid 1px gray;
+    border: solid 1px var(--input-border);
     border-radius: 5px;
 
     transition: box-shadow 0.5s, border-color 0.5s;
@@ -58,47 +73,49 @@ input
 
 input:hover
 {
-    box-shadow: 0 0 5px rgba(128, 128, 128, 0.651);
+    box-shadow: 0 0 5px var(--input-shadow);
 }
 
 input:focus
 {
-    border-color: rgb(197, 92, 54);
+    border-color: var(--input-border-active);
 }
 
 button, .button
 {
-    padding: 0.5em;
+    padding: 0.3em;
 
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
 
-    color: white;
-    background-color: rgb(13, 90, 161);
+    color: var(--btn-front);
+    background-color: var(--btn-back);
 
     border-radius: 8px;
-    border: none;
+    border: solid 2px var(--btn-back);
 
     transform: scale(1);
 
-    transition: transform 0.3s;
+    transition: color 0.3s, background-color 0.3s;
 }
 
 button.disabled, .button.disabled
 {
-    background-color: rgb(82, 82, 82);
+    background-color: var(--btn-disable);
 }
 
 button.highlighted, .button.highlighted
 {
-    background-color: rgb(34, 95, 34);
+    background-color: var(--btn-alt);
 }
 
 button:hover, .button:hover
 {
     cursor: pointer;
-    transform: scale(1.1);
+
+    color: var(--btn-back);
+    background-color: transparent;
 }
 
 
