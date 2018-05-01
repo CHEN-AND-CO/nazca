@@ -1,5 +1,7 @@
 <?php
 
+require_once('Cambrure.php');
+
 class Parametre {
 
     private $id;
@@ -14,6 +16,44 @@ class Parametre {
     private $fic_img;
     private $fic_csv;
     private $xg, $yg;
+
+    public function rigidite($_corde, $_tmax_p, $_fmax_p, $_nb_points) {
+        $this->init(0, null, $_corde, $_tmax_p, $_fmax_p, ($_tmax_p / 100) * $_corde, ($_fmax_p / 100) * $_corde, $_nb_points, null, null, null);
+
+        $cambrures = array();
+        $one = new Cambrure;
+        $one->genesis($this);
+        array_push($cambrures, $one);
+
+        /* Génération des autres cambrures */
+        for ($i = 1; $i < $this->getNb_points() + 1; $i++) {
+            $tmp = new Cambrure;
+            $tmp->create($this, $cambrures[$i - 1]);
+
+            array_push($cambrures, $tmp);
+        }
+
+        /* Préparation au calcul du centre de gravité */
+        for ($i = 0; $i < $this->getNb_points() - 1; $i++) {
+            $cambrures[$i]->initPg($this, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
+        }
+        $cambrures[$this->getNb_points() - 1]->initPg($this, $cambrures[0]); //Pareil pour le dernier
+        $this->initXg($cambrures); //Calcul de l'abscisse du point G
+        $this->initYg($cambrures); //Calcul de l'ordonnée du point G
+
+        /* Calcul des Igz */
+        for ($i = 0; $i < $this->getNb_points() - 1; $i++) {
+            $cambrures[$i]->initIgz($this, $cambrures[$i + 1]);
+        }
+        $cambrures[$this->getNb_points() - 1]->initIgz($this, $cambrures[0]);
+        
+        $igz = 0;
+        foreach($cambrures as $cambrure){
+            $igz += $cambrure->getIgz();
+        }
+        
+        return $igz;
+    }
 
     /**
      * Initialisation du Paramètre/Profil
