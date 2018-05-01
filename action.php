@@ -8,6 +8,7 @@
     </head>
 
     <body id="#page-list">
+        <!-- Inclusion Header -->
         <?php
         include("res/header.html");
         ?> 
@@ -16,6 +17,7 @@
             require_once('php/bdd.php');
             require_once('php/graph.php');
 
+            /* Initialisation de l'interface à la BDD */
             $db = new BDDIO;
 
             /* Récupération de l'action à effectuer */
