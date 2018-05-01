@@ -46,12 +46,12 @@ class Parametre {
             $cambrures[$i]->initIgz($this, $cambrures[$i + 1]);
         }
         $cambrures[$this->getNb_points() - 1]->initIgz($this, $cambrures[0]);
-        
+
         $igz = 0;
-        foreach($cambrures as $cambrure){
+        foreach ($cambrures as $cambrure) {
             $igz += $cambrure->getIgz();
         }
-        
+
         return $igz;
     }
 
@@ -215,38 +215,83 @@ class Parametre {
         return doubleval($this->fmax_p);
     }
 
+    /**
+     * Getter de la valeur de tmax en mm
+     * 
+     * @return double
+     */
     public function getTmax() {
         return doubleval($this->tmax);
     }
 
+    /**
+     * Getter de la valeur de fmax en mm
+     * 
+     * @return double
+     */
     public function getFmax() {
         return doubleval($this->fmax);
     }
 
+    /**
+     * Getter du nombre de points
+     * 
+     * @return int
+     */
     public function getNb_points() {
         return $this->nb_points;
     }
 
+    /**
+     * Getter de la date de création
+     * 
+     * @return string
+     */
     public function getDate() {
         return $this->date;
     }
 
+    /**
+     * Getter de l'emplacement du fichier image
+     * 
+     * @return string
+     */
     public function getFic_img() {
         return $this->fic_img;
     }
 
+    /**
+     * Getter de l'emplacement du fichier csv
+     * 
+     * @return string
+     */
     public function getFic_csv() {
         return $this->fic_csv;
     }
 
+    /**
+     * Getter du pas entre les différentes valeurs de x du profil
+     * 
+     * @return double
+     */
     public function getDx() {
         return ($this->getCorde() / $this->getNb_points());
     }
 
+    /**
+     * Getter de l'abscisse du centre de gravité
+     * 
+     * @return double
+     */
     public function getXg() {
         return $this->xg;
     }
 
+    /**
+     * Getter de l'ordonnée du centre de gravité
+     * 
+     * @return double
+     */
     public function getYg() {
         return $this->yg;
     }
