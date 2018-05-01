@@ -321,18 +321,43 @@ class Cambrure {
         return pow($param->getDx() * $this->getTmoy($next), 3) / 12;
     }
 
+    /**
+     * Getter de xg pondéré
+     * 
+     * @return double
+     */
     public function getPxg() {
         return $this->pxg;
     }
 
+    /**
+     * Getter de yg pondéré
+     * 
+     * @return double
+     */
     public function getPyg() {
         return $this->pyg;
     }
 
+    /**
+     * Calcul de Tmoy
+     * 
+     * @param cambrure $next    Cambrure suivant dans le profil
+     * 
+     * @return double
+     */
     public function getTmoy($next) {
         return ($this->getYextra() + $next->getYextra() - $this->getYintra() - $next->getYintra()) / 2;
     }
 
+    /**
+     * Calcul de la surface locale
+     * 
+     * @param parametre $param      profil/parametre auquel appartient la cambrure
+     * @param cambrure $next        Cambrure suivante dans le profil
+     * 
+     * @return double
+     */
     public function getDsi($param, $next) {
         return $param->getDx() * $this->getTmoy($next);
     }
