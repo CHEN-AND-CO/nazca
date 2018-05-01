@@ -155,14 +155,29 @@ class Parametre {
         $this->corde = strval($_corde);
     }
 
+    /**
+     * Setter de la valeur de tmax en %
+     * 
+     * @param double $_tmax_p
+     */
     public function setTmax_p($_tmax_p) {
         $this->tmax_p = strval($_tmax_p);
     }
 
+    /**
+     * Setter de la valeur de fmax en %
+     * 
+     * @param double $_fmax_p
+     */
     public function setFmax_p($_fmax_p) {
         $this->fmax_p = strval($_fmax_p);
     }
 
+    /**
+     * Setter de la valeur de tmax en mm
+     * 
+     * @param double $_tmax
+     */
     public function setTmax($_tmax) {
         $this->tmax = strval($_tmax);
     }
