@@ -46,6 +46,11 @@ class Parametre {
         $this->setYg(0);
     }
 
+    /**
+     * Initialisation et calcul du centre de gravité
+     * 
+     * @param array $cambrures  Cambrures du profil
+     */
     public function initG($cambrures) {
         for ($i = 0; $i < $this->getNb_points() - 1; $i++) {
             $cambrures[$i]->initPg($this, $cambrures[$i + 1]);
@@ -55,6 +60,11 @@ class Parametre {
         $this->initYg($cambrures);
     }
 
+    /**
+     * Initialisation et calcul de l'abscisse du centre de gravité
+     * 
+     * @param array $cambrures  Cambrures du profil
+     */
     public function initXg($cambrures) {
         $this->xg = 0;
 
@@ -64,6 +74,11 @@ class Parametre {
         $this->xg /= $this->getS($cambrures);
     }
 
+    /**
+     * Initialisation et calcul de l'ordonné du centre de gravité
+     * 
+     * @param array $cambrures  Cambrures du profil
+     */
     public function initYg($cambrures) {
         $this->yg = 0;
 
@@ -73,10 +88,20 @@ class Parametre {
         $this->yg /= $this->getS($cambrures);
     }
 
+    /**
+     * Setter de l'identifiant du profil
+     * 
+     * @param int $_id  identifiant
+     */
     public function setId($_id) {
         $this->id = $_id;
     }
 
+    /**
+     * Setter de la description du profil
+     * 
+     * @param string $_libelle  description
+     */
     public function setLibelle($_libelle) {
         $this->libelle = $_libelle;
     }
