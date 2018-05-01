@@ -166,6 +166,12 @@ class Parametre {
         return $this->yg;
     }
 
+    /**
+     * Calcul de la surface du profil
+     * 
+     * @param array $cambrures
+     * @return double
+     */
     public function getS($cambrures) {
         $s = 0;
         for ($i = 0; $i < $this->getNb_points() - 1; $i++) {
