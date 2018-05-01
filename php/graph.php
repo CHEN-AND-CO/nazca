@@ -88,61 +88,6 @@ function createGraph($id, $fileURI = NULL) {
     $graph->Stroke($fileURI);
 }
 
-function graphRigidite($id, $fileURI = NULL) {
-    $db = new BDDIO;
-    $param = $db->RequestParam($id)[0];
-
-    if (isset($param)) {
-        $cambrures = $db->RequestAllCambruresFromParam($id);
-        if (isset($cambrures)) {
-            $param->initG($cambrures);
-
-            $data = CSVIO::cambrureArrayToArray($cambrures);
-
-            //Invert rows and columns
-            $values = array();
-            for ($i = 0; $i < sizeof($data); $i++) {
-                for ($j = 0; $j < sizeof($data[$i]); $j++) {
-                    $values[$j][$i] = $data[$i][$j];
-                }
-            }
-            //Generate the graph x-axis labels
-            for ($i = 0; $i < sizeof($values[0]); $i++) {
-                $values[0][$i] = round($values[0][$i], 0);
-            }
-
-            // Create a graph instance
-            $graph = new Graph(800, 300);
-            $graph->SetScale('intint');
-
-            // Setup a title for the graph
-            $graph->title->Set("Aperçu du profil " . $param->getLibelle());
-
-            // Setup titles and X-axis labels
-            $graph->xaxis->title->Set('(x)');
-            $graph->xaxis->SetTickLabels($values[0]);
-
-            // Setup Y-axis title
-            $graph->yaxis->title->Set('(y)');
-
-            // Create the linear plot (with both upper and lower profiles and the median line)
-
-            $rigid = new ScatterPlot($values[6], $values[2]);
-
-            // Add the plot to the graph
-            $graph->Add($rigid);
-
-            // Set some parameters
-            $rigid->SetColor('red');
-
-            $rigid->SetWeight(2);
-
-            // Display the graph
-            $graph->Stroke($fileURI);
-        }
-    }
-}
-
 /*
   $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
