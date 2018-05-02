@@ -39,8 +39,8 @@
                         echo '<td class="param-item">';
                             echo '<span>' . $param->getLibelle() . '</span>';
                             echo '<div>';
-                                echo '<button class="edit-button" onclirck="location.href=\'consultation.php?id=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
-                                echo '<button class="delete-button" oncleick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
+                                echo '<button class="edit-button" onclick="location.href=\'consultation.php?id=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
+                                echo '<button class="delete-button" onclick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
                             echo '</div>';
                         echo '</td>';
                     echo '</tr>';
