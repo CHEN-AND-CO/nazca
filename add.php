@@ -69,8 +69,9 @@
                 <h3>Paramètres de profil</h3>
                 <input type="hidden" name="action" value="update_param">
 
+
                 <?php
-                echo '<input type="hidden" name="id" value="'.$id.'">';
+                echo '<input type="hidden" name="id" value="'.$param->getId().'">';
                 echo '<input type="text" name="libelle" id="libelle" placeholder="Nom de l\'enregistrement" value="'.$param->getLibelle().'">';
                 echo '<input type="number" name="corde" min="0" step="0.001" id="corde" placeholder="Corde" value="'.$param->getCorde().'">';
 
