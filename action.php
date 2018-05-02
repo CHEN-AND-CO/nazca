@@ -130,9 +130,9 @@
                                 /* Création des fichiers CSV et image */
                                 createGraph($parametre->getId(), __DIR__ . $fic_img);
                                 createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $fic_img_bis);
-
                                 CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $fic_csv, $cambrures);
 
+                                /* Correction des droits d'accès */
                                 chmod( __DIR__ . $fic_img, '0777');
                                 chmod( __DIR__ . $fic_img_bis, '0777');
                                 chmod( __DIR__ . $fic_csv, '0777');
