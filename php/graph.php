@@ -168,10 +168,11 @@ function createRigidSolidGraph($id, $sampling = 25, $max = 0, $min = 0, $fileURI
             $rigid->SetColor('red');
             $solid->SetColor('green');
 
+            /* Changement épaisseur des lignes */
             $rigid->SetWeight(2);
             $solid->SetWeight(2);
 
-            // Display the graph
+            /* Enregistrement du graphique dans $fileURI ou affichage si NULL */
             $graph->Stroke($fileURI);
         }
     }
