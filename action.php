@@ -91,7 +91,7 @@
                                 if ($db->AddCambrureObject($cambrure)) {
                                     // Ajout réussi
                                 } else {
-                                    echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $parametre->getLibelle() . ' !</h2>';
+                                    echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $param->getLibelle() . ' !</h2>';
                                 }
                             }
 
