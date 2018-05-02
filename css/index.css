@@ -218,3 +218,8 @@ form#edit-param
 {
     transition: opacity 0.3s;
 }
+
+#delete-yes, #delete-no
+{
+    padding: 0.3em 2em;
+}
