@@ -26,6 +26,8 @@ create table parametre
     date DATE,
     fic_img VARCHAR
     (256),
+    fic_img VARCHAR
+    (256),
     fic_csv VARCHAR
     (256),
     primary key
