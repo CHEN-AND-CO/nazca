@@ -12,11 +12,20 @@ require_once(__DIR__ . "/../jpgraph/jpgraph.php");
 require_once(__DIR__ . "/../jpgraph/jpgraph_line.php");
 require_once(__DIR__ . "/../jpgraph/jpgraph_scatter.php");
 
+/**
+ * Affichage ou Enregistrement du profil sous forme de graphique
+ * 
+ * @param int $id           Identifiant du profil à afficher/enregistrer
+ * @param string $fileURI   Emplacement du graphique à enregistrer
+ */
 function createGraph($id, $fileURI = NULL) {
+    /* Initialisation de l'interface avec la BDD */
     $db = new BDDIO;
 
+    /* Récupération du profil */
     $param = $db->RequestParam($id)[0];
 
+    /* Si le profil n'existe pas */
     if (!$param) {
         echo "ERR_GRAPH_NOPARAM<br>The requested parameter cannot be retrieved.";
         exit;
@@ -27,6 +36,7 @@ function createGraph($id, $fileURI = NULL) {
     /* Initialisation et calcul du centre de gravité */
     $param->initG($cambrures);
 
+    /* Conversion du tableau de cambrures en tableau de tableau de valeurs */
     $data = CSVIO::cambrureArrayToArray($cambrures);
 
     /* Inversion des lignes et colonnes */
