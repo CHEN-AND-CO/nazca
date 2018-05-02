@@ -5,7 +5,6 @@
  * @Company: Chen & Co
  * @Email: kev29lt@gmail.com
  */
-
 require_once('constantes.php');
 require_once('Cambrure.php');
 require_once('Parametre.php');
@@ -65,30 +64,31 @@ class BDDIO {
      * @throws Exception si erreur de connexion à la BDD
      */
     public function AddParamObject($param) {
-        return $this->AddParam($param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_csv());
+        return $this->AddParam($param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_img_bis(), $param->getFic_csv());
     }
 
     /**
      * Ajoute un paramètre à la base de données
      * 
-     * @param string $libelle   nom du paramètre
-     * @param double $corde     valeur de la corde
-     * @param double $tmax_p    valeur de tmax en pourcentages
-     * @param double $fmax_p    valeur de fmax en pourcentages
-     * @param double $tmax      valeur de tmax
-     * @param double $fmax      valeur de fmax
-     * @param int $nb_points    nombre de points
-     * @param string $date      date de création du paramètre
-     * @param string $fic_img   emplacement fichier image
-     * @param string $fic_csv   emplacement fichier csv
+     * @param string $libelle       nom du paramètre
+     * @param double $corde         valeur de la corde
+     * @param double $tmax_p        valeur de tmax en pourcentages
+     * @param double $fmax_p        valeur de fmax en pourcentages
+     * @param double $tmax          valeur de tmax
+     * @param double $fmax          valeur de fmax
+     * @param int $nb_points        nombre de points
+     * @param string $date          date de création du paramètre
+     * @param string $fic_img       emplacement fichier image
+     * @param string $fic_img_bis   emplacement fichier image supplémentaire
+     * @param string $fic_csv       emplacement fichier csv
      * 
      * @return boolean
      * @throws Exception si erreur de connexion à la BDD
      */
-    public function AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
+    public function AddParam($libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_img_bis, $fic_csv) {
         try {
-            $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, nb_points, date, fic_img, fic_csv)
-            values(:libelle, :corde, :tmax_p, :fmax_p, :tmax, :fmax, :nb_points, :date, :fic_img, :fic_csv)';
+            $request = 'insert into parametre(libelle, corde, tmax_p, fmax_p, tmax, fmax, nb_points, date, fic_img,fic_img_bis, fic_csv)
+            values(:libelle, :corde, :tmax_p, :fmax_p, :tmax, :fmax, :nb_points, :date, :fic_img, :fic_img_bis, :fic_csv)';
 
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':libelle', $libelle, PDO::PARAM_STR, 40);
@@ -100,6 +100,7 @@ class BDDIO {
             $statement->bindParam(':nb_points', $nb_points, PDO::PARAM_INT);
             $statement->bindParam(':date', $date, PDO::PARAM_STR);
             $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
+            $statement->bindParam(':fic_img_bis', $fic_img_bis, PDO::PARAM_STR, 256);
             $statement->bindParam(':fic_csv', $fic_csv, PDO::PARAM_STR, 256);
             $result = $statement->execute();
         } catch (PDOException $exception) {
@@ -159,7 +160,11 @@ class BDDIO {
      * @return boolean
      */
     public function deleteParam($_id) {
-        if (/*$this->removeParamFiles($_id) && */$this->RemoveCambruresFromParam($_id) && $this->RemoveParam($_id)) {
+        if (!$this->removeParamFiles($_id)) {
+            //Erreur impossible de supprimer les fichiers
+        }
+
+        if ($this->RemoveCambruresFromParam($_id) && $this->RemoveParam($_id)) {
             return true;
         } else {
             return false;
@@ -178,6 +183,7 @@ class BDDIO {
 
         unlink($param->getFic_csv());
         unlink($param->getFic_img());
+        unlink($param->getFic_img_bis());
 
         return true;
     }
@@ -227,24 +233,25 @@ class BDDIO {
     /**
      * Modifie les valeurs d'un paramètre spécifique de la BDD
      * 
-     * @param int $id           identifiant du paramètre
-     * @param string $libelle   description du paramètre
-     * @param double $corde     valeur de la corde
-     * @param double $tmax_p    valeur de tmax en poucentages
-     * @param double $fmax_p    valeur de fmax en pourcentages
-     * @param double $tmax      valeur de tmax
-     * @param double $fmax      valeur de fmax
-     * @param int $nb_points    nombre de points
-     * @param string $date      date de création
-     * @param string $fic_img   emplacement du fichier image
-     * @param string $fic_csv   emplacement du fichier csv
+     * @param int $id               identifiant du paramètre
+     * @param string $libelle       description du paramètre
+     * @param double $corde         valeur de la corde
+     * @param double $tmax_p        valeur de tmax en poucentages
+     * @param double $fmax_p        valeur de fmax en pourcentages
+     * @param double $tmax          valeur de tmax
+     * @param double $fmax          valeur de fmax
+     * @param int $nb_points        nombre de points
+     * @param string $date          date de création
+     * @param string $fic_img       emplacement du fichier image
+     * @param string $fic_img_bis   emplacement du fichier image supplémentaire
+     * @param string $fic_csv       emplacement du fichier csv
      * 
      * @return boolean
      * @throws Exception si erreur de connexion à la BDD
      */
-    public function UpdateParam($id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_csv) {
+    public function UpdateParam($id, $libelle, $corde, $tmax_p, $fmax_p, $tmax, $fmax, $nb_points, $date, $fic_img, $fic_img_bis, $fic_csv) {
         try {
-            $request = 'update parametre set libelle=:libelle, corde=:corde, tmax_p=:tmax_p, fmax_p=:fmax_p, tmax=:tmax, fmax=:fmax, nb_points=:nb_points, date=:date, fic_img=:fic_img, fic_csv=:fic_csv where id=:id';
+            $request = 'update parametre set libelle=:libelle, corde=:corde, tmax_p=:tmax_p, fmax_p=:fmax_p, tmax=:tmax, fmax=:fmax, nb_points=:nb_points, date=:date, fic_img=:fic_img, fic_img_bis=:fic_img_bis, fic_csv=:fic_csv where id=:id';
 
             $statement = $this->getBdd()->prepare($request);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
@@ -257,6 +264,7 @@ class BDDIO {
             $statement->bindParam(':nb_points', $nb_points, PDO::PARAM_INT);
             $statement->bindParam(':date', $date, PDO::PARAM_STR);
             $statement->bindParam(':fic_img', $fic_img, PDO::PARAM_STR, 256);
+            $statement->bindParam(':fic_img_bis', $fic_img_bis, PDO::PARAM_STR, 256);
             $statement->bindParam(':fic_csv', $fic_csv, PDO::PARAM_STR, 256);
 
             $result = $statement->execute();
@@ -276,7 +284,7 @@ class BDDIO {
      * @return boolean
      */
     public function UpdateParamObject($id, $param) {
-        return $this->UpdateParam($id, $param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_csv());
+        return $this->UpdateParam($id, $param->getLibelle(), $param->getCorde(), $param->getTmax_p(), $param->getFmax_p(), $param->getTmax(), $param->getFmax(), $param->getNb_points(), $param->getDate(), $param->getFic_img(), $param->getFic_img_bis(), $param->getFic_csv());
     }
 
     /**

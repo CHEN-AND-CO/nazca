@@ -5,7 +5,6 @@
  * @Company: CHEN AND CO
  * @Email: kev29lt@gmail.com
  */
-
 require_once('Cambrure.php');
 
 class Parametre {
@@ -19,7 +18,8 @@ class Parametre {
     private $fmax;
     private $nb_points;
     private $date;
-    private $fic_img;
+    private $fic_img; //Graph du profil
+    private $fic_img_bis; //Graph rigidite/solidite du profil
     private $fic_csv;
     private $xg, $yg;
 
@@ -74,19 +74,20 @@ class Parametre {
     /**
      * Initialisation du Paramètre/Profil
      * 
-     * @param int $_id          identifiant du profil
-     * @param string $_libelle  description du profil
-     * @param double $_corde    valeur de corde en mm
-     * @param double $_tmax_p   valeur de tmax en pourcentages
-     * @param double $_fmax_p   valeur de fmax en pourcentages
-     * @param double $_tmax     valeur de tmax en mm
-     * @param double $_fmax     valeur de fmax en mm
-     * @param int $_nb_points   nombre de points
-     * @param string $_date     date de création
-     * @param string $_fic_img  emplacement du fichier image
-     * @param string $_fic_csv  emplacement du fichier csv
+     * @param int $_id              identifiant du profil
+     * @param string $_libelle      description du profil
+     * @param double $_corde        valeur de corde en mm
+     * @param double $_tmax_p       valeur de tmax en pourcentages
+     * @param double $_fmax_p       valeur de fmax en pourcentages
+     * @param double $_tmax         valeur de tmax en mm
+     * @param double $_fmax         valeur de fmax en mm
+     * @param int $_nb_points       nombre de points
+     * @param string $_date         date de création
+     * @param string $_fic_img      emplacement du fichier image
+     * @param string $_fic_img_bis  emplacement du fichier image supplémentaire 
+     * @param string $_fic_csv      emplacement du fichier csv
      */
-    public function init($_id, $_libelle, $_corde, $_tmax_p, $_fmax_p, $_tmax, $_fmax, $_nb_points, $_date, $_fic_img, $_fic_csv) {
+    public function init($_id, $_libelle, $_corde, $_tmax_p, $_fmax_p, $_tmax, $_fmax, $_nb_points, $_date, $_fic_img, $_fic_img_bis, $_fic_csv) {
         $this->setId($_id);
         $this->setLibelle($_libelle);
         $this->setCorde($_corde);
@@ -97,6 +98,7 @@ class Parametre {
         $this->setNb_points($_nb_points);
         $this->setDate($_date);
         $this->setFic_img($_fic_img);
+        $this->setFic_img_bis($_fic_img_bis);
         $this->setFic_csv($_fic_csv);
         $this->setXg(0);
         $this->setYg(0);
@@ -235,6 +237,15 @@ class Parametre {
     }
 
     /**
+     * Setter de l'emplacement du fichier image supplémentaire
+     * 
+     * @param string $_fic_img_bis
+     */
+    public function setFic_img_bis($_fic_img_bis) {
+        $this->fic_img_bis = $_fic_img_bis;
+    }
+
+    /**
      * Setter de l'emplacement du fichier csv
      * 
      * @param string $_fic_csv
@@ -349,6 +360,15 @@ class Parametre {
      */
     public function getFic_img() {
         return $this->fic_img;
+    }
+
+    /**
+     * Getter de l'emplacement du fichier image supplémentaire
+     * 
+     * @return string
+     */
+    public function getFic_img_bis() {
+        return $this->fic_img_bis;
     }
 
     /**
