@@ -1,11 +1,12 @@
 <?php
 
+/* CECI EST UN FICHIER DE TEST DE GRAPH SOLIDITE RIGIDITE */
+
 /**
  * @Author: Kévin Le Torc'h
  * @Company: CHEN AND CO
  * @Email: kev29lt@gmail.com
  */
-
 require_once("CSVIO.php");
 require_once("bdd.php");
 
@@ -14,9 +15,9 @@ JpGraph\JpGraph::load();
 JpGraph\JpGraph::module('line');
 JpGraph\JpGraph::module('scatter');
 /*
-require_once(__DIR__ . "/../jpgraph/jpgraph.php");
-require_once(__DIR__ . "/../jpgraph/jpgraph_line.php");
-require_once(__DIR__ . "/../jpgraph/jpgraph_scatter.php");*/
+  require_once(__DIR__ . "/../jpgraph/jpgraph.php");
+  require_once(__DIR__ . "/../jpgraph/jpgraph_line.php");
+  require_once(__DIR__ . "/../jpgraph/jpgraph_scatter.php"); */
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $sampling = filter_input(INPUT_GET, 'sampling', FILTER_SANITIZE_NUMBER_INT);
