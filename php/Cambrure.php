@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @Author: Kévin Le Torc'h
+ * @Company: CHEN AND CO
+ * @Email: kev29lt@gmail.com
+ */
+
 class Cambrure {
 
     private $id;

@@ -1,10 +1,11 @@
 <?php
 
 /**
- * @Author: Gwenolé Leroy-Ferrec
+ * @Author: Gwenolé Leroy-Ferrec & Kévin Le Torc'h
  * @Company: CHEN AND CO
- * @Email: herrcrazi@gmail.com
+ * @Email: herrcrazi@gmail.com & kev29lt@gmail.com
  */
+
 require_once("CSVIO.php");
 require_once("bdd.php");
 

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @Author: Kévin Le Torc'h
+ * @Company: CHEN AND CO
+ * @Email: kev29lt@gmail.com
+ */
+
 require_once('Cambrure.php');
 
 class Parametre {
