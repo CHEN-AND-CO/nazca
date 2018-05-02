@@ -83,15 +83,19 @@
                         if ($db->AddParamObject($param)) {// Si ajout réussi
                             echo '<h2> Vous avez rajouté ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
 
+                            /* On récupère le paramètre ajouté */
+                            - $dirtytmp = $db->RequestAllParams();
+                            - $parametre = $dirtytmp[sizeof($dirtytmp) - 1];
+
                             /* Générations cambrures */
-                            $cambrures = $param->genererCambrures();
+                            $cambrures = $parametre->genererCambrures();
 
                             /* Ajout des cambrures */
                             foreach ($cambrures as $cambrure) {
                                 if ($db->AddCambrureObject($cambrure)) {
                                     // Ajout réussi
                                 } else {
-                                    echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $param->getLibelle() . ' !</h2>';
+                                    echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $parametre->getLibelle() . ' !</h2>';
                                 }
                             }
 
