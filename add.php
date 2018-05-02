@@ -25,7 +25,7 @@
 
         <?php
         require_once('php/bdd.php');
-        
+
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
         if (!isset($id)) {
@@ -73,8 +73,8 @@
                 echo '<input type="number" name="corde" min="0" step="0.001" id="corde" placeholder="Corde" value="'.$param->getCorde().'">';
 
                 echo '<div class="hbox">';
-                    echo '<input type="number" name="tmax_p" id="tmax_p" step="any" min="0" placeholder="T max (pourcentage)" value="'.$param->getTmax().'">';
-                    echo '<input type="number" name="fmax_p" id="fmax_p" step="any" min="0" placeholder="F max (pourcentage)" value="'.$param->getFmax().'">';
+                    echo '<input type="number" name="tmax_p" id="tmax_p" step="any" min="0" placeholder="T max (pourcentage)" value="'.$param->getTmax_p().'">';
+                    echo '<input type="number" name="fmax_p" id="fmax_p" step="any" min="0" placeholder="F max (pourcentage)" value="'.$param->getFmax_p().'">';
                 echo '</div>';
 
                 echo '<input type="number" name="nb_points" id="nb_points" step="1" min="0" max="10000" placeholder="Nombre de points de calcul" value="'.$param->getNb_points().'">';
