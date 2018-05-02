@@ -181,9 +181,10 @@ class BDDIO {
     public function removeParamFiles($id) {
         $param = $this->RequestParam($id)[0];
 
-        @unlink($param->getFic_csv());
-        @unlink($param->getFic_img());
-        @unlink($param->getFic_img_bis());
+        /* Suppression des fichiers */
+        @unlink(getcwd().$param->getFic_csv());
+        @unlink(getcwd().$param->getFic_img());
+        @unlink(getcwd().$param->getFic_img_bis());
 
         return true;
     }
