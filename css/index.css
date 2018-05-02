@@ -163,12 +163,23 @@ footer .container
     /*font-size: 2em;*/
 }
 
-.graph
+.box-right
 {
     float: right;
     max-width: 50%;
 
     margin-left: 5em;
+}
+
+.box-right img.graph
+{
+    max-width: 100%;
+}
+
+.box-right h3
+{
+    margin: 0;
+    margin-left: 1em;
 }
 
 #params

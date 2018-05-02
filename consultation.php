@@ -6,6 +6,8 @@
 
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
         <link rel="stylesheet" href="css/generic-theme.css">
+
+        <script src="js/consult.js"></script>
     </head>
 
     <body id="#page-list">
@@ -41,18 +43,31 @@
                     echo '<a class="button" id="btn-csv" href="' . $param->getFic_csv() . '">Télécharger au format CSV</a>';
                     /* Affichage du nom du profil */
                     echo "<h2>Profil <i>" . $param->getLibelle() . "</i></h2>";
+
                     /* Affichage de l'apercu du profil */
-                    echo '<img src="' . $param->getFic_img() . '" alt="Pas d\'aperçu disponible" class="graph">';
+                    echo '<div class="box-right">';
+                        echo '<div class="hbox"><h3>Aperçu</h3><a href="#" id="graph-open-btn">Voir tous les graphes</a></div>';
+                        echo '<img src="' . $param->getFic_img() . '" alt="Pas d\'aperçu disponible" class="graph">';
+                    echo '</div>';
+
+                    /* Préparation de l'affichage de tous les graphes */
+                    echo '<div class="window hidden vertically-centered" id="graph-window">';
+                        echo '<button id="close-btn">×</button>';
+                        echo '<h3>Profil</h3>';
+                        echo '<img src="' . $param->getFic_img() . '" alt="Graphe indisponible" class="graph">';
+                        echo '<h3>Rigidité / solidité du profil</h3>';
+                        echo '<img src="' . $param->getFic_img_bis() . '" alt="Graphe indisponible" class="graph">';
+                    echo '</div>';
 
                     /* Affichage de caractéristiques */
                     echo '<h3>Caractéristiques</h3>';
                     echo '<ul id="params">';
-                    echo '<li><b>N° : </b>' . $param->getId() . '</li>';
-                    echo '<li><b>Nom : </b>' . $param->getLibelle() . '</li>';
-                    echo '<li><b>Corde : </b>' . $param->getCorde() . ' mm</li>';
-                    echo '<li><b>T<sub>max</sub> : </b>' . $param->getTmax() . ' mm (' . $param->getTmax_p() . ' %)</li>';
-                    echo '<li><b>F<sub>max</sub> : </b>' . $param->getFmax() . ' mm (' . $param->getFmax_p() . ' %)</li>';
-                    echo '<li><b>Points de calcul : </b>' . $param->getNb_points() . '</li>';
+                        echo '<li><b>N° : </b>' . $param->getId() . '</li>';
+                        echo '<li><b>Nom : </b>' . $param->getLibelle() . '</li>';
+                        echo '<li><b>Corde : </b>' . $param->getCorde() . ' mm</li>';
+                        echo '<li><b>T<sub>max</sub> : </b>' . $param->getTmax() . ' mm (' . $param->getTmax_p() . ' %)</li>';
+                        echo '<li><b>F<sub>max</sub> : </b>' . $param->getFmax() . ' mm (' . $param->getFmax_p() . ' %)</li>';
+                        echo '<li><b>Points de calcul : </b>' . $param->getNb_points() . '</li>';
                     echo '</ul>';
 
                     /* Récupération des cambrures du profil */
@@ -60,28 +75,28 @@
 
                     /* En tête du tableau */
                     echo '<table class="flat-table">';
-                    echo '<thead>';
-                    echo '<td>id</td>';
-                    echo '<td>x</td>';
-                    echo '<td>f</td>';
-                    echo '<td>t</td>';
-                    echo '<td>y<sub>intra</sub></td>';
-                    echo '<td>y<sub>extra</sub></td>';
-                    echo '<td>id_param</td>';
-                    echo '<td>Ig<sub>z</sub></td>';
-                    echo '</thead>';
+                        echo '<thead>';
+                            echo '<td>id</td>';
+                            echo '<td>x</td>';
+                            echo '<td>f</td>';
+                            echo '<td>t</td>';
+                            echo '<td>y<sub>intra</sub></td>';
+                            echo '<td>y<sub>extra</sub></td>';
+                            echo '<td>id_param</td>';
+                            echo '<td>Ig<sub>z</sub></td>';
+                        echo '</thead>';
 
                     /* Affichage des valeurs des cambrures */
                     foreach ($cambrures as $cambrure) {
                         echo '<tr>';
-                        echo '<td>' . round($cambrure->getId(), 2) . '</td>';
-                        echo '<td>' . round($cambrure->getX(), 2) . '</td>';
-                        echo '<td>' . round($cambrure->getF(), 2) . '</td>';
-                        echo '<td>' . round($cambrure->getT(), 2) . '</td>';
-                        echo '<td>' . round($cambrure->getYintra(), 2) . '</td>';
-                        echo '<td>' . round($cambrure->getYextra(), 2) . '</td>';
-                        echo '<td>' . round($cambrure->getId_param(), 2) . '</td>';
-                        echo '<td>' . sprintf("%.2E", $cambrure->getIgz()) . '</td>';
+                            echo '<td>' . round($cambrure->getId(), 2) . '</td>';
+                            echo '<td>' . round($cambrure->getX(), 2) . '</td>';
+                            echo '<td>' . round($cambrure->getF(), 2) . '</td>';
+                            echo '<td>' . round($cambrure->getT(), 2) . '</td>';
+                            echo '<td>' . round($cambrure->getYintra(), 2) . '</td>';
+                            echo '<td>' . round($cambrure->getYextra(), 2) . '</td>';
+                            echo '<td>' . round($cambrure->getId_param(), 2) . '</td>';
+                            echo '<td>' . sprintf("%.2E", $cambrure->getIgz()) . '</td>';
                         echo '</tr>';
                     }
 
