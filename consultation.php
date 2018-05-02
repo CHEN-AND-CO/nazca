@@ -102,7 +102,6 @@
 
                     echo '</table>'; //Fin du tableau
 
-                    echo '<img src="' . $param->getFic_img_bis() . '" alt="Pas d\'aperçu disponible" class="graph">';
                 } else { // Si le profil n'existe pas
                     echo "<h2>400 Bad Request</h2><p>Le profil demandé n'existe pas !</p>";
                 }
