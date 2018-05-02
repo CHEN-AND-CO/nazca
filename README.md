@@ -8,11 +8,20 @@ NAZCA est un outil permettant le calcul de profils NACA. Il fournit la possibili
 Deux solutions s'offrent à vous : 
 * Vous pouvez télécharger le projet au format zip. Il vous suffira alors de disposer d'outils standards de décompression pour l'extraire.
 * Vous pouvez cloner le Git officiel du projet, en utilisant la commande suivante (en supposant que l'utilitaire Git est installé sur votre machine) : 
-``` git clone https://github.com/CHEN-AND-CO/nazca.git
+``` 
+git clone https://github.com/CHEN-AND-CO/nazca.git
+```
+## Dépendances
+Vous devez posséder sur votre machine :
+* PHP version 7 ou supérieur
+* Un serveur Web (Apache, nginx...)
+* MySQL
+
+Il est conseillé d'utiliser Linux pour faire fonctionner le projet, bien qu'un environnement WAMP suffirait, mais cela n'a pas été testé.
 
 ## Mise en place de la base de données
 Une base de données MySQL doit être pré-installée sur votre système. Procédez à son installation si nécessaire.
-Afin de créer la base de données de NAZCA, il vous faudra exécuter le fichier bdd.sql fourni à la racine du projet. 
+Afin de créer la base de données de NAZCA, il vous faudra exécuter le fichier bdd.sql fourni à la racine du projet, en utilisant la commande `source bdd.sql` une fois connecté à votre base de données.
 
 Le fichier php/constantes.php fournit les différentes informations d'accés à la base de données. Il peut être judicieux d'en modifier les droits d'accés ou de modifier les identifiants de connection en fonction de vos besoins.
 ## Installation des fichiers du projet
