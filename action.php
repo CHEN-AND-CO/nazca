@@ -128,15 +128,15 @@
                                 }
 
                                 /* Création des fichiers CSV et image */
-                                createGraph($parametre->getId(), __DIR__ . $fic_img);
-                                createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $fic_img_bis);
-                                CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $fic_csv, $cambrures);
+                                createGraph($parametre->getId(), __DIR__ . $parametre->getFic_img());
+                                createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $parametre->getFic_img_bis());
+                                CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $parametre->getFic_csv(), $cambrures);
 
                                 /* Correction des droits d'accès */
-                                chmod( __DIR__ . $fic_img, '0777');
-                                chmod( __DIR__ . $fic_img_bis, '0777');
-                                chmod( __DIR__ . $fic_csv, '0777');
-                                
+                                chmod(__DIR__ . $parametre->getFic_img(), '0777');
+                                chmod(__DIR__ . $parametre->getFic_img_bis(), '0777');
+                                chmod(__DIR__ . $parametre->getFic_csv(), '0777');
+
                                 /* Redirection vers la page de consultation du paramètre créé */
                                 header('Location: consultation.php?id=' . $parametre->getId());
                             } else {//Si ajout raté
@@ -144,7 +144,63 @@
                             }
                         } else { // Si onveut modifier un paramètre
                             if ($db->UpdateParam($id, $param)) { //Si modification réussie
-                                echo '<h2> Vous avez modifié ' . $param->getLibelle() . ' avec succès ! </h2>';
+                                /* Récupération du paramètre */
+                                $parametre = $db->RequestParam($id)[0];
+                                /* Suppression des fichiers précédents */
+                                $db->removeParamFiles($id);
+                                
+                                /* ===================== Génération des cambrures ==================== */
+                                /* Génération de la première cambrure */
+                                $cambrures = array();
+                                $one = new Cambrure;
+                                $one->genesis($parametre);
+                                array_push($cambrures, $one);
+
+                                /* Génération des autres cambrures */
+                                for ($i = 1; $i < $parametre->getNb_points() + 1; $i++) {
+                                    $tmp = new Cambrure;
+                                    $tmp->create($parametre, $cambrures[$i - 1]);
+
+                                    array_push($cambrures, $tmp);
+                                }
+
+                                /* Préparation au calcul du centre de gravité */
+                                for ($i = 0; $i < $parametre->getNb_points(); $i++) {
+                                    $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
+                                }
+                                $vide = new Cambrure;
+                                $vide->clear();
+                                $cambrures[$parametre->getNb_points()]->initPg($parametre, $vide); //Pareil pour le dernier
+                                $parametre->initXg($cambrures); //Calcul de l'abscisse du point G
+                                $parametre->initYg($cambrures); //Calcul de l'ordonnée du point G
+
+                                /* Calcul des Igz */
+                                for ($i = 0; $i < $parametre->getNb_points(); $i++) {
+                                    $cambrures[$i]->initIgz($parametre, $cambrures[$i + 1]);
+                                }
+                                $cambrures[$parametre->getNb_points()]->initIgz($parametre, $vide);
+
+                                /* Ajout des cambrures */
+                                foreach ($cambrures as $cambrure) {
+                                    if ($db->AddCambrureObject($cambrure)) {
+                                        // Ajout réussi
+                                    } else {
+                                        echo '<h2> ERREUR: Impossible d\'ajouter la cambrure n°' . $cambrure->getId() . ' de' . $parametre->getLibelle() . ' !</h2>';
+                                    }
+                                }
+
+                                /* Création des fichiers CSV et image */
+                                createGraph($parametre->getId(), __DIR__ . $parametre->getFic_img());
+                                createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $parametre->getFic_img_bis());
+                                CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $parametre->getFic_csv(), $cambrures);
+
+                                /* Correction des droits d'accès */
+                                chmod(__DIR__ . $parametre->getFic_img(), '0777');
+                                chmod(__DIR__ . $parametre->getFic_img_bis(), '0777');
+                                chmod(__DIR__ . $parametre->getFic_csv(), '0777');
+
+                                /* Redirection vers la page de consultation du paramètre créé */
+                                header('Location: consultation.php?id=' . $parametre->getId());
                             } else {//Sinon
                                 echo '<h2> ERREUR: Impossible de modifier ' . $param->getLibelle() . ' dans la Base de donnée !</h2>';
                             }
