@@ -4,6 +4,12 @@
 NAZCA est un outil permettant le calcul de profils NACA. Il fournit la possibilité d'obtenir des graphes d'allure du profil et de rigidité / solidité.
 
 # Installation
+## Téléchargement
+Deux solutions s'offrent à vous : 
+* Vous pouvez télécharger le projet au format zip. Il vous suffira alors de disposer d'outils standards de décompression pour l'extraire.
+* Vous pouvez cloner le Git officiel du projet, en utilisant la commande suivante (en supposant que l'utilitaire Git est installé sur votre machine) : 
+``` git clone https://github.com/CHEN-AND-CO/nazca.git
+
 ## Mise en place de la base de données
 Une base de données MySQL doit être pré-installée sur votre système. Procédez à son installation si nécessaire.
 Afin de créer la base de données de NAZCA, il vous faudra exécuter le fichier bdd.sql fourni à la racine du projet. 
