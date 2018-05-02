@@ -34,7 +34,7 @@ class Parametre {
      * @return double   $igz    Valeur de igz total
      */
     public function rigidite($_corde, $_tmax_p, $_fmax_p, $_nb_points) {
-        $this->init(0, null, $_corde, $_tmax_p, $_fmax_p, ($_tmax_p / 100) * $_corde, ($_fmax_p / 100) * $_corde, $_nb_points, null, null, null);
+        $this->init(0, null, $_corde, $_tmax_p, $_fmax_p, ($_tmax_p / 100) * $_corde, ($_fmax_p / 100) * $_corde, $_nb_points, null, null, null, null);
 
         $cambrures = array();
         $one = new Cambrure;
