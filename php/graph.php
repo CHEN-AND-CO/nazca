@@ -131,29 +131,29 @@ function createRigidSolidGraph($id, $sampling = 25, $max = 12, $min = 0, $fileUR
                 array_push($igzvmaxs, $tmp2 / ($param->getTmax_p())); //Fix : pas de division par 2
             }
 
-            // Create a graph instance
+            /* Initialisation du graphique */
             $graph = new Graph(800, 300);
             $graph->SetScale('intint');
 
-            // Setup a title for the graph
+            /* Titre du graphique */
             $graph->title->Set("Rigidité de " . $param->getLibelle());
 
-            // Setup titles and X-axis labels
+            /* Description de l'axe x */
             $graph->xaxis->title->Set('Fmax (%)');
 
-            // Setup Y-axis title
+            /* Description de l'axe y */
             $graph->yaxis->title->Set('Igz (%)');
 
-            // Create the linear plot (with both upper and lower profiles and the median line)
 
+            /* Tracé du profil */
             $rigid = new LinePlot($igzs, $fmaxs);
             $solid = new LinePlot($igzvmaxs, $fmaxs);
 
-            // Add the plot to the graph
+            /* Ajout des lignes au graphique */
             $graph->Add($rigid);
             $graph->Add($solid);
 
-            // Set some parameters
+            /* Changement des couleurs de ligne */
             $rigid->SetColor('red');
             $solid->SetColor('green');
 
