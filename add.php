@@ -67,7 +67,7 @@
         <div class="main-content">
             <form id="edit-param" class="vbox" action="action.php" method="GET">
                 <h3>Paramètres de profil</h3>
-                <input type="hidden" name="action" value="add_param">
+                <input type="hidden" name="action" value="update_param">
 
                 <?php
                 echo '<input type="text" name="libelle" id="libelle" placeholder="Nom de l\'enregistrement" value="'.$param->getLibelle().'">';
