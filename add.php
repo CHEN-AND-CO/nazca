@@ -25,7 +25,7 @@
 
         <?php
         require_once('php/bdd.php');
-        
+
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
         if (!isset($id)) {
