@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="author" content="Kévin Le Torc'h & Gwenolé Leroy-Ferrec" />
         <title> NAZCA Project C&amp;C SSOS 2018</title>
 
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
@@ -23,8 +24,8 @@
 
             <table class="flat-table" id="plist" >
                 <thead>
-                    <td>#</td>
-                    <td>Enregistrement <a class="button" id="btn-add" href="add.php">Nouveau profil</a></td>
+                <td>#</td>
+                <td>Enregistrement <a class="button" id="btn-add" href="add.php">Nouveau profil</a></td>
                 </thead>
 
                 <?php
@@ -36,14 +37,14 @@
 
                 foreach ($params as $param) {
                     echo '<tr>';
-                        echo '<td class="id">' . $param->getId() . '</td>';
-                        echo '<td class="param-item">';
-                            echo '<span>' . $param->getLibelle() . '</span>';
-                            echo '<div>';
-                                echo '<button class="edit-button" onclick="location.href=\'consultation.php?id=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
-                                echo '<button class="delete-button" onclick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
-                            echo '</div>';
-                        echo '</td>';
+                    echo '<td class="id">' . $param->getId() . '</td>';
+                    echo '<td class="param-item">';
+                    echo '<span>' . $param->getLibelle() . '</span>';
+                    echo '<div>';
+                    echo '<button class="edit-button" onclick="location.href=\'consultation.php?id=' . $param->getId() . '\';" id="' . $param->getId() . '">🖉</button>';
+                    echo '<button class="delete-button" onclick="if(confirm(\'Voulez vous supprimer ' . $param->getLibelle() . '?\')){location.href=\'action.php?action=del_param&id=' . $param->getId() . '\';}" id="' . $param->getId() . '">×</button>';
+                    echo '</div>';
+                    echo '</td>';
                     echo '</tr>';
                 }
                 //Faire des trucs
