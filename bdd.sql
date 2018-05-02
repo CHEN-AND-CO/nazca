@@ -26,7 +26,7 @@ create table parametre
     date DATE,
     fic_img VARCHAR
     (256),
-    fic_img VARCHAR
+    fic_img_bis VARCHAR
     (256),
     fic_csv VARCHAR
     (256),
