@@ -86,9 +86,6 @@
                     }
 
                     echo '</table>'; //Fin du tableau
-                    
-                    include('php/graph.php');
-                    createRigidSolidGraph($param->getId());
                 } else { // Si le profil n'existe pas
                     echo "<h2>400 Bad Request</h2><p>Le profil demandé n'existe pas !</p>";
                 }
