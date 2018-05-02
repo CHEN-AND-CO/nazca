@@ -133,6 +133,10 @@
 
                                 CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $fic_csv, $cambrures);
 
+                                chmod( __DIR__ . $fic_img, '0777');
+                                chmod( __DIR__ . $fic_img_bis, '0777');
+                                chmod( __DIR__ . $fic_csv, '0777');
+                                
                                 /* Redirection vers la page de consultation du paramètre créé */
                                 header('Location: consultation.php?id=' . $parametre->getId());
                             } else {//Si ajout raté
