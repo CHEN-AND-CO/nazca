@@ -4,23 +4,22 @@
         <meta name="author" content="Kévin Le Torc'h & Gwenolé Leroy-Ferrec" />
         <title> NAZCA Project C&amp;C SSOS 2018</title>
 
+        <!-- Inclusion fiche de styles -->
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
         <link rel="stylesheet" href="css/generic-theme.css">
 
+        <!-- Inclusion script js -->
         <script src="js/consult.js"></script>
     </head>
 
     <body id="#page-list">
+        <!-- Include Header -->
         <?php
         include("res/header.html");
         ?>
 
+        <!-- Contenu principal de la page -->
         <div class="main-content">
-            <div id="errors" class="container">
-            </div>
-            <div id="infos" class="container">
-            </div>
-
             <?php
             require_once('php/bdd.php');
 
@@ -108,6 +107,7 @@
             ?>
         </div>
 
+        <!-- Inclusion Footer -->
         <?php
         include("res/footer.html");
         ?>

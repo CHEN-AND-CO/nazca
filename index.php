@@ -16,12 +16,8 @@
         include("res/header.html");
         ?>
 
+        <!-- Contenu de la page -->
         <div class="main-content">
-            <div id="errors" class="container">
-            </div>
-            <div id="infos" class="container">
-            </div>
-
             <h2>Accueil > Liste des enregistrements</h2>
 
             <table class="flat-table" id="plist" >
