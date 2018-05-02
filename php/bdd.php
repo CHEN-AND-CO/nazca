@@ -160,9 +160,9 @@ class BDDIO {
      * @return boolean
      */
     public function deleteParam($_id) {
-        if (!$this->removeParamFiles($_id)) {
+        /*if (!$this->removeParamFiles($_id)) {
             //Erreur impossible de supprimer les fichiers
-        }
+        }*/
 
         if ($this->RemoveCambruresFromParam($_id) && $this->RemoveParam($_id)) {
             return true;
