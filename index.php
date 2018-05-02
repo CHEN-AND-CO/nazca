@@ -39,8 +39,8 @@
                         echo '<td class="param-item">';
                             echo '<span>' . $param->getLibelle() . '</span>';
                             echo '<div>';
-                                echo '<button class="edit-button">🖉</button>';
-                                echo '<button class="delete-button">×</button>';
+                                echo '<button class="edit-button" id="'.$param->getId().'">🖉</button>';
+                                echo '<button class="delete-button" id="'.$param->getId().'">×</button>';
                             echo '</div>';
                         echo '</td>';
                     echo '</tr>';
@@ -48,6 +48,16 @@
                 //Faire des trucs
                 ?>
             </table>
+        </div>
+
+        <div class="window screen-centered hidden" id="confirm-delete">
+            <h3>Supprimer le profil</h3>
+            <p>Voulez-vous vraiement supprimer ce profil ?</p>
+
+            <div class="hbox">
+                <button id="delete-yes">Oui</button>
+                <button id="delete-no">Non</button>
+            </div>
         </div>
 
         <!-- Inclusion Footer -->
