@@ -8,9 +8,14 @@
 require_once("CSVIO.php");
 require_once("bdd.php");
 
-require_once(__DIR__ . "/../jpgraph/jpgraph.php");
-require_once(__DIR__ . "/../jpgraph/jpgraph_line.php");
-require_once(__DIR__ . "/../jpgraph/jpgraph_scatter.php");
+require_once(__DIR__ . "/../jpgraph-fix/JpGraph.php");
+JpGraph\JpGraph::load();
+JpGraph\JpGraph::module('line');
+JpGraph\JpGraph::module('scatter');
+
+
+/* require_once(__DIR__ . "/../jpgraph/jpgraph_line.php");
+  require_once(__DIR__ . "/../jpgraph/jpgraph_scatter.php"); */
 
 /**
  * Affichage ou Enregistrement du profil sous forme de graphique
