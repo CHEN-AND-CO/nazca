@@ -146,8 +146,6 @@
                             if ($db->UpdateParamObject($id, $param)) { //Si modification réussie
                                 /* Récupération du paramètre */
                                 $parametre = $db->RequestParam($id)[0];
-                                /* Suppression des fichiers précédents */
-                                $db->removeParamFiles($id);
                                 
                                 /* ===================== Génération des cambrures ==================== */
                                 /* Génération de la première cambrure */
@@ -189,6 +187,9 @@
                                     }
                                 }
 
+                                
+                                /* Suppression des fichiers précédents */
+                                $db->removeParamFiles($id);
                                 /* Création des fichiers CSV et image */
                                 createGraph($parametre->getId(), __DIR__ . $parametre->getFic_img());
                                 createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $parametre->getFic_img_bis());
