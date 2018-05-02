@@ -11,7 +11,7 @@
     </head>
 
     <body id="#page-list">
-
+        <!-- Inclusion Header -->
         <?php
         include("res/header.html");
         ?>
@@ -22,12 +22,13 @@
             <div id="inner-circle"></div>
         </div>
 
-
         <?php
         require_once('php/bdd.php');
 
+        /* Récupération de l'identifiant du paramètre à consulter */
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+        /* Si l'dentifiant est est valide */
         if (!isset($id)) {
         ?>
         <!-- Formulaire d'ajout/édition de profil-->
