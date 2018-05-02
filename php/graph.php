@@ -167,7 +167,7 @@ function createRigidSolidGraph($id, $sampling = 25, $max = 0, $min = 0, $fileURI
             /* Changement des couleurs de ligne */
             $rigid->SetColor('red');
             $solid->SetColor('green');
-
+            
             /* Changement épaisseur des lignes */
             $rigid->SetWeight(2);
             $solid->SetWeight(2);
