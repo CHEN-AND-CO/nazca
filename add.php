@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="author" content="Kévin Le Torc'h & Gwenolé Leroy-Ferrec" />
         <title>Création de profil - NAZCA</title>
 
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
@@ -20,7 +21,7 @@
             <div id="outer-circle"></div>
             <div id="inner-circle"></div>
         </div>
-        
+
         <!-- Formulaire d'ajout/édition de profil-->
         <div class="main-content">
             <form id="edit-param" class="vbox" action="action.php" method="GET">
