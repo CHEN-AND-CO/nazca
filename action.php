@@ -83,40 +83,8 @@
                         if ($db->AddParamObject($param)) {// Si ajout réussi
                             echo '<h2> Vous avez rajouté ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
 
-                            /* On récupère le paramètre ajouté */
-                            $dirtytmp = $db->RequestAllParams();
-                            $parametre = $dirtytmp[sizeof($dirtytmp) - 1];
-
-                            /* ===================== Génération des cambrures ==================== */
-                            /* Génération de la première cambrure */
-                            $cambrures = array();
-                            $one = new Cambrure;
-                            $one->genesis($parametre);
-                            array_push($cambrures, $one);
-
-                            /* Génération des autres cambrures */
-                            for ($i = 1; $i < $parametre->getNb_points() + 1; $i++) {
-                                $tmp = new Cambrure;
-                                $tmp->create($parametre, $cambrures[$i - 1]);
-
-                                array_push($cambrures, $tmp);
-                            }
-
-                            /* Préparation au calcul du centre de gravité */
-                            for ($i = 0; $i < $parametre->getNb_points(); $i++) {
-                                $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
-                            }
-                            $vide = new Cambrure;
-                            $vide->clear();
-                            $cambrures[$parametre->getNb_points()]->initPg($parametre, $vide); //Pareil pour le dernier
-                            $parametre->initXg($cambrures); //Calcul de l'abscisse du point G
-                            $parametre->initYg($cambrures); //Calcul de l'ordonnée du point G
-
-                            /* Calcul des Igz */
-                            for ($i = 0; $i < $parametre->getNb_points(); $i++) {
-                                $cambrures[$i]->initIgz($parametre, $cambrures[$i + 1]);
-                            }
-                            $cambrures[$parametre->getNb_points()]->initIgz($parametre, $vide);
+                            /* Générations cambrures */
+                            $cambrures = $parametre->genererCambrures();
 
                             /* Ajout des cambrures */
                             foreach ($cambrures as $cambrure) {
@@ -155,36 +123,8 @@
                                 //Erreur
                             }
 
-                            /* ===================== Génération des cambrures ==================== */
-                            /* Génération de la première cambrure */
-                            $cambrures = array();
-                            $one = new Cambrure;
-                            $one->genesis($parametre);
-                            array_push($cambrures, $one);
-
-                            /* Génération des autres cambrures */
-                            for ($i = 1; $i < $parametre->getNb_points() + 1; $i++) {
-                                $tmp = new Cambrure;
-                                $tmp->create($parametre, $cambrures[$i - 1]);
-
-                                array_push($cambrures, $tmp);
-                            }
-
-                            /* Préparation au calcul du centre de gravité */
-                            for ($i = 0; $i < $parametre->getNb_points(); $i++) {
-                                $cambrures[$i]->initPg($parametre, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
-                            }
-                            $vide = new Cambrure;
-                            $vide->clear();
-                            $cambrures[$parametre->getNb_points()]->initPg($parametre, $vide); //Pareil pour le dernier
-                            $parametre->initXg($cambrures); //Calcul de l'abscisse du point G
-                            $parametre->initYg($cambrures); //Calcul de l'ordonnée du point G
-
-                            /* Calcul des Igz */
-                            for ($i = 0; $i < $parametre->getNb_points(); $i++) {
-                                $cambrures[$i]->initIgz($parametre, $cambrures[$i + 1]);
-                            }
-                            $cambrures[$parametre->getNb_points()]->initIgz($parametre, $vide);
+                            /* Générations cambrures */
+                            $cambrures = $parametre->genererCambrures();
 
                             /* Ajout des cambrures */
                             foreach ($cambrures as $cambrure) {
