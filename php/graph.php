@@ -114,7 +114,7 @@ function createGraph($id, $fileURI = NULL) {
  * @param int $min          fmax minimum
  * @param string $fileURI   emplacement du graphique
  */
-function createRigidSolidGraph($id, $sampling = 25, $max = 12, $min = 0, $fileURI = NULL) {
+function createRigidSolidGraph($id, $sampling = 25, $max = 0, $min = 0, $fileURI = NULL) {
     /* Initialisation de l'interface avec la BDD */
     $db = new BDDIO;
 
@@ -129,8 +129,9 @@ function createRigidSolidGraph($id, $sampling = 25, $max = 12, $min = 0, $fileUR
             $igzvmaxs = array();
             $fmaxs = array();
             $igzs = array();
-            $min = 0;
-            $max = 12;
+            if ($max <= 0) {
+                $max = $param->getFmax_p() * 3;
+            }
             $pas = ($max - $min) / $sampling;
 
             for ($i = $min; $i < $max + 1; $i += $pas) {
