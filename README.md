@@ -1,5 +1,5 @@
 # nazca
-Not used in ICBMs
+![# NAZCA](https://raw.githubusercontent.com/CHEN-AND-CO/nazca/master/chenco_NAZCA_logo.png)
 
 NAZCA est un outil permettant le calcul de profils NACA. Il fournit la possibilité d'obtenir des graphes d'allure du profil et de rigidité / solidité.
 
