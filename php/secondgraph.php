@@ -35,7 +35,7 @@ if (isset($id)) {
             $fmaxs = array();
             $igzs = array();
             $min = 0;
-            $max = 12;
+            $max = $param->getFmax_p()*3;
             $pas = ($max - $min) / $sampling;
 
             for ($i = $min; $i < $max + 1; $i += $pas) {
