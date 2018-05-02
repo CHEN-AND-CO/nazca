@@ -47,16 +47,16 @@
                     /* Affichage de l'apercu du profil */
                     echo '<div class="box-right">';
                         echo '<div class="hbox"><h3>Aperçu</h3><a href="#" id="graph-open-btn">Voir tous les graphes</a></div>';
-                        echo '<img src="' . $param->getFic_img() . '" alt="Pas d\'aperçu disponible" class="graph">';
+                        echo '<a target="_blank" download="'.$param->getLibelle().'-'.$param->getDate().'.jpg" href="' . $param->getFic_img() . '"><img src="' . $param->getFic_img() . '" alt="Pas d\'aperçu disponible" class="graph"></a>';
                     echo '</div>';
 
                     /* Préparation de l'affichage de tous les graphes */
                     echo '<div class="window hidden vertically-centered" id="graph-window">';
                         echo '<button id="close-btn">×</button>';
                         echo '<h3>Profil</h3>';
-                        echo '<img src="' . $param->getFic_img() . '" alt="Graphe indisponible" class="graph">';
+                        echo '<a target="_blank" download="'.$param->getLibelle().'-'.$param->getDate().'.jpg" href="' . $param->getFic_img() . '"><img src="' . $param->getFic_img() . '" alt="Graphe indisponible" class="graph"></a>';
                         echo '<h3>Rigidité / solidité du profil</h3>';
-                        echo '<img src="' . $param->getFic_img_bis() . '" alt="Graphe indisponible" class="graph">';
+                        echo '<a target="_blank" download="'.$param->getLibelle().'-'.$param->getDate().'_bis.jpg" href="' . $param->getFic_img_bis() . '"><img src="' . $param->getFic_img_bis() . '" alt="Graphe indisponible" class="graph"></a>';
                     echo '</div>';
 
                     /* Affichage de caractéristiques */
