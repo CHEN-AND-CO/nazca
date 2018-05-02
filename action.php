@@ -128,13 +128,8 @@
                                 }
 
                                 /* Création des fichiers CSV et image */
-                                try {
-                                    createGraph($parametre->getId(), __DIR__ . $fic_img);
-                                    createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $fic_img_bis);
-                                } catch (Throwable $t) {
-                                    var_dump($t);
-                                }
-
+                                createGraph($parametre->getId(), __DIR__ . $fic_img);
+                                createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $fic_img_bis);
 
                                 CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $fic_csv, $cambrures);
 
