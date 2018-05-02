@@ -31,7 +31,6 @@ class Parametre {
      * @return Cambrures du profil
      */
     function genererCambrures() {
-        /* ===================== Génération des cambrures ==================== */
         /* Génération de la première cambrure */
         $cambrures = array();
         $one = new Cambrure;
