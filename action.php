@@ -84,7 +84,7 @@
                             echo '<h2> Vous avez rajouté ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
 
                             /* Générations cambrures */
-                            $cambrures = $parametre->genererCambrures();
+                            $cambrures = $param->genererCambrures();
 
                             /* Ajout des cambrures */
                             foreach ($cambrures as $cambrure) {
