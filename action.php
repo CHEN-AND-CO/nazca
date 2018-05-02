@@ -1,5 +1,5 @@
-<html>
-    <head>
+<head>
+    <html>
         <meta charset="UTF-8" />
         <meta name="author" content="Kévin Le Torc'h" />
         <title>Création de profil - NAZCA</title>
