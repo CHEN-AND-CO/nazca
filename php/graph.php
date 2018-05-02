@@ -13,10 +13,6 @@ JpGraph\JpGraph::load();
 JpGraph\JpGraph::module('line');
 JpGraph\JpGraph::module('scatter');
 
-
-/* require_once(__DIR__ . "/../jpgraph/jpgraph_line.php");
-  require_once(__DIR__ . "/../jpgraph/jpgraph_scatter.php"); */
-
 /**
  * Affichage ou Enregistrement du profil sous forme de graphique
  * 
@@ -109,11 +105,25 @@ function createGraph($id, $fileURI = NULL) {
     $graph->Stroke($fileURI);
 }
 
+/**
+ * Enrgistrement ou affichage du graphique solidité/rigidité
+ * 
+ * @param int $id           Identifiant du profil
+ * @param int $sampling     Nombre d'échantillons
+ * @param int $max          fmax maximum
+ * @param int $min          fmax minimum
+ * @param string $fileURI   emplacement du graphique
+ */
 function createRigidSolidGraph($id, $sampling = 25, $max = 12, $min = 0, $fileURI = NULL) {
+    /* Initialisation de l'interface avec la BDD */
     $db = new BDDIO;
+
+    /* Récupération du profil */
     $param = $db->RequestParam($id)[0];
 
+    /* Si le paramètre existe */
     if (isset($param)) {
+        /* On récupère les cambrures du profil */
         $cambrures = $db->RequestAllCambruresFromParam($id);
         if (isset($cambrures)) {
             $igzvmaxs = array();
