@@ -24,6 +24,48 @@ class Parametre {
     private $xg, $yg;
 
     /**
+     * Génère les cambrures du profil
+     * 
+     * @param parametre $parametre
+     * 
+     * @return Cambrures du profil
+     */
+    function genererCambrures() {
+        /* ===================== Génération des cambrures ==================== */
+        /* Génération de la première cambrure */
+        $cambrures = array();
+        $one = new Cambrure;
+        $one->genesis($this);
+        array_push($cambrures, $one);
+
+        /* Génération des autres cambrures */
+        for ($i = 1; $i < $this->getNb_points() + 1; $i++) {
+            $tmp = new Cambrure;
+            $tmp->create($this, $cambrures[$i - 1]);
+
+            array_push($cambrures, $tmp);
+        }
+
+        /* Préparation au calcul du centre de gravité */
+        for ($i = 0; $i < $this->getNb_points(); $i++) {
+            $cambrures[$i]->initPg($this, $cambrures[$i + 1]); //Calcul des xg et yg pondérés
+        }
+        $vide = new Cambrure;
+        $vide->clear();
+        $cambrures[$this->getNb_points()]->initPg($this, $vide); //Pareil pour le dernier
+        $this->initXg($cambrures); //Calcul de l'abscisse du point G
+        $this->initYg($cambrures); //Calcul de l'ordonnée du point G
+
+        /* Calcul des Igz */
+        for ($i = 0; $i < $this->getNb_points(); $i++) {
+            $cambrures[$i]->initIgz($this, $cambrures[$i + 1]);
+        }
+        $cambrures[$this->getNb_points()]->initIgz($this, $vide);
+
+        return $cambrures;
+    }
+
+    /**
      * Initialisation spéciale pour calculer la rigidité du profil, renvoie la valeur de Igz totale
      * 
      * @param double $_corde    valeur de la corde en mm
