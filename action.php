@@ -84,8 +84,8 @@
                             echo '<h2> Vous avez rajouté ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
 
                             /* On récupère le paramètre ajouté */
-                            - $dirtytmp = $db->RequestAllParams();
-                            - $parametre = $dirtytmp[sizeof($dirtytmp) - 1];
+                            $dirtytmp = $db->RequestAllParams();
+                            $parametre = $dirtytmp[sizeof($dirtytmp) - 1];
 
                             /* Générations cambrures */
                             $cambrures = $parametre->genererCambrures();
