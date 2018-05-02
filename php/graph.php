@@ -147,7 +147,7 @@ function createRigidSolidGraph($id, $sampling = 25, $max = 0, $min = 0, $fileURI
             $graph->SetScale('intint');
 
             /* Titre du graphique */
-            $graph->title->Set("Rigidité de " . $param->getLibelle());
+            $graph->title->Set("Rigidité/Solidité de " . $param->getLibelle());
 
             /* Description de l'axe x */
             $graph->xaxis->title->Set('Fmax (%)');
