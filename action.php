@@ -143,7 +143,7 @@
                                 echo '<h2> ERREUR: Impossible d\'ajouter ' . $param->getLibelle() . ' à la Base de donnée !</h2>';
                             }
                         } else { // Si onveut modifier un paramètre
-                            if ($db->UpdateParam($id, $param)) { //Si modification réussie
+                            if ($db->UpdateParamObject($id, $param)) { //Si modification réussie
                                 /* Récupération du paramètre */
                                 $parametre = $db->RequestParam($id)[0];
                                 /* Suppression des fichiers précédents */
