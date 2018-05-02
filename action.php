@@ -69,13 +69,14 @@
                         /* Nom des fichiers image et csv */
                         $filename = str_replace(' ', '_', $libelle) . '-' . $date;
                         $fic_img = '/res/img/' . $filename . '.jpg';
+                        $fic_img_bis = '/res/img/' . $filename . '_bis.jpg';
                         $fic_csv = '/res/csv/' . $filename . '.csv';
 
                         /* Déclaration de l'objet parametre */
                         $param = new Parametre;
                         /* Initialisation de l'objet paramètre */
                         /* On met id à 0 car on ne peut le déterminer et on ne l'utilise pas tout de suite */
-                        $param->init(0, $libelle, $corde, $tmax_p, $fmax_p, ($tmax_p / 100) * $corde, ($fmax_p / 100) * $corde, $nb_points, $date, $fic_img, $fic_csv);
+                        $param->init(0, $libelle, $corde, $tmax_p, $fmax_p, ($tmax_p / 100) * $corde, ($fmax_p / 100) * $corde, $nb_points, $date, $fic_img, $fic_img_bis, $fic_csv);
 
                         /* Si on veut ajouter un paramètre */
                         if ($action === 'add_param') {
@@ -128,6 +129,7 @@
 
                                 /* Création des fichiers CSV et image */
                                 createGraph($parametre->getId(), __DIR__ . $fic_img);
+                                createRigidSolidGraph($parametre->getId(), 25, 12, 0, __DIR__ . $fic_img_bis);
                                 CSVIO::writeCambrureArrayToCSVFile(__DIR__ . $fic_csv, $cambrures);
 
                                 /* Redirection vers la page de consultation du paramètre créé */
