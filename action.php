@@ -151,9 +151,8 @@
                             /* Récupération du paramètre */
                             $parametre = $db->RequestParam($id)[0];
                             /* Suppression des cambrures du profil */
-                            if ($db->RemoveCambruresFromParam($parametre->getId())) {
+                            if (!$db->RemoveCambruresFromParam($parametre->getId())) {
                                 //Erreur
-                                error_log('cassééé');
                             }
 
                             /* ===================== Génération des cambrures ==================== */
