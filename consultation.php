@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="author" content="Kévin Le Torc'h & Gwenolé Leroy-Ferrec" />
         <title> NAZCA Project C&amp;C SSOS 2018</title>
 
         <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
