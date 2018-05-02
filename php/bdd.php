@@ -155,16 +155,16 @@ class BDDIO {
     /**
      * Enlève un profil spécifique et ces cambrures associées de la BDD
      * 
-     * @param int $_id  identifiant du profil
+     * @param int $id  identifiant du profil
      * 
      * @return boolean
      */
-    public function deleteParam($_id) {
-        /*if (!$this->removeParamFiles($_id)) {
+    public function deleteParam($id) {
+        if (!$this->removeParamFiles($id)) {
             //Erreur impossible de supprimer les fichiers
-        }*/
+        }
 
-        if ($this->RemoveCambruresFromParam($_id) && $this->RemoveParam($_id)) {
+        if ($this->RemoveCambruresFromParam($id) && $this->RemoveParam(id)) {
             return true;
         } else {
             return false;
@@ -179,11 +179,11 @@ class BDDIO {
      * @return boolean
      */
     public function removeParamFiles($id) {
-        $param = $this->RequestParam($id);
+        $param = $this->RequestParam($id)[0];
 
-        unlink($param->getFic_csv());
+        unlink(realpath($param->getFic_csv()));
         unlink($param->getFic_img());
-        unlink($param->getFic_img_bis());
+        unlink(realpath($param->getFic_img_bis()));
 
         return true;
     }
