@@ -5,7 +5,6 @@
  * @Company: CHEN AND CO
  * @Email: herrcrazi@gmail.com & kev29lt@gmail.com
  */
-
 require_once("CSVIO.php");
 require_once("bdd.php");
 
@@ -103,6 +102,63 @@ function createGraph($id, $fileURI = NULL) {
 
     /* Enregistrement du graphique dans $fileURI ou affichage si NULL */
     $graph->Stroke($fileURI);
+}
+
+function createRigidSolidGraph($id, $sampling = 25, $max = 12, $min = 0, $fileURI = NULL) {
+    $db = new BDDIO;
+    $param = $db->RequestParam($id)[0];
+
+    if (isset($param)) {
+        $cambrures = $db->RequestAllCambruresFromParam($id);
+        if (isset($cambrures)) {
+            $igzvmaxs = array();
+            $fmaxs = array();
+            $igzs = array();
+            $min = 0;
+            $max = 12;
+            $pas = ($max - $min) / $sampling;
+
+            for ($i = $min; $i < $max + 1; $i += $pas) {
+                $tmp = new Parametre;
+                $tmp2 = $tmp->rigidite($param->getCorde(), $param->getTmax_p(), $i, $param->getNb_points());
+                array_push($igzs, $tmp2);
+                array_push($fmaxs, $i);
+                array_push($igzvmaxs, $tmp2 / ($param->getTmax_p())); //Fix : pas de division par 2
+            }
+
+            // Create a graph instance
+            $graph = new Graph(800, 300);
+            $graph->SetScale('intint');
+
+            // Setup a title for the graph
+            $graph->title->Set("Rigidité de " . $param->getLibelle());
+
+            // Setup titles and X-axis labels
+            $graph->xaxis->title->Set('Fmax (%)');
+
+            // Setup Y-axis title
+            $graph->yaxis->title->Set('Igz (%)');
+
+            // Create the linear plot (with both upper and lower profiles and the median line)
+
+            $rigid = new LinePlot($igzs, $fmaxs);
+            $solid = new LinePlot($igzvmaxs, $fmaxs);
+
+            // Add the plot to the graph
+            $graph->Add($rigid);
+            $graph->Add($solid);
+
+            // Set some parameters
+            $rigid->SetColor('red');
+            $solid->SetColor('green');
+
+            $rigid->SetWeight(2);
+            $solid->SetWeight(2);
+
+            // Display the graph
+            $graph->Stroke($fileURI);
+        }
+    }
 }
 
 ?>
