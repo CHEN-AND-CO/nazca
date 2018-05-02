@@ -164,7 +164,7 @@ class BDDIO {
             //Erreur impossible de supprimer les fichiers
         }
 
-        if ($this->RemoveCambruresFromParam($id) && $this->RemoveParam(id)) {
+        if ($this->RemoveCambruresFromParam($id) && $this->RemoveParam($id)) {
             return true;
         } else {
             return false;
@@ -181,9 +181,9 @@ class BDDIO {
     public function removeParamFiles($id) {
         $param = $this->RequestParam($id)[0];
 
-        unlink(realpath($param->getFic_csv()));
-        unlink($param->getFic_img());
-        unlink(realpath($param->getFic_img_bis()));
+        @unlink($param->getFic_csv());
+        @unlink($param->getFic_img());
+        @unlink($param->getFic_img_bis());
 
         return true;
     }
