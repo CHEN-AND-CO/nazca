@@ -1,46 +1,70 @@
-# Contributor Covenant Code of Conduct
+# nazca
+![# NAZCA](https://raw.githubusercontent.com/CHEN-AND-CO/nazca/master/chenco_NAZCA_logo.png)
+Not used in ICBMs
 
-## Our Pledge
+AVERTISSEMENT : Respectez ces regles sous peine de goulag immediat.
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
-
-## Our Standards
-
-Examples of behavior that contributes to creating a positive environment include:
-
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
-
-Examples of unacceptable behavior by participants include:
-
-* The use of sexualized language or imagery and unwelcome sexual attention or advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a professional setting
-
-## Our Responsibilities
-
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
-
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
-
-## Scope
-
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
-
-## Enforcement
-
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at kev29lt@gmail.com. The project team will review and investigate all complaints, and will respond in a way that it deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
-
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
-
-## Attribution
-
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at [http://contributor-covenant.org/version/1/4][version]
-
-[homepage]: http://contributor-covenant.org
-[version]: http://contributor-covenant.org/version/1/4/
+* 1 - Ne fais rien 
+* 2 - Ne fais rien de plus que precise en 1. 
+* 2.1 - Ne fais surtout rien qui ne soit pas quelquechose 
+* 2.2.2.1 - Ne reflechis pas a la definition de "rien" 
+* 3 - Ne te poses pas de question 
+* 4 - Le Regime connait les reponses 
+* 4.1 - Le Regime vous apportera les reponses 
+* 4.1.1 - Si vous posez des questions, vous irez au goulag 
+* 5 - Les reponses sont les memes 
+* 6 - Appliques deux fois 3. Deux vaut mieux qu'un 
+* **7 - Le Goulag est le goulag** 
+* 7.5 - On peut entrer au goulag 
+* 7.5.42 - C'est tres facile 
+* 7.77- On ne peut pas en sortir 
+* 8 - Le Regime est le Regime 
+* 20 - La Note 
+* 21 - appliques trois fois le 7. Trois vaut mieux qu'un et ne sert qu'une fois 
+* 38 - Rule 38. No exception. 
+* 42 - C'est toujours la Reponse. Pas d'exceptions, meme pour 5. 
+* 43 - Vous avez presque trouve la reponse, malheureusement vous eties trop haut. 
+* 44 - 43 est vrai pour toutes les regles suivant 42. 
+* 56 - Une regle parmis tant d'autres. Rien de special. Ne vous posez toujours pas de questions
+* 86 - Always mind the core's pressure.
+* 87 - Now the vegetables glows.
+* 100 - It's one hundred above 0.
+* 101 - Les chiens sont interdits sur le serveur
+* 102 - Les punks aussi
+* 103 - Les migrants egalement
+* 104 - Tout ce qui bouge ou pas.
+* 105 - Attention, le serveur est garde par de l'artillerie
+* 106 - Ce n'est pas une Peugeot
+* 120 - Si vous n'avez pas d'autorisation, vous n'en avez pas.
+* 120.1 - Dans ce cas, partez
+* 120.2 - Sinon restez. Mais soyez communiste. Sinon, regle 7.
+* 200 - Ok.
+* 201 - Ca passe.
+* 211 - Dont forget to unbind. Rule 4584
+* 295 - PHP tue
+* 296 - NodeJS. Pas d'exceptions.
+* 345 - Le communisme est autorise
+* 346 - Le nationalisme aussi.
+* 34* - Tout es permis, voire regle 359.
+* 359 - Restez toujours dans les extremes. Sinon, regle 7.
+* 360 - Elle ne tourne pas. Ne l'oubliez pas.
+* 360.1 - Non il ne s'agit pas d'une partie de votre anatomie.
+* 360.42 - Elle est plate. Comme une assiette.
+* 361 - Respectez la regle 360. Sinon, regle 7.
+* 362 - D'ailleurs tant qu'on y est, respectez toutes les regles. Sinon...
+* 362.2 - Si vous n'aviez pas compris , c'est la regle 7.
+* 403 - C'est interdit. Regle 7.
+* 404 - Regle non trouvee.
+* 420 - dont do drugs on the server
+* 420.1 - this isn't a christian minecraft server
+* 500 - Coup d'etat.
+* 500.1 - Donc regle 7.
+* 666 - Ce n'est pas bien. Pas d'exception
+* 777 - Vous avez mal appliqué la régle 21. Régle 7.
+* 4242 - Les illuminatis c'est surcote
+* 4243 - Si tu est un illuminati, regle 7.
+* 4243.2 - Si tu est de la NSA, idem
+* 4244 - extends rule 4243 : Marche aussi pour le KGB
+* 4584 - Tout overflow est puni de la regle 7.
+* 9001 - It's over 9000.
+* 2,147,483,647 - N'ajoutez rien surtout.

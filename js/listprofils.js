@@ -7,7 +7,7 @@
 
 window.onload = function () {
     //Récupération des éléments du DOM
-    var profiles = document.querySelectorAll('tr');
+    var profiles = document.querySelectorAll('tbody tr');
     var btnEdit = document.querySelectorAll('tr .edit-button');
     var btnDelete = document.querySelectorAll('tr .delete-button');
 
