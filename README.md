@@ -1,6 +1,5 @@
 # nazca
 ![# NAZCA](https://raw.githubusercontent.com/CHEN-AND-CO/nazca/master/chenco_NAZCA_logo.png)
-![**branch validated**](https://image.noelshack.com/fichiers/2018/13/5/1522443340-git-validated.png)
 
 NAZCA est un outil permettant le calcul de profils NACA. Il fournit la possibilité d'obtenir des graphes d'allure du profil et de rigidité / solidité.
 
